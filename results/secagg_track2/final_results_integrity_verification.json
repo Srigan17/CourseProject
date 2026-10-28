@@ -1,0 +1,2108 @@
+{
+  "artifact_inventory": {
+    "status": "PASS",
+    "verified_artifacts": {
+      "phase2_baseline": {
+        "path": "results/baseline_track2/track2_tuned_mlp_baseline_results.json",
+        "status": "PASS",
+        "details": "Frozen Phase 2 baseline containing Config A (FedAvg k=4 reference) over seeds [42, 123, 456, 789, 2026]."
+      },
+      "phase3_dp_fedavg": {
+        "path": "results/dp_track2/phase3_dp_fedavg_results.json",
+        "status": "PASS",
+        "details": "Frozen Phase 3 results containing Config B (DP-FedAvg for sigmas 0.5, 1.0, 1.5, 2.0) over seeds [42, 123, 456, 789, 2026]."
+      },
+      "phase4_secagg_benchmark": {
+        "path": "results/secagg_track2/phase4_secagg_results.json",
+        "status": "PASS",
+        "details": "Phase 4 production results containing 25 newly executed runs (Config C: 5 runs; Config D: 20 runs)."
+      },
+      "phase4_audit": {
+        "path": "results/secagg_track2/phase4_results_integrity_audit.json",
+        "status": "PASS",
+        "details": "Cross-configuration audit artifact containing reconstructed metrics and comparisons."
+      },
+      "phase4_script": {
+        "path": "scripts/run_phase4_secagg.py",
+        "status": "PASS",
+        "details": "Source script implementing custom SecAgg+ using Flower 1.42 primitives and persistent PrivacyEngine."
+      },
+      "phase3_script": {
+        "path": "scripts/run_phase3_dp_fedavg.py",
+        "status": "PASS",
+        "details": "Source script implementing DP-FedAvg with Opacus 1.6.0."
+      },
+      "data_splits": {
+        "train_path": "data/processed/train_sample_split.csv",
+        "test_path": "data/processed/test_sample_split.csv",
+        "partitions_dir": "data/partitions/k4",
+        "status": "PASS",
+        "details": "Verified 2,924 training records (731 per client across 4 clients) and 732 held-out test records."
+      }
+    }
+  },
+  "metric_reconstruction": {
+    "status": "PASS",
+    "verified_configs": {
+      "Config_A_plaintext_fedavg": {
+        "accuracy": {
+          "raw_per_seed": {
+            "42": 0.6721,
+            "123": 0.6735,
+            "456": 0.6872,
+            "789": 0.6708,
+            "2026": 0.6762
+          },
+          "calculated_mean": 0.67596,
+          "saved_mean": 0.676,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.005899,
+          "saved_std": 0.0059,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.006595,
+          "calculated_min": 0.6708,
+          "calculated_max": 0.6872
+        },
+        "precision": {
+          "raw_per_seed": {
+            "42": 0.6788,
+            "123": 0.6772,
+            "456": 0.6885,
+            "789": 0.6743,
+            "2026": 0.6778
+          },
+          "calculated_mean": 0.67932,
+          "saved_mean": 0.6793,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.004828,
+          "saved_std": 0.0048,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.005398,
+          "calculated_min": 0.6743,
+          "calculated_max": 0.6885
+        },
+        "recall": {
+          "raw_per_seed": {
+            "42": 0.6747,
+            "123": 0.6787,
+            "456": 0.6981,
+            "789": 0.6767,
+            "2026": 0.6861
+          },
+          "calculated_mean": 0.68286,
+          "saved_mean": 0.6829,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.008539,
+          "saved_std": 0.0085,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.009547,
+          "calculated_min": 0.6747,
+          "calculated_max": 0.6981
+        },
+        "f1": {
+          "raw_per_seed": {
+            "42": 0.6747,
+            "123": 0.6774,
+            "456": 0.6894,
+            "789": 0.6742,
+            "2026": 0.6786
+          },
+          "calculated_mean": 0.67886,
+          "saved_mean": 0.6789,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.005519,
+          "saved_std": 0.0055,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.006171,
+          "calculated_min": 0.6742,
+          "calculated_max": 0.6894
+        },
+        "kappa": {
+          "raw_per_seed": {
+            "42": 0.6052,
+            "123": 0.6069,
+            "456": 0.6246,
+            "789": 0.6038,
+            "2026": 0.6114
+          },
+          "calculated_mean": 0.61038,
+          "saved_mean": 0.6104,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.007556,
+          "saved_std": 0.0076,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.008448,
+          "calculated_min": 0.6038,
+          "calculated_max": 0.6246
+        },
+        "mcc": {
+          "raw_per_seed": {
+            "42": 0.6058,
+            "123": 0.6071,
+            "456": 0.6264,
+            "789": 0.6042,
+            "2026": 0.613
+          },
+          "calculated_mean": 0.6113,
+          "saved_mean": 0.6113,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.008114,
+          "saved_std": 0.0081,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.009072,
+          "calculated_min": 0.6042,
+          "calculated_max": 0.6264
+        },
+        "loss": {
+          "raw_per_seed": {
+            "42": 0.9372,
+            "123": 0.926,
+            "456": 0.8864,
+            "789": 0.9326,
+            "2026": 0.9123
+          },
+          "calculated_mean": 0.9189,
+          "saved_mean": 0.9189,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.018291,
+          "saved_std": 0.0183,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.02045,
+          "calculated_min": 0.8864,
+          "calculated_max": 0.9372
+        }
+      },
+      "Config_B_dp_sigma_0.5": {
+        "accuracy": {
+          "raw_per_seed": {
+            "42": 0.4317,
+            "123": 0.4781,
+            "456": 0.4563,
+            "789": 0.4672,
+            "2026": 0.4658
+          },
+          "calculated_mean": 0.45982,
+          "saved_mean": 0.4598,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.015668,
+          "saved_std": 0.0157,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.017518,
+          "calculated_min": 0.4317,
+          "calculated_max": 0.4781
+        },
+        "precision": {
+          "raw_per_seed": {
+            "42": 0.4233,
+            "123": 0.4815,
+            "456": 0.4563,
+            "789": 0.4629,
+            "2026": 0.4691
+          },
+          "calculated_mean": 0.45862,
+          "saved_mean": 0.4586,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.019517,
+          "saved_std": 0.0195,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.02182,
+          "calculated_min": 0.4233,
+          "calculated_max": 0.4815
+        },
+        "recall": {
+          "raw_per_seed": {
+            "42": 0.4229,
+            "123": 0.4733,
+            "456": 0.4501,
+            "789": 0.4603,
+            "2026": 0.4591
+          },
+          "calculated_mean": 0.45314,
+          "saved_mean": 0.4531,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.016834,
+          "saved_std": 0.0168,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.018821,
+          "calculated_min": 0.4229,
+          "calculated_max": 0.4733
+        },
+        "f1": {
+          "raw_per_seed": {
+            "42": 0.4164,
+            "123": 0.4721,
+            "456": 0.4465,
+            "789": 0.4535,
+            "2026": 0.4563
+          },
+          "calculated_mean": 0.44896,
+          "saved_mean": 0.449,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.018309,
+          "saved_std": 0.0183,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.02047,
+          "calculated_min": 0.4164,
+          "calculated_max": 0.4721
+        },
+        "kappa": {
+          "raw_per_seed": {
+            "42": 0.313,
+            "123": 0.3708,
+            "456": 0.3437,
+            "789": 0.3569,
+            "2026": 0.3541
+          },
+          "calculated_mean": 0.3477,
+          "saved_mean": 0.3477,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.019387,
+          "saved_std": 0.0194,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.021675,
+          "calculated_min": 0.313,
+          "calculated_max": 0.3708
+        },
+        "mcc": {
+          "raw_per_seed": {
+            "42": 0.3149,
+            "123": 0.3724,
+            "456": 0.3457,
+            "789": 0.3595,
+            "2026": 0.3564
+          },
+          "calculated_mean": 0.34978,
+          "saved_mean": 0.3498,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.019407,
+          "saved_std": 0.0194,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.021698,
+          "calculated_min": 0.3149,
+          "calculated_max": 0.3724
+        },
+        "loss": {
+          "raw_per_seed": {
+            "42": 1.5797,
+            "123": 1.5044,
+            "456": 1.5894,
+            "789": 1.5542,
+            "2026": 1.561
+          },
+          "calculated_mean": 1.55774,
+          "saved_mean": 1.5577,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.029506,
+          "saved_std": 0.0295,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.032988,
+          "calculated_min": 1.5044,
+          "calculated_max": 1.5894
+        }
+      },
+      "Config_B_dp_sigma_1.0": {
+        "accuracy": {
+          "raw_per_seed": {
+            "42": 0.403,
+            "123": 0.4276,
+            "456": 0.4208,
+            "789": 0.4303,
+            "2026": 0.3962
+          },
+          "calculated_mean": 0.41558,
+          "saved_mean": 0.4156,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.013581,
+          "saved_std": 0.0136,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.015184,
+          "calculated_min": 0.3962,
+          "calculated_max": 0.4303
+        },
+        "precision": {
+          "raw_per_seed": {
+            "42": 0.3905,
+            "123": 0.4278,
+            "456": 0.4185,
+            "789": 0.4327,
+            "2026": 0.3948
+          },
+          "calculated_mean": 0.41286,
+          "saved_mean": 0.4129,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.017174,
+          "saved_std": 0.0172,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.019201,
+          "calculated_min": 0.3905,
+          "calculated_max": 0.4327
+        },
+        "recall": {
+          "raw_per_seed": {
+            "42": 0.394,
+            "123": 0.4132,
+            "456": 0.413,
+            "789": 0.4215,
+            "2026": 0.3847
+          },
+          "calculated_mean": 0.40528,
+          "saved_mean": 0.4053,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.013683,
+          "saved_std": 0.0137,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.015299,
+          "calculated_min": 0.3847,
+          "calculated_max": 0.4215
+        },
+        "f1": {
+          "raw_per_seed": {
+            "42": 0.3887,
+            "123": 0.4082,
+            "456": 0.4103,
+            "789": 0.4159,
+            "2026": 0.384
+          },
+          "calculated_mean": 0.40142,
+          "saved_mean": 0.4014,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.012647,
+          "saved_std": 0.0126,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.01414,
+          "calculated_min": 0.384,
+          "calculated_max": 0.4159
+        },
+        "kappa": {
+          "raw_per_seed": {
+            "42": 0.2781,
+            "123": 0.3069,
+            "456": 0.3008,
+            "789": 0.311,
+            "2026": 0.2693
+          },
+          "calculated_mean": 0.29322,
+          "saved_mean": 0.2932,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.016502,
+          "saved_std": 0.0165,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.018449,
+          "calculated_min": 0.2693,
+          "calculated_max": 0.311
+        },
+        "mcc": {
+          "raw_per_seed": {
+            "42": 0.2794,
+            "123": 0.311,
+            "456": 0.3022,
+            "789": 0.3147,
+            "2026": 0.2713
+          },
+          "calculated_mean": 0.29572,
+          "saved_mean": 0.2957,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.017311,
+          "saved_std": 0.0173,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.019355,
+          "calculated_min": 0.2713,
+          "calculated_max": 0.3147
+        },
+        "loss": {
+          "raw_per_seed": {
+            "42": 1.5401,
+            "123": 1.5165,
+            "456": 1.5425,
+            "789": 1.5377,
+            "2026": 1.5535
+          },
+          "calculated_mean": 1.53806,
+          "saved_mean": 1.5381,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.01206,
+          "saved_std": 0.0121,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.013484,
+          "calculated_min": 1.5165,
+          "calculated_max": 1.5535
+        }
+      },
+      "Config_B_dp_sigma_1.5": {
+        "accuracy": {
+          "raw_per_seed": {
+            "42": 0.3989,
+            "123": 0.3921,
+            "456": 0.3989,
+            "789": 0.4167,
+            "2026": 0.3702
+          },
+          "calculated_mean": 0.39536,
+          "saved_mean": 0.3954,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.014994,
+          "saved_std": 0.015,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.016764,
+          "calculated_min": 0.3702,
+          "calculated_max": 0.4167
+        },
+        "precision": {
+          "raw_per_seed": {
+            "42": 0.3891,
+            "123": 0.3986,
+            "456": 0.3955,
+            "789": 0.425,
+            "2026": 0.3751
+          },
+          "calculated_mean": 0.39666,
+          "saved_mean": 0.3967,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.016311,
+          "saved_std": 0.0163,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.018236,
+          "calculated_min": 0.3751,
+          "calculated_max": 0.425
+        },
+        "recall": {
+          "raw_per_seed": {
+            "42": 0.3896,
+            "123": 0.3754,
+            "456": 0.3879,
+            "789": 0.4055,
+            "2026": 0.358
+          },
+          "calculated_mean": 0.38328,
+          "saved_mean": 0.3833,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.01585,
+          "saved_std": 0.0159,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.017721,
+          "calculated_min": 0.358,
+          "calculated_max": 0.4055
+        },
+        "f1": {
+          "raw_per_seed": {
+            "42": 0.3847,
+            "123": 0.3635,
+            "456": 0.3856,
+            "789": 0.3969,
+            "2026": 0.3567
+          },
+          "calculated_mean": 0.37748,
+          "saved_mean": 0.3775,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.014983,
+          "saved_std": 0.015,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.016751,
+          "calculated_min": 0.3567,
+          "calculated_max": 0.3969
+        },
+        "kappa": {
+          "raw_per_seed": {
+            "42": 0.2724,
+            "123": 0.2614,
+            "456": 0.2726,
+            "789": 0.2928,
+            "2026": 0.2368
+          },
+          "calculated_mean": 0.2672,
+          "saved_mean": 0.2672,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.018272,
+          "saved_std": 0.0183,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.020429,
+          "calculated_min": 0.2368,
+          "calculated_max": 0.2928
+        },
+        "mcc": {
+          "raw_per_seed": {
+            "42": 0.2742,
+            "123": 0.2687,
+            "456": 0.2744,
+            "789": 0.2982,
+            "2026": 0.24
+          },
+          "calculated_mean": 0.2711,
+          "saved_mean": 0.2711,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.01859,
+          "saved_std": 0.0186,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.020784,
+          "calculated_min": 0.24,
+          "calculated_max": 0.2982
+        },
+        "loss": {
+          "raw_per_seed": {
+            "42": 1.5312,
+            "123": 1.5372,
+            "456": 1.5375,
+            "789": 1.5462,
+            "2026": 1.5631
+          },
+          "calculated_mean": 1.54304,
+          "saved_mean": 1.543,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.011112,
+          "saved_std": 0.0111,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.012423,
+          "calculated_min": 1.5312,
+          "calculated_max": 1.5631
+        }
+      },
+      "Config_B_dp_sigma_2.0": {
+        "accuracy": {
+          "raw_per_seed": {
+            "42": 0.3852,
+            "123": 0.3825,
+            "456": 0.3825,
+            "789": 0.4003,
+            "2026": 0.373
+          },
+          "calculated_mean": 0.3847,
+          "saved_mean": 0.3847,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.008834,
+          "saved_std": 0.0088,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.009876,
+          "calculated_min": 0.373,
+          "calculated_max": 0.4003
+        },
+        "precision": {
+          "raw_per_seed": {
+            "42": 0.3729,
+            "123": 0.4256,
+            "456": 0.3769,
+            "789": 0.4053,
+            "2026": 0.3861
+          },
+          "calculated_mean": 0.39336,
+          "saved_mean": 0.3934,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.019618,
+          "saved_std": 0.0196,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.021933,
+          "calculated_min": 0.3729,
+          "calculated_max": 0.4256
+        },
+        "recall": {
+          "raw_per_seed": {
+            "42": 0.3731,
+            "123": 0.3615,
+            "456": 0.3687,
+            "789": 0.3852,
+            "2026": 0.3602
+          },
+          "calculated_mean": 0.36974,
+          "saved_mean": 0.3697,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.009059,
+          "saved_std": 0.0091,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.010128,
+          "calculated_min": 0.3602,
+          "calculated_max": 0.3852
+        },
+        "f1": {
+          "raw_per_seed": {
+            "42": 0.3626,
+            "123": 0.3387,
+            "456": 0.3646,
+            "789": 0.3706,
+            "2026": 0.3582
+          },
+          "calculated_mean": 0.35894,
+          "saved_mean": 0.3589,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.010877,
+          "saved_std": 0.0109,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.012161,
+          "calculated_min": 0.3387,
+          "calculated_max": 0.3706
+        },
+        "kappa": {
+          "raw_per_seed": {
+            "42": 0.2543,
+            "123": 0.2469,
+            "456": 0.2512,
+            "789": 0.271,
+            "2026": 0.2385
+          },
+          "calculated_mean": 0.25238,
+          "saved_mean": 0.2524,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.010719,
+          "saved_std": 0.0107,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.011984,
+          "calculated_min": 0.2385,
+          "calculated_max": 0.271
+        },
+        "mcc": {
+          "raw_per_seed": {
+            "42": 0.2581,
+            "123": 0.2588,
+            "456": 0.2539,
+            "789": 0.2778,
+            "2026": 0.2435
+          },
+          "calculated_mean": 0.25842,
+          "saved_mean": 0.2584,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.011125,
+          "saved_std": 0.0111,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.012439,
+          "calculated_min": 0.2435,
+          "calculated_max": 0.2778
+        },
+        "loss": {
+          "raw_per_seed": {
+            "42": 1.5405,
+            "123": 1.5445,
+            "456": 1.5273,
+            "789": 1.5421,
+            "2026": 1.5639
+          },
+          "calculated_mean": 1.54366,
+          "saved_mean": 1.5437,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.011751,
+          "saved_std": 0.0118,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.013138,
+          "calculated_min": 1.5273,
+          "calculated_max": 1.5639
+        }
+      },
+      "Config_C_secagg_plaintext": {
+        "accuracy": {
+          "raw_per_seed": {
+            "42": 0.6831,
+            "123": 0.6844,
+            "456": 0.6844,
+            "789": 0.6585,
+            "2026": 0.6858
+          },
+          "calculated_mean": 0.67924,
+          "saved_mean": 0.6792,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.010405,
+          "saved_std": 0.0104,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.011633,
+          "calculated_min": 0.6585,
+          "calculated_max": 0.6858
+        },
+        "precision": {
+          "raw_per_seed": {
+            "42": 0.687,
+            "123": 0.6863,
+            "456": 0.6866,
+            "789": 0.6696,
+            "2026": 0.6858
+          },
+          "calculated_mean": 0.68306,
+          "saved_mean": 0.6831,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.006741,
+          "saved_std": 0.0067,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.007537,
+          "calculated_min": 0.6696,
+          "calculated_max": 0.687
+        },
+        "recall": {
+          "raw_per_seed": {
+            "42": 0.6897,
+            "123": 0.6897,
+            "456": 0.6905,
+            "789": 0.6597,
+            "2026": 0.6983
+          },
+          "calculated_mean": 0.68558,
+          "saved_mean": 0.6856,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.01334,
+          "saved_std": 0.0133,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.014914,
+          "calculated_min": 0.6597,
+          "calculated_max": 0.6983
+        },
+        "f1": {
+          "raw_per_seed": {
+            "42": 0.6866,
+            "123": 0.6877,
+            "456": 0.6878,
+            "789": 0.6612,
+            "2026": 0.687
+          },
+          "calculated_mean": 0.68206,
+          "saved_mean": 0.6821,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.010439,
+          "saved_std": 0.0104,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.011672,
+          "calculated_min": 0.6612,
+          "calculated_max": 0.6878
+        },
+        "kappa": {
+          "raw_per_seed": {
+            "42": 0.6187,
+            "123": 0.6202,
+            "456": 0.6205,
+            "789": 0.588,
+            "2026": 0.6233
+          },
+          "calculated_mean": 0.61414,
+          "saved_mean": 0.6141,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.013154,
+          "saved_std": 0.0132,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.014707,
+          "calculated_min": 0.588,
+          "calculated_max": 0.6233
+        },
+        "mcc": {
+          "raw_per_seed": {
+            "42": 0.6193,
+            "123": 0.6203,
+            "456": 0.6208,
+            "789": 0.5889,
+            "2026": 0.6256
+          },
+          "calculated_mean": 0.61498,
+          "saved_mean": 0.615,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.01322,
+          "saved_std": 0.0132,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.01478,
+          "calculated_min": 0.5889,
+          "calculated_max": 0.6256
+        },
+        "loss": {
+          "raw_per_seed": {
+            "42": 0.8945,
+            "123": 0.9434,
+            "456": 0.8765,
+            "789": 0.9172,
+            "2026": 0.9348
+          },
+          "calculated_mean": 0.91328,
+          "saved_mean": 0.9133,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.024864,
+          "saved_std": 0.0249,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.027799,
+          "calculated_min": 0.8765,
+          "calculated_max": 0.9434
+        }
+      },
+      "Config_D_full_sigma_0.5": {
+        "accuracy": {
+          "raw_per_seed": {
+            "42": 0.4331,
+            "123": 0.4809,
+            "456": 0.4536,
+            "789": 0.4686,
+            "2026": 0.4672
+          },
+          "calculated_mean": 0.46068,
+          "saved_mean": 0.4607,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.016278,
+          "saved_std": 0.0163,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.018199,
+          "calculated_min": 0.4331,
+          "calculated_max": 0.4809
+        },
+        "precision": {
+          "raw_per_seed": {
+            "42": 0.4245,
+            "123": 0.4836,
+            "456": 0.4547,
+            "789": 0.4639,
+            "2026": 0.47
+          },
+          "calculated_mean": 0.45934,
+          "saved_mean": 0.4593,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.019791,
+          "saved_std": 0.0198,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.022127,
+          "calculated_min": 0.4245,
+          "calculated_max": 0.4836
+        },
+        "recall": {
+          "raw_per_seed": {
+            "42": 0.4243,
+            "123": 0.4757,
+            "456": 0.4473,
+            "789": 0.4618,
+            "2026": 0.4607
+          },
+          "calculated_mean": 0.45396,
+          "saved_mean": 0.454,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.017341,
+          "saved_std": 0.0173,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.019388,
+          "calculated_min": 0.4243,
+          "calculated_max": 0.4757
+        },
+        "f1": {
+          "raw_per_seed": {
+            "42": 0.4177,
+            "123": 0.4745,
+            "456": 0.444,
+            "789": 0.4546,
+            "2026": 0.4572
+          },
+          "calculated_mean": 0.4496,
+          "saved_mean": 0.4496,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.018718,
+          "saved_std": 0.0187,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.020927,
+          "calculated_min": 0.4177,
+          "calculated_max": 0.4745
+        },
+        "kappa": {
+          "raw_per_seed": {
+            "42": 0.3147,
+            "123": 0.3741,
+            "456": 0.3402,
+            "789": 0.3586,
+            "2026": 0.3559
+          },
+          "calculated_mean": 0.3487,
+          "saved_mean": 0.3487,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.020116,
+          "saved_std": 0.0201,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.02249,
+          "calculated_min": 0.3147,
+          "calculated_max": 0.3741
+        },
+        "mcc": {
+          "raw_per_seed": {
+            "42": 0.3166,
+            "123": 0.3757,
+            "456": 0.3423,
+            "789": 0.3613,
+            "2026": 0.3583
+          },
+          "calculated_mean": 0.35084,
+          "saved_mean": 0.3508,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.020141,
+          "saved_std": 0.0201,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.022519,
+          "calculated_min": 0.3166,
+          "calculated_max": 0.3757
+        },
+        "loss": {
+          "raw_per_seed": {
+            "42": 1.5799,
+            "123": 1.5046,
+            "456": 1.5901,
+            "789": 1.5544,
+            "2026": 1.5607
+          },
+          "calculated_mean": 1.55794,
+          "saved_mean": 1.5579,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.029603,
+          "saved_std": 0.0296,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.033098,
+          "calculated_min": 1.5046,
+          "calculated_max": 1.5901
+        }
+      },
+      "Config_D_full_sigma_1.0": {
+        "accuracy": {
+          "raw_per_seed": {
+            "42": 0.4016,
+            "123": 0.4276,
+            "456": 0.4221,
+            "789": 0.4303,
+            "2026": 0.3962
+          },
+          "calculated_mean": 0.41556,
+          "saved_mean": 0.4156,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.013962,
+          "saved_std": 0.014,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.01561,
+          "calculated_min": 0.3962,
+          "calculated_max": 0.4303
+        },
+        "precision": {
+          "raw_per_seed": {
+            "42": 0.3888,
+            "123": 0.4269,
+            "456": 0.4198,
+            "789": 0.4327,
+            "2026": 0.3948
+          },
+          "calculated_mean": 0.4126,
+          "saved_mean": 0.4126,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.017571,
+          "saved_std": 0.0176,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.019644,
+          "calculated_min": 0.3888,
+          "calculated_max": 0.4327
+        },
+        "recall": {
+          "raw_per_seed": {
+            "42": 0.3926,
+            "123": 0.4132,
+            "456": 0.4144,
+            "789": 0.4215,
+            "2026": 0.3847
+          },
+          "calculated_mean": 0.40528,
+          "saved_mean": 0.4053,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.014095,
+          "saved_std": 0.0141,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.015758,
+          "calculated_min": 0.3847,
+          "calculated_max": 0.4215
+        },
+        "f1": {
+          "raw_per_seed": {
+            "42": 0.3873,
+            "123": 0.4081,
+            "456": 0.4114,
+            "789": 0.4159,
+            "2026": 0.384
+          },
+          "calculated_mean": 0.40134,
+          "saved_mean": 0.4013,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.01309,
+          "saved_std": 0.0131,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.014635,
+          "calculated_min": 0.384,
+          "calculated_max": 0.4159
+        },
+        "kappa": {
+          "raw_per_seed": {
+            "42": 0.2764,
+            "123": 0.3069,
+            "456": 0.3023,
+            "789": 0.311,
+            "2026": 0.2693
+          },
+          "calculated_mean": 0.29318,
+          "saved_mean": 0.2932,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.016975,
+          "saved_std": 0.017,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.018979,
+          "calculated_min": 0.2693,
+          "calculated_max": 0.311
+        },
+        "mcc": {
+          "raw_per_seed": {
+            "42": 0.2777,
+            "123": 0.311,
+            "456": 0.3039,
+            "789": 0.3147,
+            "2026": 0.2713
+          },
+          "calculated_mean": 0.29572,
+          "saved_mean": 0.2957,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.017786,
+          "saved_std": 0.0178,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.019885,
+          "calculated_min": 0.2713,
+          "calculated_max": 0.3147
+        },
+        "loss": {
+          "raw_per_seed": {
+            "42": 1.5403,
+            "123": 1.5165,
+            "456": 1.5424,
+            "789": 1.5377,
+            "2026": 1.5535
+          },
+          "calculated_mean": 1.53808,
+          "saved_mean": 1.5381,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.01206,
+          "saved_std": 0.0121,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.013483,
+          "calculated_min": 1.5165,
+          "calculated_max": 1.5535
+        }
+      },
+      "Config_D_full_sigma_1.5": {
+        "accuracy": {
+          "raw_per_seed": {
+            "42": 0.3975,
+            "123": 0.3921,
+            "456": 0.3989,
+            "789": 0.4167,
+            "2026": 0.3716
+          },
+          "calculated_mean": 0.39536,
+          "saved_mean": 0.3954,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.014475,
+          "saved_std": 0.0145,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.016184,
+          "calculated_min": 0.3716,
+          "calculated_max": 0.4167
+        },
+        "precision": {
+          "raw_per_seed": {
+            "42": 0.3866,
+            "123": 0.3991,
+            "456": 0.3955,
+            "789": 0.425,
+            "2026": 0.3763
+          },
+          "calculated_mean": 0.3965,
+          "saved_mean": 0.3965,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.016285,
+          "saved_std": 0.0163,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.018208,
+          "calculated_min": 0.3763,
+          "calculated_max": 0.425
+        },
+        "recall": {
+          "raw_per_seed": {
+            "42": 0.3881,
+            "123": 0.3754,
+            "456": 0.3879,
+            "789": 0.4055,
+            "2026": 0.3596
+          },
+          "calculated_mean": 0.3833,
+          "saved_mean": 0.3833,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.015239,
+          "saved_std": 0.0152,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.017038,
+          "calculated_min": 0.3596,
+          "calculated_max": 0.4055
+        },
+        "f1": {
+          "raw_per_seed": {
+            "42": 0.3827,
+            "123": 0.3636,
+            "456": 0.3856,
+            "789": 0.3969,
+            "2026": 0.3582
+          },
+          "calculated_mean": 0.3774,
+          "saved_mean": 0.3774,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.014385,
+          "saved_std": 0.0144,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.016083,
+          "calculated_min": 0.3582,
+          "calculated_max": 0.3969
+        },
+        "kappa": {
+          "raw_per_seed": {
+            "42": 0.2707,
+            "123": 0.2615,
+            "456": 0.2726,
+            "789": 0.2928,
+            "2026": 0.2385
+          },
+          "calculated_mean": 0.26722,
+          "saved_mean": 0.2672,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.017624,
+          "saved_std": 0.0176,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.019704,
+          "calculated_min": 0.2385,
+          "calculated_max": 0.2928
+        },
+        "mcc": {
+          "raw_per_seed": {
+            "42": 0.2725,
+            "123": 0.2687,
+            "456": 0.2744,
+            "789": 0.2982,
+            "2026": 0.2416
+          },
+          "calculated_mean": 0.27108,
+          "saved_mean": 0.2711,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.018018,
+          "saved_std": 0.018,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.020145,
+          "calculated_min": 0.2416,
+          "calculated_max": 0.2982
+        },
+        "loss": {
+          "raw_per_seed": {
+            "42": 1.5311,
+            "123": 1.5371,
+            "456": 1.5375,
+            "789": 1.5462,
+            "2026": 1.5631
+          },
+          "calculated_mean": 1.543,
+          "saved_mean": 1.543,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.011144,
+          "saved_std": 0.0111,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.012459,
+          "calculated_min": 1.5311,
+          "calculated_max": 1.5631
+        }
+      },
+      "Config_D_full_sigma_2.0": {
+        "accuracy": {
+          "raw_per_seed": {
+            "42": 0.3852,
+            "123": 0.3825,
+            "456": 0.3825,
+            "789": 0.3989,
+            "2026": 0.373
+          },
+          "calculated_mean": 0.38442,
+          "saved_mean": 0.3844,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.008343,
+          "saved_std": 0.0083,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.009328,
+          "calculated_min": 0.373,
+          "calculated_max": 0.3989
+        },
+        "precision": {
+          "raw_per_seed": {
+            "42": 0.3729,
+            "123": 0.4256,
+            "456": 0.3769,
+            "789": 0.4034,
+            "2026": 0.386
+          },
+          "calculated_mean": 0.39296,
+          "saved_mean": 0.393,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.019407,
+          "saved_std": 0.0194,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.021698,
+          "calculated_min": 0.3729,
+          "calculated_max": 0.4256
+        },
+        "recall": {
+          "raw_per_seed": {
+            "42": 0.3731,
+            "123": 0.3615,
+            "456": 0.3687,
+            "789": 0.3837,
+            "2026": 0.3602
+          },
+          "calculated_mean": 0.36944,
+          "saved_mean": 0.3694,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.008552,
+          "saved_std": 0.0086,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.009562,
+          "calculated_min": 0.3602,
+          "calculated_max": 0.3837
+        },
+        "f1": {
+          "raw_per_seed": {
+            "42": 0.3626,
+            "123": 0.3387,
+            "456": 0.3646,
+            "789": 0.3687,
+            "2026": 0.3582
+          },
+          "calculated_mean": 0.35856,
+          "saved_mean": 0.3586,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.01049,
+          "saved_std": 0.0105,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.011728,
+          "calculated_min": 0.3387,
+          "calculated_max": 0.3687
+        },
+        "kappa": {
+          "raw_per_seed": {
+            "42": 0.2543,
+            "123": 0.2469,
+            "456": 0.2512,
+            "789": 0.2693,
+            "2026": 0.2384
+          },
+          "calculated_mean": 0.25202,
+          "saved_mean": 0.252,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.010161,
+          "saved_std": 0.0102,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.01136,
+          "calculated_min": 0.2384,
+          "calculated_max": 0.2693
+        },
+        "mcc": {
+          "raw_per_seed": {
+            "42": 0.2581,
+            "123": 0.2588,
+            "456": 0.2539,
+            "789": 0.2762,
+            "2026": 0.2435
+          },
+          "calculated_mean": 0.2581,
+          "saved_mean": 0.2581,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.010573,
+          "saved_std": 0.0106,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.011821,
+          "calculated_min": 0.2435,
+          "calculated_max": 0.2762
+        },
+        "loss": {
+          "raw_per_seed": {
+            "42": 1.5405,
+            "123": 1.5445,
+            "456": 1.5272,
+            "789": 1.5421,
+            "2026": 1.5638
+          },
+          "calculated_mean": 1.54362,
+          "saved_mean": 1.5436,
+          "mean_matches": true,
+          "calculated_std_pop_ddof0": 0.011745,
+          "saved_std": 0.0117,
+          "std_matches_ddof0": true,
+          "calculated_std_sample_ddof1": 0.013131,
+          "calculated_min": 1.5272,
+          "calculated_max": 1.5638
+        }
+      }
+    }
+  },
+  "standard_deviation_verification": {
+    "status": "PASS",
+    "summary_convention_detected": "NumPy default ddof=0 (population standard deviation) used across all original JSON result summaries.",
+    "proposed_reporting_convention": "ddof=1 (sample standard deviation, divisor N-1=4) for scientific publication with N=5 seeds.",
+    "investigation_config_c_f1_discrepancy": {
+      "status": "PASS",
+      "issue": "Earlier narrative text noted Config C Macro F1 as 68.21% +/- 1.09%, while the new audit reports 68.21% +/- 1.17%.",
+      "raw_values": [
+        0.6866,
+        0.6877,
+        0.6878,
+        0.6612,
+        0.687
+      ],
+      "exact_mean": 0.6820600000000001,
+      "exact_std_pop_ddof0": 0.010439463587752001,
+      "exact_std_sample_ddof1": 0.011671675115423658,
+      "root_cause_explanation": "The value 1.09% did not originate from Config C calculations. In Phase 3 (DP sigma=2.0), the population standard deviation (ddof=0) for Macro F1 is exactly 0.010877... (saved in JSON as 0.0109, i.e., 1.09%). An earlier draft text transposed this 1.09% value onto Config C. The true Config C Macro F1 metrics are: mean = 68.21%, population standard deviation (ddof=0) = 1.04% (0.0104), and sample standard deviation (ddof=1) = 1.17% (0.0117). Thus, 1.17% in the audit reflects the correct sample standard deviation (ddof=1), whereas 1.09% was an erroneous narrative transposition."
+    },
+    "configurations_metrics_table": {
+      "Config_A_plaintext_fedavg": {
+        "accuracy": {
+          "mean": 0.676,
+          "std_pop_ddof0": 0.0059,
+          "std_sample_ddof1": 0.0066
+        },
+        "precision": {
+          "mean": 0.6793,
+          "std_pop_ddof0": 0.0048,
+          "std_sample_ddof1": 0.0054
+        },
+        "recall": {
+          "mean": 0.6829,
+          "std_pop_ddof0": 0.0085,
+          "std_sample_ddof1": 0.0095
+        },
+        "f1": {
+          "mean": 0.6789,
+          "std_pop_ddof0": 0.0055,
+          "std_sample_ddof1": 0.0062
+        },
+        "kappa": {
+          "mean": 0.6104,
+          "std_pop_ddof0": 0.0076,
+          "std_sample_ddof1": 0.0084
+        },
+        "mcc": {
+          "mean": 0.6113,
+          "std_pop_ddof0": 0.0081,
+          "std_sample_ddof1": 0.0091
+        },
+        "loss": {
+          "mean": 0.9189,
+          "std_pop_ddof0": 0.0183,
+          "std_sample_ddof1": 0.0204
+        }
+      },
+      "Config_B_dp_sigma_0.5": {
+        "accuracy": {
+          "mean": 0.4598,
+          "std_pop_ddof0": 0.0157,
+          "std_sample_ddof1": 0.0175
+        },
+        "precision": {
+          "mean": 0.4586,
+          "std_pop_ddof0": 0.0195,
+          "std_sample_ddof1": 0.0218
+        },
+        "recall": {
+          "mean": 0.4531,
+          "std_pop_ddof0": 0.0168,
+          "std_sample_ddof1": 0.0188
+        },
+        "f1": {
+          "mean": 0.449,
+          "std_pop_ddof0": 0.0183,
+          "std_sample_ddof1": 0.0205
+        },
+        "kappa": {
+          "mean": 0.3477,
+          "std_pop_ddof0": 0.0194,
+          "std_sample_ddof1": 0.0217
+        },
+        "mcc": {
+          "mean": 0.3498,
+          "std_pop_ddof0": 0.0194,
+          "std_sample_ddof1": 0.0217
+        },
+        "loss": {
+          "mean": 1.5577,
+          "std_pop_ddof0": 0.0295,
+          "std_sample_ddof1": 0.033
+        }
+      },
+      "Config_B_dp_sigma_1.0": {
+        "accuracy": {
+          "mean": 0.4156,
+          "std_pop_ddof0": 0.0136,
+          "std_sample_ddof1": 0.0152
+        },
+        "precision": {
+          "mean": 0.4129,
+          "std_pop_ddof0": 0.0172,
+          "std_sample_ddof1": 0.0192
+        },
+        "recall": {
+          "mean": 0.4053,
+          "std_pop_ddof0": 0.0137,
+          "std_sample_ddof1": 0.0153
+        },
+        "f1": {
+          "mean": 0.4014,
+          "std_pop_ddof0": 0.0126,
+          "std_sample_ddof1": 0.0141
+        },
+        "kappa": {
+          "mean": 0.2932,
+          "std_pop_ddof0": 0.0165,
+          "std_sample_ddof1": 0.0184
+        },
+        "mcc": {
+          "mean": 0.2957,
+          "std_pop_ddof0": 0.0173,
+          "std_sample_ddof1": 0.0194
+        },
+        "loss": {
+          "mean": 1.5381,
+          "std_pop_ddof0": 0.0121,
+          "std_sample_ddof1": 0.0135
+        }
+      },
+      "Config_B_dp_sigma_1.5": {
+        "accuracy": {
+          "mean": 0.3954,
+          "std_pop_ddof0": 0.015,
+          "std_sample_ddof1": 0.0168
+        },
+        "precision": {
+          "mean": 0.3967,
+          "std_pop_ddof0": 0.0163,
+          "std_sample_ddof1": 0.0182
+        },
+        "recall": {
+          "mean": 0.3833,
+          "std_pop_ddof0": 0.0159,
+          "std_sample_ddof1": 0.0177
+        },
+        "f1": {
+          "mean": 0.3775,
+          "std_pop_ddof0": 0.015,
+          "std_sample_ddof1": 0.0168
+        },
+        "kappa": {
+          "mean": 0.2672,
+          "std_pop_ddof0": 0.0183,
+          "std_sample_ddof1": 0.0204
+        },
+        "mcc": {
+          "mean": 0.2711,
+          "std_pop_ddof0": 0.0186,
+          "std_sample_ddof1": 0.0208
+        },
+        "loss": {
+          "mean": 1.543,
+          "std_pop_ddof0": 0.0111,
+          "std_sample_ddof1": 0.0124
+        }
+      },
+      "Config_B_dp_sigma_2.0": {
+        "accuracy": {
+          "mean": 0.3847,
+          "std_pop_ddof0": 0.0088,
+          "std_sample_ddof1": 0.0099
+        },
+        "precision": {
+          "mean": 0.3934,
+          "std_pop_ddof0": 0.0196,
+          "std_sample_ddof1": 0.0219
+        },
+        "recall": {
+          "mean": 0.3697,
+          "std_pop_ddof0": 0.0091,
+          "std_sample_ddof1": 0.0101
+        },
+        "f1": {
+          "mean": 0.3589,
+          "std_pop_ddof0": 0.0109,
+          "std_sample_ddof1": 0.0122
+        },
+        "kappa": {
+          "mean": 0.2524,
+          "std_pop_ddof0": 0.0107,
+          "std_sample_ddof1": 0.012
+        },
+        "mcc": {
+          "mean": 0.2584,
+          "std_pop_ddof0": 0.0111,
+          "std_sample_ddof1": 0.0124
+        },
+        "loss": {
+          "mean": 1.5437,
+          "std_pop_ddof0": 0.0118,
+          "std_sample_ddof1": 0.0131
+        }
+      },
+      "Config_C_secagg_plaintext": {
+        "accuracy": {
+          "mean": 0.6792,
+          "std_pop_ddof0": 0.0104,
+          "std_sample_ddof1": 0.0116
+        },
+        "precision": {
+          "mean": 0.6831,
+          "std_pop_ddof0": 0.0067,
+          "std_sample_ddof1": 0.0075
+        },
+        "recall": {
+          "mean": 0.6856,
+          "std_pop_ddof0": 0.0133,
+          "std_sample_ddof1": 0.0149
+        },
+        "f1": {
+          "mean": 0.6821,
+          "std_pop_ddof0": 0.0104,
+          "std_sample_ddof1": 0.0117
+        },
+        "kappa": {
+          "mean": 0.6141,
+          "std_pop_ddof0": 0.0132,
+          "std_sample_ddof1": 0.0147
+        },
+        "mcc": {
+          "mean": 0.615,
+          "std_pop_ddof0": 0.0132,
+          "std_sample_ddof1": 0.0148
+        },
+        "loss": {
+          "mean": 0.9133,
+          "std_pop_ddof0": 0.0249,
+          "std_sample_ddof1": 0.0278
+        }
+      },
+      "Config_D_full_sigma_0.5": {
+        "accuracy": {
+          "mean": 0.4607,
+          "std_pop_ddof0": 0.0163,
+          "std_sample_ddof1": 0.0182
+        },
+        "precision": {
+          "mean": 0.4593,
+          "std_pop_ddof0": 0.0198,
+          "std_sample_ddof1": 0.0221
+        },
+        "recall": {
+          "mean": 0.454,
+          "std_pop_ddof0": 0.0173,
+          "std_sample_ddof1": 0.0194
+        },
+        "f1": {
+          "mean": 0.4496,
+          "std_pop_ddof0": 0.0187,
+          "std_sample_ddof1": 0.0209
+        },
+        "kappa": {
+          "mean": 0.3487,
+          "std_pop_ddof0": 0.0201,
+          "std_sample_ddof1": 0.0225
+        },
+        "mcc": {
+          "mean": 0.3508,
+          "std_pop_ddof0": 0.0201,
+          "std_sample_ddof1": 0.0225
+        },
+        "loss": {
+          "mean": 1.5579,
+          "std_pop_ddof0": 0.0296,
+          "std_sample_ddof1": 0.0331
+        }
+      },
+      "Config_D_full_sigma_1.0": {
+        "accuracy": {
+          "mean": 0.4156,
+          "std_pop_ddof0": 0.014,
+          "std_sample_ddof1": 0.0156
+        },
+        "precision": {
+          "mean": 0.4126,
+          "std_pop_ddof0": 0.0176,
+          "std_sample_ddof1": 0.0196
+        },
+        "recall": {
+          "mean": 0.4053,
+          "std_pop_ddof0": 0.0141,
+          "std_sample_ddof1": 0.0158
+        },
+        "f1": {
+          "mean": 0.4013,
+          "std_pop_ddof0": 0.0131,
+          "std_sample_ddof1": 0.0146
+        },
+        "kappa": {
+          "mean": 0.2932,
+          "std_pop_ddof0": 0.017,
+          "std_sample_ddof1": 0.019
+        },
+        "mcc": {
+          "mean": 0.2957,
+          "std_pop_ddof0": 0.0178,
+          "std_sample_ddof1": 0.0199
+        },
+        "loss": {
+          "mean": 1.5381,
+          "std_pop_ddof0": 0.0121,
+          "std_sample_ddof1": 0.0135
+        }
+      },
+      "Config_D_full_sigma_1.5": {
+        "accuracy": {
+          "mean": 0.3954,
+          "std_pop_ddof0": 0.0145,
+          "std_sample_ddof1": 0.0162
+        },
+        "precision": {
+          "mean": 0.3965,
+          "std_pop_ddof0": 0.0163,
+          "std_sample_ddof1": 0.0182
+        },
+        "recall": {
+          "mean": 0.3833,
+          "std_pop_ddof0": 0.0152,
+          "std_sample_ddof1": 0.017
+        },
+        "f1": {
+          "mean": 0.3774,
+          "std_pop_ddof0": 0.0144,
+          "std_sample_ddof1": 0.0161
+        },
+        "kappa": {
+          "mean": 0.2672,
+          "std_pop_ddof0": 0.0176,
+          "std_sample_ddof1": 0.0197
+        },
+        "mcc": {
+          "mean": 0.2711,
+          "std_pop_ddof0": 0.018,
+          "std_sample_ddof1": 0.0201
+        },
+        "loss": {
+          "mean": 1.543,
+          "std_pop_ddof0": 0.0111,
+          "std_sample_ddof1": 0.0125
+        }
+      },
+      "Config_D_full_sigma_2.0": {
+        "accuracy": {
+          "mean": 0.3844,
+          "std_pop_ddof0": 0.0083,
+          "std_sample_ddof1": 0.0093
+        },
+        "precision": {
+          "mean": 0.393,
+          "std_pop_ddof0": 0.0194,
+          "std_sample_ddof1": 0.0217
+        },
+        "recall": {
+          "mean": 0.3694,
+          "std_pop_ddof0": 0.0086,
+          "std_sample_ddof1": 0.0096
+        },
+        "f1": {
+          "mean": 0.3586,
+          "std_pop_ddof0": 0.0105,
+          "std_sample_ddof1": 0.0117
+        },
+        "kappa": {
+          "mean": 0.252,
+          "std_pop_ddof0": 0.0102,
+          "std_sample_ddof1": 0.0114
+        },
+        "mcc": {
+          "mean": 0.2581,
+          "std_pop_ddof0": 0.0106,
+          "std_sample_ddof1": 0.0118
+        },
+        "loss": {
+          "mean": 1.5436,
+          "std_pop_ddof0": 0.0117,
+          "std_sample_ddof1": 0.0131
+        }
+      }
+    }
+  },
+  "paired_seed_verification": {
+    "status": "PASS",
+    "canonical_seeds": [
+      42,
+      123,
+      456,
+      789,
+      2026
+    ],
+    "test_set_sample_count": 732,
+    "granularity_per_sample_percentage_points": 0.1366,
+    "comparisons": {
+      "sigma_0.5": {
+        "per_seed": {
+          "42": {
+            "acc_config_b": 0.4317,
+            "acc_config_d": 0.4331,
+            "correct_records_b": 316,
+            "correct_records_d": 317,
+            "record_count_difference": 1,
+            "delta_percentage_points": 0.14
+          },
+          "123": {
+            "acc_config_b": 0.4781,
+            "acc_config_d": 0.4809,
+            "correct_records_b": 350,
+            "correct_records_d": 352,
+            "record_count_difference": 2,
+            "delta_percentage_points": 0.28
+          },
+          "456": {
+            "acc_config_b": 0.4563,
+            "acc_config_d": 0.4536,
+            "correct_records_b": 334,
+            "correct_records_d": 332,
+            "record_count_difference": -2,
+            "delta_percentage_points": -0.27
+          },
+          "789": {
+            "acc_config_b": 0.4672,
+            "acc_config_d": 0.4686,
+            "correct_records_b": 342,
+            "correct_records_d": 343,
+            "record_count_difference": 1,
+            "delta_percentage_points": 0.14
+          },
+          "2026": {
+            "acc_config_b": 0.4658,
+            "acc_config_d": 0.4672,
+            "correct_records_b": 341,
+            "correct_records_d": 342,
+            "record_count_difference": 1,
+            "delta_percentage_points": 0.14
+          }
+        },
+        "mean_paired_difference_pp": 0.086,
+        "sample_std_paired_difference_pp": 0.208,
+        "pop_std_paired_difference_pp": 0.1861,
+        "scientific_interpretation": "At sigma=0.5, mean paired accuracy difference is +0.086 pp. Across the 5 seeds, differences correspond to integer correct-count shifts of 0 to 2 records, demonstrating negligible empirical impact of the SecAgg+ quantization layer on DP model utility."
+      },
+      "sigma_1.0": {
+        "per_seed": {
+          "42": {
+            "acc_config_b": 0.403,
+            "acc_config_d": 0.4016,
+            "correct_records_b": 295,
+            "correct_records_d": 294,
+            "record_count_difference": -1,
+            "delta_percentage_points": -0.14
+          },
+          "123": {
+            "acc_config_b": 0.4276,
+            "acc_config_d": 0.4276,
+            "correct_records_b": 313,
+            "correct_records_d": 313,
+            "record_count_difference": 0,
+            "delta_percentage_points": 0.0
+          },
+          "456": {
+            "acc_config_b": 0.4208,
+            "acc_config_d": 0.4221,
+            "correct_records_b": 308,
+            "correct_records_d": 309,
+            "record_count_difference": 1,
+            "delta_percentage_points": 0.13
+          },
+          "789": {
+            "acc_config_b": 0.4303,
+            "acc_config_d": 0.4303,
+            "correct_records_b": 315,
+            "correct_records_d": 315,
+            "record_count_difference": 0,
+            "delta_percentage_points": 0.0
+          },
+          "2026": {
+            "acc_config_b": 0.3962,
+            "acc_config_d": 0.3962,
+            "correct_records_b": 290,
+            "correct_records_d": 290,
+            "record_count_difference": 0,
+            "delta_percentage_points": 0.0
+          }
+        },
+        "mean_paired_difference_pp": -0.002,
+        "sample_std_paired_difference_pp": 0.0955,
+        "pop_std_paired_difference_pp": 0.0854,
+        "scientific_interpretation": "At sigma=1.0, mean paired accuracy difference is -0.002 pp. Across the 5 seeds, differences correspond to integer correct-count shifts of 0 to 2 records, demonstrating negligible empirical impact of the SecAgg+ quantization layer on DP model utility."
+      },
+      "sigma_1.5": {
+        "per_seed": {
+          "42": {
+            "acc_config_b": 0.3989,
+            "acc_config_d": 0.3975,
+            "correct_records_b": 292,
+            "correct_records_d": 291,
+            "record_count_difference": -1,
+            "delta_percentage_points": -0.14
+          },
+          "123": {
+            "acc_config_b": 0.3921,
+            "acc_config_d": 0.3921,
+            "correct_records_b": 287,
+            "correct_records_d": 287,
+            "record_count_difference": 0,
+            "delta_percentage_points": 0.0
+          },
+          "456": {
+            "acc_config_b": 0.3989,
+            "acc_config_d": 0.3989,
+            "correct_records_b": 292,
+            "correct_records_d": 292,
+            "record_count_difference": 0,
+            "delta_percentage_points": 0.0
+          },
+          "789": {
+            "acc_config_b": 0.4167,
+            "acc_config_d": 0.4167,
+            "correct_records_b": 305,
+            "correct_records_d": 305,
+            "record_count_difference": 0,
+            "delta_percentage_points": 0.0
+          },
+          "2026": {
+            "acc_config_b": 0.3702,
+            "acc_config_d": 0.3716,
+            "correct_records_b": 271,
+            "correct_records_d": 272,
+            "record_count_difference": 1,
+            "delta_percentage_points": 0.14
+          }
+        },
+        "mean_paired_difference_pp": 0.0,
+        "sample_std_paired_difference_pp": 0.099,
+        "pop_std_paired_difference_pp": 0.0885,
+        "scientific_interpretation": "At sigma=1.5, mean paired accuracy difference is +0.000 pp. Across the 5 seeds, differences correspond to integer correct-count shifts of 0 to 2 records, demonstrating negligible empirical impact of the SecAgg+ quantization layer on DP model utility."
+      },
+      "sigma_2.0": {
+        "per_seed": {
+          "42": {
+            "acc_config_b": 0.3852,
+            "acc_config_d": 0.3852,
+            "correct_records_b": 282,
+            "correct_records_d": 282,
+            "record_count_difference": 0,
+            "delta_percentage_points": 0.0
+          },
+          "123": {
+            "acc_config_b": 0.3825,
+            "acc_config_d": 0.3825,
+            "correct_records_b": 280,
+            "correct_records_d": 280,
+            "record_count_difference": 0,
+            "delta_percentage_points": 0.0
+          },
+          "456": {
+            "acc_config_b": 0.3825,
+            "acc_config_d": 0.3825,
+            "correct_records_b": 280,
+            "correct_records_d": 280,
+            "record_count_difference": 0,
+            "delta_percentage_points": 0.0
+          },
+          "789": {
+            "acc_config_b": 0.4003,
+            "acc_config_d": 0.3989,
+            "correct_records_b": 293,
+            "correct_records_d": 292,
+            "record_count_difference": -1,
+            "delta_percentage_points": -0.14
+          },
+          "2026": {
+            "acc_config_b": 0.373,
+            "acc_config_d": 0.373,
+            "correct_records_b": 273,
+            "correct_records_d": 273,
+            "record_count_difference": 0,
+            "delta_percentage_points": 0.0
+          }
+        },
+        "mean_paired_difference_pp": -0.028,
+        "sample_std_paired_difference_pp": 0.0626,
+        "pop_std_paired_difference_pp": 0.056,
+        "scientific_interpretation": "At sigma=2.0, mean paired accuracy difference is -0.028 pp. Across the 5 seeds, differences correspond to integer correct-count shifts of 0 to 2 records, demonstrating negligible empirical impact of the SecAgg+ quantization layer on DP model utility."
+      }
+    }
+  },
+  "privacy_accountant_verification": {
+    "status": "PASS",
+    "training_records_per_client": 731,
+    "total_training_records_4_clients": 2924,
+    "held_out_test_records": 732,
+    "opacus_sampling_mechanism": "Poisson subsampling (poisson_sampling=True in PrivacyEngine.make_private)",
+    "sampling_ratio_investigation": {
+      "reported_values": {
+        "nominal_batch_size_ratio": "q_nominal = 32 / 731 = 0.04377565",
+        "accountant_runtime_ratio": "q_accounted = 1 / len(data_loader) = 1 / 23 = 0.04347826"
+      },
+      "code_trace": "In Opacus 1.6.0, DPDataLoader.from_data_loader calculates sample_rate as 1 / len(data_loader). With client dataset size 731 and batch_size 32, len(data_loader) is ceil(731/32) = 23. Consequently, Opacus sets sample_rate = 1/23 = 0.04347826, which is recorded in pe.accountant.history on each optimizer step. This yields an expected Poisson batch size of E[|B|] = 731 * (1/23) = 31.78 samples (~31.8). The privacy accountant mathematically accounts for Poisson subsampling at rate q = 1/23."
+    },
+    "accountant_persistence_across_rounds": {
+      "verified": true,
+      "mechanism": "client_privacy_engines list instantiated outside federated rounds loop (25 rounds). History accumulates monotonically."
+    },
+    "actual_accounted_steps": {
+      "steps_per_epoch": 23,
+      "local_epochs_per_round": 3,
+      "rounds": 25,
+      "total_accounted_steps": 1725,
+      "verified_by_assertion": true
+    },
+    "recalculated_epsilons": [
+      {
+        "noise_multiplier": 0.5,
+        "target_delta": 1e-05,
+        "simulated_steps": 1725,
+        "accountant_sample_rate": 0.043478,
+        "verified_eps_prv": 72.5451,
+        "verified_eps_rdp": 78.6846,
+        "saved_eps_prv": 72.5451,
+        "saved_eps_rdp": 78.6846,
+        "matches": true
+      },
+      {
+        "noise_multiplier": 1.0,
+        "target_delta": 1e-05,
+        "simulated_steps": 1725,
+        "accountant_sample_rate": 0.043478,
+        "verified_eps_prv": 12.7663,
+        "verified_eps_rdp": 13.8446,
+        "saved_eps_prv": 12.7663,
+        "saved_eps_rdp": 13.8446,
+        "matches": true
+      },
+      {
+        "noise_multiplier": 1.5,
+        "target_delta": 1e-05,
+        "simulated_steps": 1725,
+        "accountant_sample_rate": 0.043478,
+        "verified_eps_prv": 6.4176,
+        "verified_eps_rdp": 6.9463,
+        "saved_eps_prv": 6.4176,
+        "saved_eps_rdp": 6.9463,
+        "matches": true
+      },
+      {
+        "noise_multiplier": 2.0,
+        "target_delta": 1e-05,
+        "simulated_steps": 1725,
+        "accountant_sample_rate": 0.043478,
+        "verified_eps_prv": 4.2896,
+        "verified_eps_rdp": 4.6438,
+        "saved_eps_prv": 4.2896,
+        "saved_eps_rdp": 4.6438,
+        "matches": true
+      }
+    ],
+    "privacy_scope_demarcation": {
+      "record_level_dp": "Applies strictly to client training samples (N=731 per client) under neighboring datasets differing by +/- 1 training observation.",
+      "patient_level_dp_claim": false,
+      "held_out_test_set_protection": false,
+      "regulatory_certification_claim": false
+    }
+  },
+  "test_set_isolation_verification": {
+    "status": "PASS",
+    "held_out_records": 732,
+    "separation_verified": true,
+    "scaler_fit_strictly_on_train": true,
+    "evaluation_timing": "Strictly once at the completion of round 25 for each model training run.",
+    "intermediate_rounds_evaluation": false,
+    "used_for_hyperparameter_tuning": false,
+    "used_for_checkpoint_selection": false,
+    "wording_clarification": "The test set was evaluated once per completed model run (totaling 25 evaluations across the 25 benchmark runs), not evaluated during training rounds 1..24, and never used to select models or tune hyperparameters."
+  },
+  "cross_configuration_comparison": {
+    "status": "PASS",
+    "run_counts": {
+      "config_a": "Frozen baseline from Phase 2 (5 seeds)",
+      "config_b": "Frozen baseline from Phase 3 (5 seeds x 4 noise levels = 20 runs)",
+      "config_c": "5 new runs executed in Phase 4",
+      "config_d": "20 new runs executed in Phase 4 (5 seeds x 4 noise levels = 20 runs)",
+      "total_new_phase4_runs": 25
+    },
+    "config_c_vs_config_a": {
+      "acc_a_mean": 0.676,
+      "acc_c_mean": 0.6792,
+      "difference_percentage_points": 0.328,
+      "relative_percent_change": 0.4852,
+      "interpretation": "Config C exceeds Config A by +0.328 pp (+0.485% relative), well within empirical seed variation (sample std = 1.16 pp)."
+    },
+    "config_d_vs_config_b": {
+      "sigma_0.5": {
+        "acc_b_mean": 0.4598,
+        "acc_d_mean": 0.4607,
+        "delta_d_minus_b_pp": 0.086,
+        "total_penalty_vs_plaintext_a_pp": 21.528
+      },
+      "sigma_1.0": {
+        "acc_b_mean": 0.4156,
+        "acc_d_mean": 0.4156,
+        "delta_d_minus_b_pp": -0.002,
+        "total_penalty_vs_plaintext_a_pp": 26.04
+      },
+      "sigma_1.5": {
+        "acc_b_mean": 0.3954,
+        "acc_d_mean": 0.3954,
+        "delta_d_minus_b_pp": 0.0,
+        "total_penalty_vs_plaintext_a_pp": 28.06
+      },
+      "sigma_2.0": {
+        "acc_b_mean": 0.3847,
+        "acc_d_mean": 0.3844,
+        "delta_d_minus_b_pp": -0.028,
+        "total_penalty_vs_plaintext_a_pp": 29.154
+      }
+    }
+  },
+  "discrepancies": [
+    {
+      "id": "DISC-01",
+      "category": "Sampling Ratio Representation",
+      "description": "Reports cited both q = 1/23 (~0.043478) and q = 32/731 (~0.043776).",
+      "status": "RESOLVED",
+      "resolution": "32/731 was the nominal batch size ratio. Opacus implements sample_rate = 1 / len(data_loader) = 1/23. Both the runtime DPDataLoader and the Opacus accountant used q = 1/23 = 0.04347826. Expected batch size was 31.78 samples. All epsilon calculations accurately reflect q = 1/23."
+    },
+    {
+      "id": "DISC-02",
+      "category": "Standard Deviation Convention",
+      "description": "Raw benchmark JSON summaries computed population std (ddof=0), while scientific reporting requires sample std (ddof=1).",
+      "status": "RESOLVED",
+      "resolution": "Both conventions have been reconstructed and audited. For N=5, sample std is exactly sqrt(5/4) = 1.1180 times population std. Paper drafting will adopt sample standard deviation (ddof=1) as the primary convention, with population std explicitly documented in footnotes."
+    },
+    {
+      "id": "DISC-03",
+      "category": "Config C Macro F1 Standard Deviation Narrative Typo",
+      "description": "Earlier text cited Config C Macro F1 as 68.21% +/- 1.09%, while audit reports 68.21% +/- 1.17%.",
+      "status": "RESOLVED",
+      "resolution": "The value 1.09% was the population std (ddof=0) of Phase 3 DP sigma=2.0 Macro F1 (0.010877... rounded to 0.0109). The true Config C Macro F1 metrics from the 5 raw seed runs are: mean = 68.21%, population std (ddof=0) = 1.04%, and sample std (ddof=1) = 1.17%. The discrepancy was an editorial narrative transposition."
+    },
+    {
+      "id": "DISC-04",
+      "category": "Test Set Isolation Terminology",
+      "description": "Clarified scope of test evaluation frequency.",
+      "status": "RESOLVED",
+      "resolution": "The test set was evaluated strictly once per completed model run at round 25 (25 evaluations total across the 25 runs), with zero evaluations during rounds 1..24 and zero usage for hyperparameter selection or early stopping."
+    }
+  ],
+  "paper_claims_supported": [
+    "Empirical feasibility of defense-in-depth federated learning combining per-sample DP-SGD with SecAgg+ on wearable sensor data.",
+    "SecAgg+ quantization and Shamir-masking incur negligible utility penalty (mean accuracy difference |delta| <= 0.086 pp across all noise multipliers; +0.328 pp in plaintext).",
+    "Rigorous record-level (epsilon, delta)-DP guarantee with epsilon = 4.29 (PRV) / 4.64 (RDP) at sigma = 2.0 and delta = 1e-5 across 1,725 accounted steps.",
+    "Retained utility of 38.44% test accuracy on 6-class activity classification under epsilon = 4.29, well above random chance (16.67%).",
+    "Complete cryptographic and functional verification of custom SecAgg+ protocol against Flower 1.42 primitives under dropouts and boundary conditions."
+  ],
+  "paper_claims_not_supported": [
+    "Patient-level differential privacy (the dataset lacks verified patient boundaries per record, so adjacency is strictly per-sample/record-level).",
+    "HIPAA or GDPR regulatory compliance certification (mathematical DP is not equivalent to legal compliance).",
+    "Zero information leakage across all threat models (the aggregate model update itself leaks bounded differential privacy epsilon).",
+    "Cryptographic confidentiality proven solely by utility benchmarks (utility tests verify non-distortion, not ciphertext hardness).",
+    "Zero utility degradation in general (utility drops from 67.60% to 38.44% under DP noise, even though SecAgg adds no further degradation).",
+    "Differential privacy for held-out test records (DP-SGD bounds training record privacy; test evaluation is conventional empirical testing).",
+    "Statistical equivalence proven from five seeds (five seeds demonstrate empirical consistency within integer record granularity, not asymptotic proof)."
+  ],
+  "final_readiness_status": {
+    "status": "READY",
+    "justification": "All 25 Phase 4 benchmark runs, baseline metrics, paired differences, and privacy-accounting calculations have been verified from raw seed data and source code. All four documented discrepancies (sampling ratio, std convention, Config C F1 narrative typo, test set isolation scope) have been resolved. The experimental artifacts provide a complete and verified evidentiary foundation for paper drafting, subject to the negative boundary constraints in paper_claims_not_supported."
+  }
+}

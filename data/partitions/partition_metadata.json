@@ -1,0 +1,190 @@
+{
+  "k2": [
+    {
+      "client_id": 0,
+      "row_count": 1462,
+      "file_path": "data\\partitions\\k2\\client_0.csv",
+      "class_distribution": {
+        "Lying": 297,
+        "Running 7 METs": 260,
+        "Running 5 METs": 240,
+        "Running 3 METs": 234,
+        "Sitting": 218,
+        "Self Pace walk": 213
+      }
+    },
+    {
+      "client_id": 1,
+      "row_count": 1462,
+      "file_path": "data\\partitions\\k2\\client_1.csv",
+      "class_distribution": {
+        "Lying": 332,
+        "Running 5 METs": 242,
+        "Running 7 METs": 230,
+        "Sitting": 224,
+        "Running 3 METs": 224,
+        "Self Pace walk": 210
+      }
+    }
+  ],
+  "k4": [
+    {
+      "client_id": 0,
+      "row_count": 731,
+      "file_path": "data\\partitions\\k4\\client_0.csv",
+      "class_distribution": {
+        "Lying": 141,
+        "Running 7 METs": 131,
+        "Running 5 METs": 126,
+        "Running 3 METs": 118,
+        "Sitting": 115,
+        "Self Pace walk": 100
+      }
+    },
+    {
+      "client_id": 1,
+      "row_count": 731,
+      "file_path": "data\\partitions\\k4\\client_1.csv",
+      "class_distribution": {
+        "Lying": 156,
+        "Running 7 METs": 129,
+        "Running 3 METs": 116,
+        "Running 5 METs": 114,
+        "Self Pace walk": 113,
+        "Sitting": 103
+      }
+    },
+    {
+      "client_id": 2,
+      "row_count": 731,
+      "file_path": "data\\partitions\\k4\\client_2.csv",
+      "class_distribution": {
+        "Lying": 171,
+        "Running 5 METs": 125,
+        "Running 7 METs": 124,
+        "Sitting": 115,
+        "Running 3 METs": 106,
+        "Self Pace walk": 90
+      }
+    },
+    {
+      "client_id": 3,
+      "row_count": 731,
+      "file_path": "data\\partitions\\k4\\client_3.csv",
+      "class_distribution": {
+        "Lying": 161,
+        "Self Pace walk": 120,
+        "Running 3 METs": 118,
+        "Running 5 METs": 117,
+        "Sitting": 109,
+        "Running 7 METs": 106
+      }
+    }
+  ],
+  "k8": [
+    {
+      "client_id": 0,
+      "row_count": 366,
+      "file_path": "data\\partitions\\k8\\client_0.csv",
+      "class_distribution": {
+        "Lying": 69,
+        "Running 3 METs": 68,
+        "Running 7 METs": 66,
+        "Sitting": 59,
+        "Running 5 METs": 55,
+        "Self Pace walk": 49
+      }
+    },
+    {
+      "client_id": 1,
+      "row_count": 366,
+      "file_path": "data\\partitions\\k8\\client_1.csv",
+      "class_distribution": {
+        "Lying": 73,
+        "Running 5 METs": 71,
+        "Running 7 METs": 65,
+        "Sitting": 56,
+        "Self Pace walk": 51,
+        "Running 3 METs": 50
+      }
+    },
+    {
+      "client_id": 2,
+      "row_count": 366,
+      "file_path": "data\\partitions\\k8\\client_2.csv",
+      "class_distribution": {
+        "Lying": 73,
+        "Running 7 METs": 72,
+        "Self Pace walk": 60,
+        "Running 5 METs": 57,
+        "Running 3 METs": 55,
+        "Sitting": 49
+      }
+    },
+    {
+      "client_id": 3,
+      "row_count": 366,
+      "file_path": "data\\partitions\\k8\\client_3.csv",
+      "class_distribution": {
+        "Lying": 82,
+        "Running 3 METs": 61,
+        "Running 7 METs": 57,
+        "Running 5 METs": 57,
+        "Sitting": 55,
+        "Self Pace walk": 54
+      }
+    },
+    {
+      "client_id": 4,
+      "row_count": 365,
+      "file_path": "data\\partitions\\k8\\client_4.csv",
+      "class_distribution": {
+        "Lying": 83,
+        "Running 7 METs": 63,
+        "Running 5 METs": 59,
+        "Sitting": 57,
+        "Running 3 METs": 52,
+        "Self Pace walk": 51
+      }
+    },
+    {
+      "client_id": 5,
+      "row_count": 365,
+      "file_path": "data\\partitions\\k8\\client_5.csv",
+      "class_distribution": {
+        "Lying": 88,
+        "Running 5 METs": 66,
+        "Running 7 METs": 61,
+        "Sitting": 57,
+        "Running 3 METs": 55,
+        "Self Pace walk": 38
+      }
+    },
+    {
+      "client_id": 6,
+      "row_count": 365,
+      "file_path": "data\\partitions\\k8\\client_6.csv",
+      "class_distribution": {
+        "Lying": 80,
+        "Running 5 METs": 74,
+        "Running 3 METs": 58,
+        "Sitting": 53,
+        "Running 7 METs": 51,
+        "Self Pace walk": 49
+      }
+    },
+    {
+      "client_id": 7,
+      "row_count": 365,
+      "file_path": "data\\partitions\\k8\\client_7.csv",
+      "class_distribution": {
+        "Lying": 81,
+        "Self Pace walk": 71,
+        "Running 3 METs": 59,
+        "Sitting": 56,
+        "Running 7 METs": 55,
+        "Running 5 METs": 43
+      }
+    }
+  ]
+}

@@ -1,0 +1,1517 @@
+{
+  "metadata": {
+    "model_type": "PyTorch Multi-Layer Perceptron (Track 2 Baseline)",
+    "architecture": "Linear(16->64) -> ReLU -> Linear(64->32) -> ReLU -> Linear(32->6)",
+    "optimizer": "Adam",
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "batch_size": 32,
+    "centralized_epochs": 60,
+    "federated_rounds": 20,
+    "federated_local_epochs": 3,
+    "seeds": [
+      42,
+      123,
+      456,
+      789,
+      2026
+    ],
+    "client_configurations": [
+      2,
+      4,
+      8
+    ],
+    "partitioning_nature": "Approximate IID random subsets (shuffled chunks)",
+    "test_isolation": "Strict 732-row held-out test set, zero training or scaling leakage"
+  },
+  "centralized": {
+    "per_seed": {
+      "42": {
+        "accuracy": 0.6735,
+        "precision": 0.6868,
+        "recall": 0.6767,
+        "f1": 0.6794,
+        "kappa": 0.6063,
+        "mcc": 0.6071,
+        "confusion_matrix": [
+          [
+            90,
+            33,
+            10,
+            1,
+            16,
+            8
+          ],
+          [
+            26,
+            80,
+            5,
+            1,
+            1,
+            1
+          ],
+          [
+            9,
+            5,
+            93,
+            7,
+            2,
+            5
+          ],
+          [
+            4,
+            4,
+            6,
+            98,
+            1,
+            10
+          ],
+          [
+            17,
+            11,
+            4,
+            0,
+            69,
+            5
+          ],
+          [
+            19,
+            5,
+            9,
+            7,
+            7,
+            63
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ]
+      },
+      "123": {
+        "accuracy": 0.709,
+        "precision": 0.7112,
+        "recall": 0.7202,
+        "f1": 0.7107,
+        "kappa": 0.651,
+        "mcc": 0.6534,
+        "confusion_matrix": [
+          [
+            79,
+            25,
+            16,
+            2,
+            21,
+            15
+          ],
+          [
+            18,
+            81,
+            9,
+            1,
+            2,
+            3
+          ],
+          [
+            5,
+            4,
+            98,
+            6,
+            2,
+            6
+          ],
+          [
+            2,
+            1,
+            10,
+            104,
+            0,
+            6
+          ],
+          [
+            1,
+            4,
+            9,
+            0,
+            82,
+            10
+          ],
+          [
+            6,
+            2,
+            10,
+            8,
+            9,
+            75
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ]
+      },
+      "456": {
+        "accuracy": 0.6667,
+        "precision": 0.6721,
+        "recall": 0.6702,
+        "f1": 0.6669,
+        "kappa": 0.5987,
+        "mcc": 0.6001,
+        "confusion_matrix": [
+          [
+            88,
+            24,
+            14,
+            5,
+            19,
+            8
+          ],
+          [
+            24,
+            77,
+            8,
+            1,
+            4,
+            0
+          ],
+          [
+            7,
+            5,
+            97,
+            8,
+            3,
+            1
+          ],
+          [
+            3,
+            5,
+            11,
+            96,
+            0,
+            8
+          ],
+          [
+            13,
+            9,
+            4,
+            0,
+            73,
+            7
+          ],
+          [
+            10,
+            5,
+            16,
+            8,
+            14,
+            57
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ]
+      },
+      "789": {
+        "accuracy": 0.6954,
+        "precision": 0.7027,
+        "recall": 0.7028,
+        "f1": 0.699,
+        "kappa": 0.6339,
+        "mcc": 0.6352,
+        "confusion_matrix": [
+          [
+            90,
+            17,
+            17,
+            3,
+            22,
+            9
+          ],
+          [
+            22,
+            79,
+            8,
+            0,
+            4,
+            1
+          ],
+          [
+            6,
+            6,
+            98,
+            4,
+            1,
+            6
+          ],
+          [
+            3,
+            6,
+            8,
+            88,
+            0,
+            18
+          ],
+          [
+            1,
+            4,
+            5,
+            0,
+            84,
+            12
+          ],
+          [
+            15,
+            4,
+            10,
+            3,
+            8,
+            70
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ]
+      },
+      "2026": {
+        "accuracy": 0.6954,
+        "precision": 0.7041,
+        "recall": 0.7009,
+        "f1": 0.6988,
+        "kappa": 0.6336,
+        "mcc": 0.6347,
+        "confusion_matrix": [
+          [
+            93,
+            10,
+            15,
+            1,
+            24,
+            15
+          ],
+          [
+            24,
+            70,
+            7,
+            0,
+            9,
+            4
+          ],
+          [
+            11,
+            0,
+            96,
+            7,
+            2,
+            5
+          ],
+          [
+            4,
+            4,
+            7,
+            95,
+            1,
+            12
+          ],
+          [
+            2,
+            4,
+            3,
+            0,
+            82,
+            15
+          ],
+          [
+            13,
+            2,
+            8,
+            7,
+            7,
+            73
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ]
+      }
+    },
+    "summary": {
+      "accuracy": {
+        "mean": 0.688,
+        "std": 0.0156,
+        "min": 0.6667,
+        "max": 0.709
+      },
+      "precision": {
+        "mean": 0.6954,
+        "std": 0.0141,
+        "min": 0.6721,
+        "max": 0.7112
+      },
+      "recall": {
+        "mean": 0.6942,
+        "std": 0.0183,
+        "min": 0.6702,
+        "max": 0.7202
+      },
+      "f1": {
+        "mean": 0.691,
+        "std": 0.0157,
+        "min": 0.6669,
+        "max": 0.7107
+      },
+      "kappa": {
+        "mean": 0.6247,
+        "std": 0.0193,
+        "min": 0.5987,
+        "max": 0.651
+      },
+      "mcc": {
+        "mean": 0.6261,
+        "std": 0.0197,
+        "min": 0.6001,
+        "max": 0.6534
+      }
+    }
+  },
+  "federated": {
+    "k2": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.6079,
+          "precision": 0.6143,
+          "recall": 0.6181,
+          "f1": 0.6116,
+          "kappa": 0.53,
+          "mcc": 0.532,
+          "confusion_matrix": [
+            [
+              68,
+              38,
+              5,
+              6,
+              23,
+              18
+            ],
+            [
+              16,
+              76,
+              8,
+              0,
+              8,
+              6
+            ],
+            [
+              6,
+              11,
+              77,
+              13,
+              1,
+              13
+            ],
+            [
+              3,
+              3,
+              9,
+              90,
+              0,
+              18
+            ],
+            [
+              4,
+              12,
+              4,
+              0,
+              73,
+              13
+            ],
+            [
+              16,
+              6,
+              13,
+              8,
+              6,
+              61
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        },
+        "123": {
+          "accuracy": 0.6503,
+          "precision": 0.653,
+          "recall": 0.655,
+          "f1": 0.6514,
+          "kappa": 0.5796,
+          "mcc": 0.5807,
+          "confusion_matrix": [
+            [
+              86,
+              34,
+              6,
+              5,
+              17,
+              10
+            ],
+            [
+              21,
+              81,
+              4,
+              1,
+              5,
+              2
+            ],
+            [
+              6,
+              9,
+              79,
+              12,
+              5,
+              10
+            ],
+            [
+              6,
+              3,
+              7,
+              97,
+              0,
+              10
+            ],
+            [
+              5,
+              13,
+              7,
+              0,
+              71,
+              10
+            ],
+            [
+              13,
+              5,
+              4,
+              14,
+              12,
+              62
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        },
+        "456": {
+          "accuracy": 0.6257,
+          "precision": 0.6426,
+          "recall": 0.6286,
+          "f1": 0.6296,
+          "kappa": 0.549,
+          "mcc": 0.5508,
+          "confusion_matrix": [
+            [
+              83,
+              39,
+              12,
+              2,
+              10,
+              12
+            ],
+            [
+              25,
+              77,
+              7,
+              0,
+              4,
+              1
+            ],
+            [
+              7,
+              7,
+              92,
+              7,
+              1,
+              7
+            ],
+            [
+              7,
+              3,
+              18,
+              85,
+              2,
+              8
+            ],
+            [
+              14,
+              17,
+              6,
+              0,
+              56,
+              13
+            ],
+            [
+              17,
+              2,
+              12,
+              9,
+              5,
+              65
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        },
+        "789": {
+          "accuracy": 0.6257,
+          "precision": 0.6308,
+          "recall": 0.6279,
+          "f1": 0.6242,
+          "kappa": 0.5495,
+          "mcc": 0.5509,
+          "confusion_matrix": [
+            [
+              81,
+              27,
+              14,
+              5,
+              15,
+              16
+            ],
+            [
+              27,
+              68,
+              10,
+              0,
+              4,
+              5
+            ],
+            [
+              8,
+              3,
+              90,
+              15,
+              1,
+              4
+            ],
+            [
+              3,
+              3,
+              7,
+              98,
+              0,
+              12
+            ],
+            [
+              8,
+              18,
+              8,
+              0,
+              51,
+              21
+            ],
+            [
+              12,
+              4,
+              12,
+              10,
+              2,
+              70
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        },
+        "2026": {
+          "accuracy": 0.6311,
+          "precision": 0.637,
+          "recall": 0.6339,
+          "f1": 0.6315,
+          "kappa": 0.5556,
+          "mcc": 0.5569,
+          "confusion_matrix": [
+            [
+              82,
+              30,
+              15,
+              6,
+              16,
+              9
+            ],
+            [
+              20,
+              77,
+              8,
+              0,
+              6,
+              3
+            ],
+            [
+              6,
+              7,
+              90,
+              11,
+              4,
+              3
+            ],
+            [
+              3,
+              3,
+              10,
+              97,
+              0,
+              10
+            ],
+            [
+              19,
+              4,
+              12,
+              0,
+              65,
+              6
+            ],
+            [
+              20,
+              3,
+              20,
+              9,
+              7,
+              51
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        }
+      },
+      "summary": {
+        "accuracy": {
+          "mean": 0.6281,
+          "std": 0.0136,
+          "min": 0.6079,
+          "max": 0.6503
+        },
+        "precision": {
+          "mean": 0.6355,
+          "std": 0.0129,
+          "min": 0.6143,
+          "max": 0.653
+        },
+        "recall": {
+          "mean": 0.6327,
+          "std": 0.0123,
+          "min": 0.6181,
+          "max": 0.655
+        },
+        "f1": {
+          "mean": 0.6297,
+          "std": 0.0129,
+          "min": 0.6116,
+          "max": 0.6514
+        },
+        "kappa": {
+          "mean": 0.5527,
+          "std": 0.0159,
+          "min": 0.53,
+          "max": 0.5796
+        },
+        "mcc": {
+          "mean": 0.5543,
+          "std": 0.0157,
+          "min": 0.532,
+          "max": 0.5807
+        }
+      }
+    },
+    "k4": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.5587,
+          "precision": 0.5609,
+          "recall": 0.565,
+          "f1": 0.5607,
+          "kappa": 0.4698,
+          "mcc": 0.4707,
+          "confusion_matrix": [
+            [
+              65,
+              32,
+              12,
+              6,
+              26,
+              17
+            ],
+            [
+              18,
+              58,
+              13,
+              0,
+              11,
+              14
+            ],
+            [
+              14,
+              4,
+              79,
+              10,
+              4,
+              10
+            ],
+            [
+              9,
+              1,
+              14,
+              91,
+              1,
+              7
+            ],
+            [
+              11,
+              11,
+              11,
+              0,
+              65,
+              8
+            ],
+            [
+              15,
+              4,
+              19,
+              7,
+              14,
+              51
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        },
+        "123": {
+          "accuracy": 0.5642,
+          "precision": 0.5884,
+          "recall": 0.56,
+          "f1": 0.558,
+          "kappa": 0.4737,
+          "mcc": 0.4786,
+          "confusion_matrix": [
+            [
+              83,
+              30,
+              19,
+              5,
+              16,
+              5
+            ],
+            [
+              19,
+              67,
+              20,
+              0,
+              4,
+              4
+            ],
+            [
+              10,
+              6,
+              92,
+              10,
+              2,
+              1
+            ],
+            [
+              6,
+              3,
+              22,
+              87,
+              2,
+              3
+            ],
+            [
+              18,
+              19,
+              15,
+              1,
+              46,
+              7
+            ],
+            [
+              26,
+              5,
+              24,
+              11,
+              6,
+              38
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        },
+        "456": {
+          "accuracy": 0.5615,
+          "precision": 0.5623,
+          "recall": 0.5627,
+          "f1": 0.5588,
+          "kappa": 0.472,
+          "mcc": 0.4735,
+          "confusion_matrix": [
+            [
+              73,
+              27,
+              15,
+              5,
+              25,
+              13
+            ],
+            [
+              28,
+              55,
+              15,
+              0,
+              8,
+              8
+            ],
+            [
+              8,
+              2,
+              92,
+              11,
+              3,
+              5
+            ],
+            [
+              5,
+              3,
+              14,
+              88,
+              2,
+              11
+            ],
+            [
+              12,
+              15,
+              9,
+              0,
+              57,
+              13
+            ],
+            [
+              19,
+              2,
+              22,
+              9,
+              12,
+              46
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        },
+        "789": {
+          "accuracy": 0.5915,
+          "precision": 0.5911,
+          "recall": 0.5892,
+          "f1": 0.5858,
+          "kappa": 0.5071,
+          "mcc": 0.5083,
+          "confusion_matrix": [
+            [
+              89,
+              26,
+              9,
+              3,
+              24,
+              7
+            ],
+            [
+              31,
+              59,
+              10,
+              0,
+              9,
+              5
+            ],
+            [
+              7,
+              6,
+              82,
+              14,
+              5,
+              7
+            ],
+            [
+              6,
+              3,
+              10,
+              96,
+              0,
+              8
+            ],
+            [
+              10,
+              14,
+              9,
+              0,
+              68,
+              5
+            ],
+            [
+              26,
+              4,
+              19,
+              12,
+              10,
+              39
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        },
+        "2026": {
+          "accuracy": 0.5738,
+          "precision": 0.5712,
+          "recall": 0.5783,
+          "f1": 0.5698,
+          "kappa": 0.4881,
+          "mcc": 0.49,
+          "confusion_matrix": [
+            [
+              69,
+              21,
+              19,
+              9,
+              27,
+              13
+            ],
+            [
+              20,
+              62,
+              14,
+              0,
+              15,
+              3
+            ],
+            [
+              5,
+              10,
+              81,
+              14,
+              7,
+              4
+            ],
+            [
+              4,
+              3,
+              8,
+              97,
+              0,
+              11
+            ],
+            [
+              7,
+              11,
+              13,
+              1,
+              64,
+              10
+            ],
+            [
+              15,
+              3,
+              19,
+              16,
+              10,
+              47
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        }
+      },
+      "summary": {
+        "accuracy": {
+          "mean": 0.5699,
+          "std": 0.0119,
+          "min": 0.5587,
+          "max": 0.5915
+        },
+        "precision": {
+          "mean": 0.5748,
+          "std": 0.0128,
+          "min": 0.5609,
+          "max": 0.5911
+        },
+        "recall": {
+          "mean": 0.571,
+          "std": 0.011,
+          "min": 0.56,
+          "max": 0.5892
+        },
+        "f1": {
+          "mean": 0.5666,
+          "std": 0.0105,
+          "min": 0.558,
+          "max": 0.5858
+        },
+        "kappa": {
+          "mean": 0.4821,
+          "std": 0.014,
+          "min": 0.4698,
+          "max": 0.5071
+        },
+        "mcc": {
+          "mean": 0.4842,
+          "std": 0.0137,
+          "min": 0.4707,
+          "max": 0.5083
+        }
+      }
+    },
+    "k8": {
+      "per_seed": {
+        "42": {
+          "accuracy": 0.5164,
+          "precision": 0.5173,
+          "recall": 0.5151,
+          "f1": 0.514,
+          "kappa": 0.4169,
+          "mcc": 0.4175,
+          "confusion_matrix": [
+            [
+              75,
+              22,
+              17,
+              7,
+              24,
+              13
+            ],
+            [
+              20,
+              51,
+              21,
+              0,
+              13,
+              9
+            ],
+            [
+              18,
+              7,
+              65,
+              14,
+              10,
+              7
+            ],
+            [
+              11,
+              0,
+              9,
+              91,
+              6,
+              6
+            ],
+            [
+              16,
+              16,
+              9,
+              2,
+              54,
+              9
+            ],
+            [
+              22,
+              3,
+              20,
+              14,
+              9,
+              42
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        },
+        "123": {
+          "accuracy": 0.526,
+          "precision": 0.527,
+          "recall": 0.5233,
+          "f1": 0.5212,
+          "kappa": 0.4293,
+          "mcc": 0.4308,
+          "confusion_matrix": [
+            [
+              77,
+              30,
+              14,
+              7,
+              19,
+              11
+            ],
+            [
+              16,
+              61,
+              15,
+              0,
+              12,
+              10
+            ],
+            [
+              6,
+              9,
+              77,
+              11,
+              7,
+              11
+            ],
+            [
+              5,
+              0,
+              23,
+              84,
+              3,
+              8
+            ],
+            [
+              11,
+              25,
+              12,
+              2,
+              47,
+              9
+            ],
+            [
+              27,
+              5,
+              23,
+              9,
+              7,
+              39
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        },
+        "456": {
+          "accuracy": 0.5027,
+          "precision": 0.4969,
+          "recall": 0.5004,
+          "f1": 0.4938,
+          "kappa": 0.401,
+          "mcc": 0.4024,
+          "confusion_matrix": [
+            [
+              71,
+              34,
+              12,
+              6,
+              26,
+              9
+            ],
+            [
+              20,
+              57,
+              17,
+              1,
+              9,
+              10
+            ],
+            [
+              9,
+              9,
+              73,
+              14,
+              7,
+              9
+            ],
+            [
+              7,
+              0,
+              17,
+              89,
+              5,
+              5
+            ],
+            [
+              14,
+              24,
+              10,
+              2,
+              50,
+              6
+            ],
+            [
+              27,
+              4,
+              23,
+              13,
+              15,
+              28
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        },
+        "789": {
+          "accuracy": 0.5246,
+          "precision": 0.5274,
+          "recall": 0.5202,
+          "f1": 0.516,
+          "kappa": 0.426,
+          "mcc": 0.4279,
+          "confusion_matrix": [
+            [
+              83,
+              26,
+              12,
+              5,
+              23,
+              9
+            ],
+            [
+              27,
+              54,
+              13,
+              0,
+              17,
+              3
+            ],
+            [
+              15,
+              10,
+              70,
+              11,
+              9,
+              6
+            ],
+            [
+              8,
+              3,
+              17,
+              89,
+              0,
+              6
+            ],
+            [
+              14,
+              14,
+              14,
+              1,
+              59,
+              4
+            ],
+            [
+              27,
+              6,
+              20,
+              16,
+              12,
+              29
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        },
+        "2026": {
+          "accuracy": 0.5232,
+          "precision": 0.5188,
+          "recall": 0.5227,
+          "f1": 0.5185,
+          "kappa": 0.4258,
+          "mcc": 0.4265,
+          "confusion_matrix": [
+            [
+              73,
+              27,
+              13,
+              9,
+              21,
+              15
+            ],
+            [
+              20,
+              62,
+              14,
+              0,
+              9,
+              9
+            ],
+            [
+              11,
+              14,
+              65,
+              16,
+              8,
+              7
+            ],
+            [
+              6,
+              3,
+              14,
+              92,
+              0,
+              8
+            ],
+            [
+              13,
+              16,
+              15,
+              2,
+              53,
+              7
+            ],
+            [
+              23,
+              5,
+              17,
+              16,
+              11,
+              38
+            ]
+          ],
+          "class_names": [
+            "Lying",
+            "Running 3 METs",
+            "Running 5 METs",
+            "Running 7 METs",
+            "Self Pace walk",
+            "Sitting"
+          ]
+        }
+      },
+      "summary": {
+        "accuracy": {
+          "mean": 0.5186,
+          "std": 0.0086,
+          "min": 0.5027,
+          "max": 0.526
+        },
+        "precision": {
+          "mean": 0.5175,
+          "std": 0.0111,
+          "min": 0.4969,
+          "max": 0.5274
+        },
+        "recall": {
+          "mean": 0.5163,
+          "std": 0.0085,
+          "min": 0.5004,
+          "max": 0.5233
+        },
+        "f1": {
+          "mean": 0.5127,
+          "std": 0.0098,
+          "min": 0.4938,
+          "max": 0.5212
+        },
+        "kappa": {
+          "mean": 0.4198,
+          "std": 0.0103,
+          "min": 0.401,
+          "max": 0.4293
+        },
+        "mcc": {
+          "mean": 0.421,
+          "std": 0.0103,
+          "min": 0.4024,
+          "max": 0.4308
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1037 @@
+{
+  "dataset": "Harvard Apple Watch (Fuller et al., 2020 / BMJ Open 2021)",
+  "train_rows": 2924,
+  "test_rows": 732,
+  "features": [
+    "age",
+    "gender",
+    "height",
+    "weight",
+    "steps",
+    "hear_rate",
+    "calories",
+    "distance",
+    "entropy_heart",
+    "entropy_setps",
+    "resting_heart",
+    "corr_heart_steps",
+    "norm_heart",
+    "intensity_karvonen",
+    "sd_norm_heart",
+    "steps_times_distance"
+  ],
+  "classes": [
+    "Lying",
+    "Running 3 METs",
+    "Running 5 METs",
+    "Running 7 METs",
+    "Self Pace walk",
+    "Sitting"
+  ],
+  "seed": 42,
+  "partitioning_type": "IID random chunking (deterministic shuffle with seed 42)",
+  "centralized": {
+    "et": {
+      "accuracy": 0.8169,
+      "precision": 0.8175,
+      "recall": 0.8242,
+      "f1": 0.8199,
+      "kappa": 0.7799,
+      "mcc": 0.7804,
+      "confusion_matrix": [
+        [
+          108,
+          14,
+          9,
+          0,
+          12,
+          15
+        ],
+        [
+          9,
+          100,
+          0,
+          1,
+          2,
+          2
+        ],
+        [
+          9,
+          0,
+          105,
+          2,
+          1,
+          4
+        ],
+        [
+          1,
+          0,
+          4,
+          110,
+          0,
+          8
+        ],
+        [
+          5,
+          1,
+          1,
+          0,
+          92,
+          7
+        ],
+        [
+          6,
+          1,
+          5,
+          9,
+          6,
+          83
+        ]
+      ],
+      "class_names": [
+        "Lying",
+        "Running 3 METs",
+        "Running 5 METs",
+        "Running 7 METs",
+        "Self Pace walk",
+        "Sitting"
+      ]
+    },
+    "rf": {
+      "accuracy": 0.8292,
+      "precision": 0.8313,
+      "recall": 0.8339,
+      "f1": 0.8318,
+      "kappa": 0.7946,
+      "mcc": 0.795,
+      "confusion_matrix": [
+        [
+          115,
+          9,
+          6,
+          0,
+          10,
+          18
+        ],
+        [
+          6,
+          102,
+          2,
+          0,
+          2,
+          2
+        ],
+        [
+          7,
+          1,
+          108,
+          1,
+          0,
+          4
+        ],
+        [
+          3,
+          1,
+          1,
+          110,
+          0,
+          8
+        ],
+        [
+          2,
+          2,
+          4,
+          0,
+          89,
+          9
+        ],
+        [
+          10,
+          0,
+          3,
+          7,
+          7,
+          83
+        ]
+      ],
+      "class_names": [
+        "Lying",
+        "Running 3 METs",
+        "Running 5 METs",
+        "Running 7 METs",
+        "Self Pace walk",
+        "Sitting"
+      ]
+    }
+  },
+  "federated": {
+    "et_k2": {
+      "paper_fedensemble_selection": {
+        "accuracy": 0.7104,
+        "precision": 0.7114,
+        "recall": 0.7076,
+        "f1": 0.7088,
+        "kappa": 0.651,
+        "mcc": 0.6513,
+        "confusion_matrix": [
+          [
+            112,
+            11,
+            7,
+            1,
+            12,
+            15
+          ],
+          [
+            12,
+            84,
+            6,
+            3,
+            4,
+            5
+          ],
+          [
+            7,
+            1,
+            97,
+            7,
+            2,
+            7
+          ],
+          [
+            9,
+            0,
+            7,
+            94,
+            0,
+            13
+          ],
+          [
+            6,
+            3,
+            8,
+            0,
+            73,
+            16
+          ],
+          [
+            12,
+            8,
+            9,
+            12,
+            9,
+            60
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ],
+        "selected_client_id": 1,
+        "selected_client_local_log_loss": 0.9248,
+        "all_client_local_log_losses": [
+          1.1204,
+          0.9248
+        ]
+      },
+      "combined_forest_ensemble": {
+        "accuracy": 0.7869,
+        "precision": 0.7855,
+        "recall": 0.7902,
+        "f1": 0.7875,
+        "kappa": 0.7435,
+        "mcc": 0.7437,
+        "confusion_matrix": [
+          [
+            111,
+            12,
+            10,
+            1,
+            9,
+            15
+          ],
+          [
+            7,
+            100,
+            2,
+            0,
+            3,
+            2
+          ],
+          [
+            12,
+            2,
+            98,
+            3,
+            2,
+            4
+          ],
+          [
+            3,
+            0,
+            3,
+            110,
+            0,
+            7
+          ],
+          [
+            3,
+            3,
+            3,
+            0,
+            88,
+            9
+          ],
+          [
+            11,
+            3,
+            11,
+            10,
+            6,
+            69
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ],
+        "total_trees": 100,
+        "trees_per_client": 50
+      }
+    },
+    "rf_k2": {
+      "paper_fedensemble_selection": {
+        "accuracy": 0.7158,
+        "precision": 0.7205,
+        "recall": 0.7243,
+        "f1": 0.72,
+        "kappa": 0.6586,
+        "mcc": 0.6596,
+        "confusion_matrix": [
+          [
+            89,
+            24,
+            9,
+            2,
+            10,
+            24
+          ],
+          [
+            13,
+            94,
+            3,
+            0,
+            2,
+            2
+          ],
+          [
+            11,
+            7,
+            90,
+            3,
+            7,
+            3
+          ],
+          [
+            5,
+            1,
+            9,
+            100,
+            0,
+            8
+          ],
+          [
+            5,
+            5,
+            3,
+            0,
+            83,
+            10
+          ],
+          [
+            11,
+            4,
+            15,
+            3,
+            9,
+            68
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ],
+        "selected_client_id": 0,
+        "selected_client_local_log_loss": 0.9059,
+        "all_client_local_log_losses": [
+          0.9059,
+          0.9579
+        ]
+      },
+      "combined_forest_ensemble": {
+        "accuracy": 0.7637,
+        "precision": 0.7637,
+        "recall": 0.7683,
+        "f1": 0.7647,
+        "kappa": 0.7159,
+        "mcc": 0.7164,
+        "confusion_matrix": [
+          [
+            104,
+            17,
+            8,
+            1,
+            12,
+            16
+          ],
+          [
+            8,
+            99,
+            1,
+            0,
+            3,
+            3
+          ],
+          [
+            6,
+            6,
+            97,
+            2,
+            5,
+            5
+          ],
+          [
+            7,
+            1,
+            3,
+            105,
+            0,
+            7
+          ],
+          [
+            5,
+            5,
+            4,
+            0,
+            81,
+            11
+          ],
+          [
+            9,
+            3,
+            10,
+            8,
+            7,
+            73
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ],
+        "total_trees": 100,
+        "trees_per_client": 50
+      }
+    },
+    "et_k4": {
+      "paper_fedensemble_selection": {
+        "accuracy": 0.5984,
+        "precision": 0.6016,
+        "recall": 0.5947,
+        "f1": 0.596,
+        "kappa": 0.5152,
+        "mcc": 0.516,
+        "confusion_matrix": [
+          [
+            98,
+            22,
+            4,
+            0,
+            20,
+            14
+          ],
+          [
+            27,
+            68,
+            8,
+            1,
+            8,
+            2
+          ],
+          [
+            14,
+            7,
+            72,
+            12,
+            5,
+            11
+          ],
+          [
+            7,
+            6,
+            5,
+            89,
+            0,
+            16
+          ],
+          [
+            18,
+            7,
+            3,
+            0,
+            70,
+            8
+          ],
+          [
+            19,
+            9,
+            16,
+            9,
+            16,
+            41
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ],
+        "selected_client_id": 3,
+        "selected_client_local_log_loss": 1.0232,
+        "all_client_local_log_losses": [
+          1.1043,
+          1.3987,
+          2.1665,
+          1.0232
+        ]
+      },
+      "combined_forest_ensemble": {
+        "accuracy": 0.7145,
+        "precision": 0.7166,
+        "recall": 0.7199,
+        "f1": 0.7171,
+        "kappa": 0.6566,
+        "mcc": 0.657,
+        "confusion_matrix": [
+          [
+            94,
+            20,
+            11,
+            1,
+            12,
+            20
+          ],
+          [
+            14,
+            88,
+            5,
+            0,
+            5,
+            2
+          ],
+          [
+            7,
+            5,
+            98,
+            2,
+            5,
+            4
+          ],
+          [
+            5,
+            5,
+            5,
+            98,
+            0,
+            10
+          ],
+          [
+            7,
+            5,
+            3,
+            1,
+            80,
+            10
+          ],
+          [
+            16,
+            4,
+            9,
+            10,
+            6,
+            65
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ],
+        "total_trees": 100,
+        "trees_per_client": 25
+      }
+    },
+    "rf_k4": {
+      "paper_fedensemble_selection": {
+        "accuracy": 0.6011,
+        "precision": 0.6019,
+        "recall": 0.5965,
+        "f1": 0.5973,
+        "kappa": 0.5183,
+        "mcc": 0.5191,
+        "confusion_matrix": [
+          [
+            101,
+            15,
+            10,
+            0,
+            16,
+            16
+          ],
+          [
+            18,
+            72,
+            10,
+            1,
+            10,
+            3
+          ],
+          [
+            11,
+            9,
+            71,
+            15,
+            8,
+            7
+          ],
+          [
+            10,
+            7,
+            7,
+            87,
+            0,
+            12
+          ],
+          [
+            18,
+            11,
+            3,
+            0,
+            67,
+            7
+          ],
+          [
+            25,
+            6,
+            18,
+            9,
+            10,
+            42
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ],
+        "selected_client_id": 3,
+        "selected_client_local_log_loss": 1.0487,
+        "all_client_local_log_losses": [
+          1.3298,
+          1.2285,
+          1.4118,
+          1.0487
+        ]
+      },
+      "combined_forest_ensemble": {
+        "accuracy": 0.6899,
+        "precision": 0.6934,
+        "recall": 0.6942,
+        "f1": 0.6914,
+        "kappa": 0.627,
+        "mcc": 0.6278,
+        "confusion_matrix": [
+          [
+            95,
+            19,
+            7,
+            1,
+            17,
+            19
+          ],
+          [
+            13,
+            88,
+            3,
+            1,
+            7,
+            2
+          ],
+          [
+            8,
+            6,
+            92,
+            2,
+            9,
+            4
+          ],
+          [
+            8,
+            5,
+            8,
+            90,
+            1,
+            11
+          ],
+          [
+            5,
+            7,
+            4,
+            1,
+            80,
+            9
+          ],
+          [
+            18,
+            3,
+            11,
+            8,
+            10,
+            60
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ],
+        "total_trees": 100,
+        "trees_per_client": 25
+      }
+    },
+    "et_k8": {
+      "paper_fedensemble_selection": {
+        "accuracy": 0.4959,
+        "precision": 0.5077,
+        "recall": 0.4928,
+        "f1": 0.4981,
+        "kappa": 0.391,
+        "mcc": 0.3917,
+        "confusion_matrix": [
+          [
+            77,
+            24,
+            13,
+            2,
+            14,
+            28
+          ],
+          [
+            33,
+            52,
+            10,
+            2,
+            7,
+            10
+          ],
+          [
+            17,
+            15,
+            61,
+            16,
+            3,
+            9
+          ],
+          [
+            16,
+            1,
+            11,
+            82,
+            1,
+            12
+          ],
+          [
+            19,
+            13,
+            10,
+            2,
+            44,
+            18
+          ],
+          [
+            24,
+            6,
+            9,
+            10,
+            14,
+            47
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ],
+        "selected_client_id": 4,
+        "selected_client_local_log_loss": 1.5763,
+        "all_client_local_log_losses": [
+          1.9027,
+          1.7324,
+          2.213,
+          1.6272,
+          1.5763,
+          2.2224,
+          2.1766,
+          2.1513
+        ]
+      },
+      "combined_forest_ensemble": {
+        "accuracy": 0.6544,
+        "precision": 0.6604,
+        "recall": 0.6575,
+        "f1": 0.6559,
+        "kappa": 0.5838,
+        "mcc": 0.5848,
+        "confusion_matrix": [
+          [
+            90,
+            26,
+            10,
+            1,
+            15,
+            16
+          ],
+          [
+            12,
+            84,
+            8,
+            0,
+            8,
+            2
+          ],
+          [
+            13,
+            5,
+            88,
+            4,
+            9,
+            2
+          ],
+          [
+            12,
+            3,
+            10,
+            90,
+            0,
+            8
+          ],
+          [
+            10,
+            8,
+            6,
+            1,
+            73,
+            8
+          ],
+          [
+            17,
+            6,
+            14,
+            8,
+            11,
+            54
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ],
+        "total_trees": 96,
+        "trees_per_client": 12
+      }
+    },
+    "rf_k8": {
+      "paper_fedensemble_selection": {
+        "accuracy": 0.5055,
+        "precision": 0.5134,
+        "recall": 0.5007,
+        "f1": 0.5028,
+        "kappa": 0.4035,
+        "mcc": 0.4046,
+        "confusion_matrix": [
+          [
+            82,
+            22,
+            13,
+            9,
+            11,
+            21
+          ],
+          [
+            13,
+            66,
+            13,
+            1,
+            14,
+            7
+          ],
+          [
+            13,
+            19,
+            67,
+            4,
+            4,
+            14
+          ],
+          [
+            12,
+            8,
+            14,
+            73,
+            2,
+            14
+          ],
+          [
+            24,
+            20,
+            9,
+            1,
+            40,
+            12
+          ],
+          [
+            25,
+            9,
+            15,
+            11,
+            8,
+            42
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ],
+        "selected_client_id": 0,
+        "selected_client_local_log_loss": 1.2838,
+        "all_client_local_log_losses": [
+          1.2838,
+          2.2642,
+          1.7912,
+          1.6082,
+          1.3342,
+          1.8598,
+          1.7686,
+          1.9095
+        ]
+      },
+      "combined_forest_ensemble": {
+        "accuracy": 0.5915,
+        "precision": 0.5984,
+        "recall": 0.5899,
+        "f1": 0.5898,
+        "kappa": 0.5071,
+        "mcc": 0.5083,
+        "confusion_matrix": [
+          [
+            88,
+            26,
+            12,
+            1,
+            18,
+            13
+          ],
+          [
+            16,
+            70,
+            13,
+            1,
+            13,
+            1
+          ],
+          [
+            9,
+            8,
+            83,
+            7,
+            10,
+            4
+          ],
+          [
+            13,
+            5,
+            9,
+            88,
+            0,
+            8
+          ],
+          [
+            25,
+            7,
+            5,
+            1,
+            62,
+            6
+          ],
+          [
+            22,
+            7,
+            14,
+            12,
+            13,
+            42
+          ]
+        ],
+        "class_names": [
+          "Lying",
+          "Running 3 METs",
+          "Running 5 METs",
+          "Running 7 METs",
+          "Self Pace walk",
+          "Sitting"
+        ],
+        "total_trees": 96,
+        "trees_per_client": 12
+      }
+    }
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "audit_metadata": {
+    "title": "Phase 4 Results Integrity and Cross-Configuration Audit",
+    "timestamp": "2026-10-27T19:50:00Z",
+    "held_out_test_records": 732,
+    "evaluation_seeds": [
+      42,
+      123,
+      456,
+      789,
+      2026
+    ],
+    "std_convention_note": "Includes both population std (ddof=0, used in raw JSON summaries) and sample std (ddof=1, standard for scientific reporting with N=5)."
+  },
+  "configurations_summary": {
+    "config_a_plaintext_fedavg": {
+      "description": "Baseline Plaintext FedAvg (k=4, no DP, no SecAgg)",
+      "accuracy": {
+        "mean": 0.676,
+        "std_pop_ddof0": 0.0059,
+        "std_sample_ddof1": 0.0066,
+        "per_seed": {
+          "42": 0.6721,
+          "123": 0.6735,
+          "456": 0.6872,
+          "789": 0.6708,
+          "2026": 0.6762
+        }
+      },
+      "f1": {
+        "mean": 0.6789,
+        "std_pop_ddof0": 0.0055,
+        "std_sample_ddof1": 0.0062
+      }
+    },
+    "config_c_secagg_fedavg": {
+      "description": "Plaintext Local Training + SecAgg+ Aggregation (k=4)",
+      "accuracy": {
+        "mean": 0.6792,
+        "std_pop_ddof0": 0.0104,
+        "std_sample_ddof1": 0.0116,
+        "per_seed": {
+          "42": 0.6831,
+          "123": 0.6844,
+          "456": 0.6844,
+          "789": 0.6585,
+          "2026": 0.6858
+        }
+      },
+      "f1": {
+        "mean": 0.6821,
+        "std_pop_ddof0": 0.0104,
+        "std_sample_ddof1": 0.0117
+      },
+      "quantization_gap_vs_config_a": {
+        "difference_percentage_points": 0.328,
+        "relative_percent_change": 0.485,
+        "interpretation": "Config C is +0.324 pp (+0.48% relative) compared to Config A, well within empirical seed variation."
+      }
+    },
+    "matched_dp_comparisons_b_vs_d": {
+      "sigma_0.5": {
+        "noise_multiplier": 0.5,
+        "runtime_prv_epsilon": 72.5451,
+        "runtime_rdp_epsilon": 78.6846,
+        "accounted_steps": 1725,
+        "config_b_dp_only": {
+          "accuracy_mean": 0.4598,
+          "accuracy_std_ddof0": 0.0157,
+          "accuracy_std_ddof1": 0.0175,
+          "per_seed": {
+            "42": 0.4317,
+            "123": 0.4781,
+            "456": 0.4563,
+            "789": 0.4672,
+            "2026": 0.4658
+          }
+        },
+        "config_d_dp_plus_secagg": {
+          "accuracy_mean": 0.4607,
+          "accuracy_std_ddof0": 0.0163,
+          "accuracy_std_ddof1": 0.0182,
+          "per_seed": {
+            "42": 0.4331,
+            "123": 0.4809,
+            "456": 0.4536,
+            "789": 0.4686,
+            "2026": 0.4672
+          }
+        },
+        "paired_seed_comparison_d_minus_b": {
+          "per_seed_percentage_points": {
+            "42": 0.14,
+            "123": 0.28,
+            "456": -0.27,
+            "789": 0.14,
+            "2026": 0.14
+          },
+          "mean_difference_percentage_points": 0.086,
+          "std_paired_difference": 0.208,
+          "interpretation": "At sigma=0.5, SecAgg adds a mean difference of +0.086 percentage points relative to DP-only."
+        },
+        "total_penalty_vs_plaintext_a": {
+          "penalty_percentage_points": 21.528,
+          "relative_utility_loss_percent": 31.848
+        }
+      },
+      "sigma_1.0": {
+        "noise_multiplier": 1.0,
+        "runtime_prv_epsilon": 12.7663,
+        "runtime_rdp_epsilon": 13.8446,
+        "accounted_steps": 1725,
+        "config_b_dp_only": {
+          "accuracy_mean": 0.4156,
+          "accuracy_std_ddof0": 0.0136,
+          "accuracy_std_ddof1": 0.0152,
+          "per_seed": {
+            "42": 0.403,
+            "123": 0.4276,
+            "456": 0.4208,
+            "789": 0.4303,
+            "2026": 0.3962
+          }
+        },
+        "config_d_dp_plus_secagg": {
+          "accuracy_mean": 0.4156,
+          "accuracy_std_ddof0": 0.014,
+          "accuracy_std_ddof1": 0.0156,
+          "per_seed": {
+            "42": 0.4016,
+            "123": 0.4276,
+            "456": 0.4221,
+            "789": 0.4303,
+            "2026": 0.3962
+          }
+        },
+        "paired_seed_comparison_d_minus_b": {
+          "per_seed_percentage_points": {
+            "42": -0.14,
+            "123": 0.0,
+            "456": 0.13,
+            "789": 0.0,
+            "2026": 0.0
+          },
+          "mean_difference_percentage_points": -0.002,
+          "std_paired_difference": 0.095,
+          "interpretation": "At sigma=1.0, SecAgg adds a mean difference of -0.002 percentage points relative to DP-only."
+        },
+        "total_penalty_vs_plaintext_a": {
+          "penalty_percentage_points": 26.04,
+          "relative_utility_loss_percent": 38.523
+        }
+      },
+      "sigma_1.5": {
+        "noise_multiplier": 1.5,
+        "runtime_prv_epsilon": 6.4176,
+        "runtime_rdp_epsilon": 6.9463,
+        "accounted_steps": 1725,
+        "config_b_dp_only": {
+          "accuracy_mean": 0.3954,
+          "accuracy_std_ddof0": 0.015,
+          "accuracy_std_ddof1": 0.0168,
+          "per_seed": {
+            "42": 0.3989,
+            "123": 0.3921,
+            "456": 0.3989,
+            "789": 0.4167,
+            "2026": 0.3702
+          }
+        },
+        "config_d_dp_plus_secagg": {
+          "accuracy_mean": 0.3954,
+          "accuracy_std_ddof0": 0.0145,
+          "accuracy_std_ddof1": 0.0162,
+          "per_seed": {
+            "42": 0.3975,
+            "123": 0.3921,
+            "456": 0.3989,
+            "789": 0.4167,
+            "2026": 0.3716
+          }
+        },
+        "paired_seed_comparison_d_minus_b": {
+          "per_seed_percentage_points": {
+            "42": -0.14,
+            "123": 0.0,
+            "456": 0.0,
+            "789": 0.0,
+            "2026": 0.14
+          },
+          "mean_difference_percentage_points": 0.0,
+          "std_paired_difference": 0.099,
+          "interpretation": "At sigma=1.5, SecAgg adds a mean difference of +0.000 percentage points relative to DP-only."
+        },
+        "total_penalty_vs_plaintext_a": {
+          "penalty_percentage_points": 28.06,
+          "relative_utility_loss_percent": 41.511
+        }
+      },
+      "sigma_2.0": {
+        "noise_multiplier": 2.0,
+        "runtime_prv_epsilon": 4.2896,
+        "runtime_rdp_epsilon": 4.6438,
+        "accounted_steps": 1725,
+        "config_b_dp_only": {
+          "accuracy_mean": 0.3847,
+          "accuracy_std_ddof0": 0.0088,
+          "accuracy_std_ddof1": 0.0099,
+          "per_seed": {
+            "42": 0.3852,
+            "123": 0.3825,
+            "456": 0.3825,
+            "789": 0.4003,
+            "2026": 0.373
+          }
+        },
+        "config_d_dp_plus_secagg": {
+          "accuracy_mean": 0.3844,
+          "accuracy_std_ddof0": 0.0083,
+          "accuracy_std_ddof1": 0.0093,
+          "per_seed": {
+            "42": 0.3852,
+            "123": 0.3825,
+            "456": 0.3825,
+            "789": 0.3989,
+            "2026": 0.373
+          }
+        },
+        "paired_seed_comparison_d_minus_b": {
+          "per_seed_percentage_points": {
+            "42": 0.0,
+            "123": 0.0,
+            "456": 0.0,
+            "789": -0.14,
+            "2026": 0.0
+          },
+          "mean_difference_percentage_points": -0.028,
+          "std_paired_difference": 0.063,
+          "interpretation": "At sigma=2.0, SecAgg adds a mean difference of -0.028 percentage points relative to DP-only."
+        },
+        "total_penalty_vs_plaintext_a": {
+          "penalty_percentage_points": 29.154,
+          "relative_utility_loss_percent": 43.13
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "harness": "Isolated SecAgg+ Synthetic Mathematical Verification Harness",
+    "protocol": "SecAgg+ (Bell et al., 2020) implemented with Flower 1.42 primitives",
+    "model_parameter_count": 12710,
+    "clients": 4,
+    "threshold": 3,
+    "clipping_range": 8.0,
+    "quantization_range": 4194304,
+    "modulus_range": 4294967296,
+    "healthcare_dataset_loaded": false,
+    "all_tests_passed": true
+  },
+  "tests": {
+    "test_1_shamir_secret_sharing": {
+      "status": "PASSED",
+      "combinations_tested": 4,
+      "all_combinations_verified": true,
+      "sub_threshold_rejected": true
+    },
+    "test_2_dh_key_agreement_and_encryption": {
+      "status": "PASSED",
+      "pairwise_keys_match": true,
+      "share_encryption_decryption_match": true,
+      "tampered_ciphertext_rejected": true
+    },
+    "test_3_pairwise_mask_cancellation": {
+      "status": "PASSED",
+      "modulus": 4294967296,
+      "max_residual": 0,
+      "strictly_zero": true
+    },
+    "test_4_end_to_end_secagg_reconstruction": {
+      "status": "PASSED",
+      "seeds_tested": [
+        42,
+        123,
+        456,
+        789,
+        2026
+      ],
+      "measured_max_absolute_error": 2.9e-06,
+      "measured_mean_absolute_error": 6e-07,
+      "theoretical_quantization_resolution": 3.8e-06,
+      "tolerance": 0.0001
+    },
+    "test_5a_early_dropout_recovery": {
+      "status": "PASSED",
+      "description": "Client 3 drops before sending masked vector; pairwise masks cancelled via reconstructed DH keys",
+      "surviving_clients": [
+        0,
+        1,
+        2
+      ],
+      "dropped_clients": [
+        3
+      ],
+      "reconstruction_threshold": 3,
+      "measured_max_error": 3.1e-06,
+      "measured_mae": 7e-07,
+      "tolerance": 0.0001
+    },
+    "test_5b_late_dropout_recovery": {
+      "status": "PASSED",
+      "description": "Client 3 sent masked vector then dropped; self-mask b_3 reconstructed from Shamir shares; pairwise keys untouched",
+      "all_4_clients_in_aggregate": true,
+      "reconstruction_threshold": 3,
+      "measured_max_error": 2.8e-06,
+      "measured_mae": 6e-07,
+      "tolerance": 0.0001
+    },
+    "test_6_sub_threshold_abort": {
+      "status": "PASSED",
+      "surviving_count": 2,
+      "threshold": 3,
+      "aborted_cleanly": true,
+      "abort_message": "SecAgg+ Abort: Surviving client count (2) is strictly below reconstruction threshold (t = 3). Protocol aborted to prevent privacy leakage."
+    }
+  }
+}
