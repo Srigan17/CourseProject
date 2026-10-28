@@ -1,0 +1,23 @@
+{
+  "experiment_mode": "Centralized Multi-Layer Perceptron (Neural Baseline)",
+  "model_architecture": "mlp",
+  "task": "classification",
+  "dataset_id": "apple_watch",
+  "train_samples": 5011,
+  "test_samples": 1253,
+  "epochs": 100,
+  "metrics": {
+    "accuracy": 0.7175,
+    "f1_score": 0.7156,
+    "precision": 0.7205,
+    "recall": 0.7175,
+    "mcc": 0.654,
+    "cohen_kappa": 0.651
+  },
+  "differential_privacy_enabled": false,
+  "secure_aggregation_enabled": false,
+  "communication_cost_kb": 0.0,
+  "elapsed_time_sec": 4.82,
+  "id": "0c97b36c",
+  "created_at": "2026-10-20T08:23:53.550719+00:00"
+}

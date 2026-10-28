@@ -1,0 +1,174 @@
+{
+  "metadata": {
+    "title": "Final Independent Privacy Verification Addendum & Focused Corrections",
+    "timestamp": "2026-10-21T12:20:07Z",
+    "dataset": "Harvard Apple Watch & Fitbit Dataset (data/apple_watch/aw_fb_data.csv)",
+    "primary_verification_report": "reports/final_independent_privacy_verification.md",
+    "primary_verification_json": "storage/experiments/final_independent_privacy_verification.json",
+    "reproduction_test_suite": "tests/test_privacy_accountant_reproduction.py"
+  },
+  "corrections": [
+    {
+      "issue_id": "CORR-01",
+      "topic": "Formal DP Terminology vs. Practical Privacy",
+      "previous_wording": "At sigma=0.01, the system operates in an empirical gradient perturbation regime, not formal differential privacy. No formal DP exists.",
+      "revised_wording": "The mechanism satisfies a mathematically valid (epsilon, delta)-differential privacy guarantee with epsilon = 14,028.80 (exact Gaussian CDF) / 14,116.93 (RDP infimum) under add/remove zero-baseline client adjacency, or epsilon = 54,725.25 (exact) / 54,900.53 (RDP) under replacement client adjacency over the 8-round transcript (delta=1e-5). However, because epsilon approx 14,000 to 54,000 yields an astronomical likelihood ratio bound (exp(epsilon) >= 10^6000), this guarantee provides no practically useful or meaningful privacy protection. Differential privacy is an information-theoretic probabilistic criterion bounding likelihood ratios, not a cryptographic mechanism.",
+      "evidence": "Gaussian mechanism definition (Dwork & Roth, 2014); exact Gaussian CDF root (Balle & Wang, 2018); Mironov (2017) continuous RDP.",
+      "confidence": "HIGH / VERIFIED",
+      "remaining_limitation": "Meaningful practical privacy requires scaling noise to sigma >= 0.50 - 1.00 and implementing per-sample gradient clipping."
+    },
+    {
+      "issue_id": "CORR-02",
+      "topic": "Validated Subsampled RDP Accounting vs. Truncation Artifacts",
+      "previous_wording": "For subsampling rate q <= 0.05, a moderate noise multiplier sigma in [0.20, 0.30] achieves formal differential privacy epsilon in [1.28, 2.42].",
+      "revised_wording": "Hypothetical client subsampling calculations were independently re-evaluated using the exact analytical subsampled RDP accountant of Wang, Balle, Kasiviswanathan (2019, Theorem 9 for Poisson subsampling over T=8 rounds, delta=1e-5). Earlier claims that sigma in [0.20, 0.30] achieved epsilon in [1.28, 2.42] were artifacts of an incomplete truncation that omitted higher-order exponential terms k >= 3. Under the validated Wang et al. (2019) accountant: at sigma=0.20, epsilon = 163.58; at sigma=0.30, epsilon = 52.52; at sigma=0.50, epsilon = 12.52; and at sigma=1.00, epsilon = 2.62 (q=0.05, alpha=6) and epsilon = 1.45 (q=0.01, alpha=9). Therefore, formal differential privacy (epsilon <= 3.0) under q=0.05 requires sigma >= 1.00. Crucially, this subsampling analysis is entirely hypothetical: the implemented experiment used a fixed cohort of K=3 clients with full participation (q=1.0) in every round.",
+      "evidence": "Wang, Balle, Kasiviswanathan (2019, Theorem 9); tests/test_privacy_accountant_reproduction.py (passes 4/4 unit tests).",
+      "confidence": "HIGH / VERIFIED",
+      "remaining_limitation": "Evaluated under Poisson subsampling; applying client subsampling in practice requires a large federation of N >= 100 hospitals."
+    },
+    {
+      "issue_id": "CORR-03",
+      "topic": "Dataset Independence & Generalization Restrictions",
+      "previous_wording": "On an independent held-out test cohort (N=1,253) / independent patient cohort.",
+      "revised_wording": "On an independent held-out random-record test split (N=1,253, 20% stratified sample of aw_fb_data.csv). Inspection of data/apple_watch/aw_fb_data.csv confirms that no participant identifier exists in the dataset (only demographic attributes: age, gender, height, weight). Consequently, the evaluation partition represents a random record-level split rather than an independent subject cohort. Records from the same individual may appear in both training and test partitions, meaning that generalization to unseen subjects cannot be verified from this dataset.",
+      "evidence": "Source inspection of data/apple_watch/aw_fb_data.csv columns (20 columns, no subject/patient ID).",
+      "confidence": "HIGH / VERIFIED",
+      "remaining_limitation": "True unseen-subject cross-validation requires datasets with verified participant identifiers (e.g., HARTH or Dat263x)."
+    },
+    {
+      "issue_id": "CORR-04",
+      "topic": "Threat Model Evidence, TLS Configuration, and Threshold Paillier",
+      "previous_wording": "Protected via TLS 1.3 transit encryption + Paillier ciphertexts. Protected against up to t-1 colluding clients in a threshold scheme.",
+      "revised_wording": "TLS 1.3 / mTLS configuration in backend/app/security/certs.py (TLSConfigManager) is an application deployment specification and architectural template, not an actively terminated SSL socket in the local development/simulation runner. Furthermore, the codebase implements standard two-party Paillier (phe library), where the coordinator holds private_key in memory (backend/app/privacy/secure_aggregation.py, line 43; scripts/run_controlled_privacy_utility_study.py, line 259). Protection against an untrusted coordinator is an architectural assumption requiring an independent Key Authority or (t, n) Threshold Paillier, which is not currently implemented. Cryptographic confidentiality cannot be inferred from numerical aggregation equivalence (error <= 4.93e-7), which verifies fixed-point precision under homomorphism, not access control.",
+      "evidence": "Source code inspection of backend/app/security/certs.py, backend/app/privacy/secure_aggregation.py, and scripts/run_controlled_privacy_utility_study.py.",
+      "confidence": "HIGH / VERIFIED",
+      "remaining_limitation": "Production deployment requires implementing an actual distributed key generation / threshold decryption protocol or integrating a standalone Key Escrow service."
+    },
+    {
+      "issue_id": "CORR-05",
+      "topic": "Utility Language & Dimensionality Reduction Hypothesis",
+      "previous_wording": "maintaining clinical utility / preserving clinical diagnostic utility / proven dimension reduction.",
+      "revised_wording": "maintaining activity classification performance on wearable accelerometer/PPG sensor data (predictive accuracy across 6 physical activities). The Harvard dataset records physical activities (Lying, Sitting, Walking, Running, etc.) and does not evaluate clinical endpoints, diagnoses, or therapeutic outcomes. Furthermore, parameter dimension reduction (d=11,206 -> d=500) is a theoretical hypothesis for improving the utility-noise trade-off by decreasing the expected perturbation norm E[||eta||_2] approx sigma * C * sqrt(d) by 4.73x, but its impact on model capacity and classification accuracy has not been experimentally tested in this project.",
+      "evidence": "Dataset domain (Apple Watch & Fitbit sensor activity classification) and lack of clinical trial data in aw_fb_data.csv.",
+      "confidence": "HIGH / VERIFIED",
+      "remaining_limitation": "Model compression architectures must be trained and evaluated on real sensor datasets to establish empirical capacity trade-offs."
+    },
+    {
+      "issue_id": "CORR-06",
+      "topic": "Cryptographic Key Management Guidance vs. NIST Scope",
+      "previous_wording": "NIST SP 800-57 Part 1 Rev 5 mandates >= 2048 bits for Paillier.",
+      "revised_wording": "NIST SP 800-57 Part 1 Rev 5 provides general security strength guidelines for integer-factorization-based cryptosystems (recommending >= 2048-bit composite moduli for 112-bit security through 2030, and 3072 bits beyond 2030). While NIST does not standardize or explicitly mandate Paillier cryptosystems, Paillier's semantic security rests on the Decisional Composite Residuosity Assumption (DCRA) over an RSA-style composite modulus N = pq. Applying NIST's general factoring hardness guidance establishes an engineering recommendation of >= 2048-bit moduli for Paillier keys in production, rather than an explicit NIST mandate of the Paillier scheme.",
+      "evidence": "NIST SP 800-57 Part 1 Rev 5, Section 5.6.1; Paillier (1999).",
+      "confidence": "HIGH / VERIFIED",
+      "remaining_limitation": "2048-bit Paillier homomorphic operations incur significant computational overhead (approx 64x slower than 512-bit), requiring evaluation on hospital edge servers."
+    },
+    {
+      "issue_id": "CORR-07",
+      "topic": "Privacy Accounting Gap Investigation & Log-Space Exactness",
+      "previous_wording": "Continuous RDP and Balle-Wang exact give identical epsilon (0.000000 gap).",
+      "revised_wording": "Continuous RDP yields epsilon = 14,116.93, whereas the exact Gaussian CDF root (Balle & Wang, 2018) yields epsilon = 14,028.80 over the full 8-round observable transcript (a true gap of +88.13, or +0.63%). The previously claimed zero gap was an artifact of an uncaught OverflowError on exp(epsilon) in scipy.optimize.brentq, which silently caught the exception and returned the Mironov RDP fallback value. Independent reproduction using numerically stable log-space inversion is confirmed and tested in tests/test_privacy_accountant_reproduction.py.",
+      "evidence": "tests/test_privacy_accountant_reproduction.py; execution logs; Balle & Wang (2018) Proposition 1.",
+      "confidence": "HIGH / VERIFIED",
+      "remaining_limitation": "Applies under Add/Remove zero-baseline client adjacency; under Replacement client adjacency the bounds are epsilon = 54,725.25 (exact) and epsilon = 54,900.53 (RDP)."
+    }
+  ],
+  "subsampled_rdp_validated_grid": [
+    {
+      "q": 0.01,
+      "sigma": 0.2,
+      "epsilon": 137.83,
+      "alpha": 2,
+      "classification": "Weak / Negligible"
+    },
+    {
+      "q": 0.01,
+      "sigma": 0.3,
+      "epsilon": 27.83,
+      "alpha": 2,
+      "classification": "Weak"
+    },
+    {
+      "q": 0.01,
+      "sigma": 0.5,
+      "epsilon": 6.41,
+      "alpha": 3,
+      "classification": "Moderate DP"
+    },
+    {
+      "q": 0.01,
+      "sigma": 1.0,
+      "epsilon": 1.45,
+      "alpha": 9,
+      "classification": "Formal DP"
+    },
+    {
+      "q": 0.05,
+      "sigma": 0.2,
+      "epsilon": 163.58,
+      "alpha": 2,
+      "classification": "Weak / Negligible"
+    },
+    {
+      "q": 0.05,
+      "sigma": 0.3,
+      "epsilon": 52.52,
+      "alpha": 2,
+      "classification": "Weak / Negligible"
+    },
+    {
+      "q": 0.05,
+      "sigma": 0.5,
+      "epsilon": 12.52,
+      "alpha": 2,
+      "classification": "Weak DP"
+    },
+    {
+      "q": 0.05,
+      "sigma": 1.0,
+      "epsilon": 2.62,
+      "alpha": 6,
+      "classification": "Formal DP"
+    },
+    {
+      "q": 0.1,
+      "sigma": 0.2,
+      "epsilon": 174.67,
+      "alpha": 2,
+      "classification": "Weak / Negligible"
+    },
+    {
+      "q": 0.1,
+      "sigma": 0.3,
+      "epsilon": 63.57,
+      "alpha": 2,
+      "classification": "Weak / Negligible"
+    },
+    {
+      "q": 0.1,
+      "sigma": 0.5,
+      "epsilon": 14.95,
+      "alpha": 2,
+      "classification": "Weak DP"
+    },
+    {
+      "q": 0.1,
+      "sigma": 1.0,
+      "epsilon": 3.92,
+      "alpha": 5,
+      "classification": "Formal DP"
+    }
+  ],
+  "safe_paper_claims": [
+    "Baseline Plaintext FedProx achieves 75.26% test accuracy and 75.20% macro-F1 (mu=0.05, T=8, E=12, seed 42) on held-out random records.",
+    "Proposed combined FedProx + DP + Paillier achieves 68.74% +- 0.32% test accuracy and 68.50% +- 0.42% macro-F1 across seeds 42, 100, 2026 on held-out random records.",
+    "Paillier 512-bit PHE induces 0.0000% accuracy penalty under identical DP noise, with maximum vector error <= 4.93e-7.",
+    "The 8-round released aggregate satisfies an (epsilon, delta)-DP guarantee of epsilon = 14,028.80 (exact Gaussian CDF) / 14,116.93 (RDP) under Add/Remove zero-baseline adjacency, and epsilon = 54,725.25 (exact) / 54,900.53 (RDP) under Replacement adjacency (delta=1e-5).",
+    "Operating at sigma=0.01 provides an empirical gradient perturbation regime that hinders gradient leakage, rather than a practically useful privacy guarantee.",
+    "Individual update confidentiality against the server requires separating decryption authority via a Key Authority or Threshold Paillier."
+  ],
+  "mandatory_future_work": [
+    "Evaluating quantitative gradient leakage under empirical reconstruction attacks (DLG / iDLG / GradInversion).",
+    "Evaluating patient-level privacy via DP-SGD on datasets with verified subject identifiers (e.g. HARTH).",
+    "Upgrading the Paillier cryptosystem to >= 2048-bit keys or Threshold Paillier and measuring edge server latency."
+  ]
+}

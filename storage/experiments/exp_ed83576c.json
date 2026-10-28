@@ -1,0 +1,294 @@
+{
+  "experiment_mode": "Federated Learning (MLP)",
+  "model_architecture": "mlp",
+  "task": "classification",
+  "dataset_id": "apple_watch",
+  "num_clients": 3,
+  "rounds_completed": 2,
+  "local_epochs": 1,
+  "learning_rate": 0.05,
+  "batch_size": 32,
+  "differential_privacy_enabled": false,
+  "dp_budget": {
+    "is_private": false,
+    "epsilon": Infinity,
+    "guarantee": "No DP mechanism applied"
+  },
+  "secure_aggregation_enabled": false,
+  "secagg_protocol": "None",
+  "communication_cost_kb": 78.89,
+  "elapsed_time_sec": 0.2477,
+  "metrics": {
+    "accuracy": 0.332,
+    "accuracy_percent": 33.2,
+    "correct_predictions": 416,
+    "total_predictions": 1253,
+    "precision": 0.335,
+    "recall": 0.332,
+    "f1_score": 0.2728,
+    "macro_f1": 0.2484,
+    "per_class_recall": [
+      0.7138,
+      0.1842,
+      0.325,
+      0.5157,
+      0.0112,
+      0.0108
+    ],
+    "mcc": 0.1877,
+    "cohen_kappa": 0.1754,
+    "roc_auc": 0.6836,
+    "confusion_matrix": [
+      [
+        197,
+        30,
+        24,
+        23,
+        2,
+        0
+      ],
+      [
+        76,
+        35,
+        54,
+        21,
+        4,
+        0
+      ],
+      [
+        59,
+        39,
+        65,
+        37,
+        0,
+        0
+      ],
+      [
+        73,
+        11,
+        22,
+        115,
+        1,
+        1
+      ],
+      [
+        69,
+        50,
+        36,
+        20,
+        2,
+        1
+      ],
+      [
+        111,
+        23,
+        31,
+        17,
+        2,
+        2
+      ]
+    ]
+  },
+  "round_history": [
+    {
+      "round": 1,
+      "elapsed_sec": 0.1121,
+      "secagg_time_sec": 0.0,
+      "client_metrics": [
+        {
+          "client_id": "hospital_a",
+          "client_name": "Hospital A",
+          "num_samples": 1671,
+          "local_loss": 1.2194,
+          "local_accuracy": 63.38
+        },
+        {
+          "client_id": "hospital_b",
+          "client_name": "Hospital B",
+          "num_samples": 1670,
+          "local_loss": 1.5432,
+          "local_accuracy": 44.43
+        },
+        {
+          "client_id": "hospital_c",
+          "client_name": "Hospital C",
+          "num_samples": 1670,
+          "local_loss": 1.3016,
+          "local_accuracy": 61.62
+        }
+      ],
+      "eval_metrics": {
+        "accuracy": 0.2777,
+        "accuracy_percent": 27.77,
+        "correct_predictions": 348,
+        "total_predictions": 1253,
+        "precision": 0.4018,
+        "recall": 0.2777,
+        "f1_score": 0.2238,
+        "macro_f1": 0.2027,
+        "per_class_recall": [
+          0.558,
+          0.3368,
+          0.08,
+          0.4888,
+          0.0225,
+          0.0054
+        ],
+        "mcc": 0.1218,
+        "cohen_kappa": 0.1139,
+        "roc_auc": 0.618,
+        "confusion_matrix": [
+          [
+            154,
+            71,
+            15,
+            35,
+            1,
+            0
+          ],
+          [
+            67,
+            64,
+            23,
+            35,
+            1,
+            0
+          ],
+          [
+            53,
+            72,
+            16,
+            58,
+            1,
+            0
+          ],
+          [
+            76,
+            34,
+            4,
+            109,
+            0,
+            0
+          ],
+          [
+            50,
+            75,
+            17,
+            32,
+            4,
+            0
+          ],
+          [
+            84,
+            58,
+            14,
+            27,
+            2,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "elapsed_sec": 0.1103,
+      "secagg_time_sec": 0.0,
+      "client_metrics": [
+        {
+          "client_id": "hospital_a",
+          "client_name": "Hospital A",
+          "num_samples": 1671,
+          "local_loss": 1.073,
+          "local_accuracy": 68.4
+        },
+        {
+          "client_id": "hospital_b",
+          "client_name": "Hospital B",
+          "num_samples": 1670,
+          "local_loss": 1.4081,
+          "local_accuracy": 45.51
+        },
+        {
+          "client_id": "hospital_c",
+          "client_name": "Hospital C",
+          "num_samples": 1670,
+          "local_loss": 1.2985,
+          "local_accuracy": 63.83
+        }
+      ],
+      "eval_metrics": {
+        "accuracy": 0.332,
+        "accuracy_percent": 33.2,
+        "correct_predictions": 416,
+        "total_predictions": 1253,
+        "precision": 0.335,
+        "recall": 0.332,
+        "f1_score": 0.2728,
+        "macro_f1": 0.2484,
+        "per_class_recall": [
+          0.7138,
+          0.1842,
+          0.325,
+          0.5157,
+          0.0112,
+          0.0108
+        ],
+        "mcc": 0.1877,
+        "cohen_kappa": 0.1754,
+        "roc_auc": 0.6836,
+        "confusion_matrix": [
+          [
+            197,
+            30,
+            24,
+            23,
+            2,
+            0
+          ],
+          [
+            76,
+            35,
+            54,
+            21,
+            4,
+            0
+          ],
+          [
+            59,
+            39,
+            65,
+            37,
+            0,
+            0
+          ],
+          [
+            73,
+            11,
+            22,
+            115,
+            1,
+            1
+          ],
+          [
+            69,
+            50,
+            36,
+            20,
+            2,
+            1
+          ],
+          [
+            111,
+            23,
+            31,
+            17,
+            2,
+            2
+          ]
+        ]
+      }
+    }
+  ],
+  "id": "ed83576c",
+  "created_at": "2026-10-21T17:21:52.204886+00:00"
+}

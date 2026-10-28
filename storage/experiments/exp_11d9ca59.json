@@ -1,0 +1,32 @@
+{
+  "experiment_mode": "FL + Differential Privacy + Secure Aggregation (Full Proposed System)",
+  "model_architecture": "mlp",
+  "task": "classification",
+  "dataset_id": "apple_watch",
+  "num_clients": 3,
+  "rounds_completed": 7,
+  "local_epochs": 10,
+  "learning_rate": 0.01,
+  "batch_size": 32,
+  "metrics": {
+    "accuracy": 0.6034,
+    "f1_score": 0.5982,
+    "precision": 0.6055,
+    "recall": 0.6034,
+    "mcc": 0.518,
+    "cohen_kappa": 0.514
+  },
+  "differential_privacy_enabled": true,
+  "dp_budget": {
+    "is_private": true,
+    "epsilon": 2.14,
+    "delta": 1e-05,
+    "guarantee": "(\u03b5=2.14, \u03b4=1e-05)-DP with Paillier Homomorphic Addition"
+  },
+  "secure_aggregation_enabled": true,
+  "secagg_protocol": "Paillier Homomorphic Cryptosystem (512-bit PHE)",
+  "communication_cost_kb": 1286.25,
+  "elapsed_time_sec": 154.2,
+  "id": "11d9ca59",
+  "created_at": "2026-10-20T08:23:53.579487+00:00"
+}

@@ -1,0 +1,309 @@
+{
+  "metadata": {
+    "verification_title": "Final Independent Verification of Federated Learning Privacy Study",
+    "timestamp": "2026-10-21T12:11:07Z",
+    "dataset": "Harvard Apple Watch & Fitbit Dataset (aw_fb_data.csv)",
+    "locked_test_size": 1253,
+    "architecture": "MLP (19 -> 128 -> 64 -> 6, d=11,206 parameters)",
+    "fedprox_mu": 0.05,
+    "local_epochs": 12,
+    "batch_size": 32,
+    "rounds_T": 8,
+    "clients_K": 3,
+    "clipping_bound_C": 8.0,
+    "noise_multiplier_sigma": 0.01,
+    "delta": 1e-05,
+    "paillier_prototype_bits": 512
+  },
+  "benchmark_reconciliation": {
+    "status": "VERIFIED & INDEPENDENTLY RECOMPUTED",
+    "transcription_error_finding": "The earlier report in reports/final_privacy_claims_audit.md misreported the plaintext FedProx baseline as 68.74% +- 0.32%, listed FedProx mu as 0.001 instead of 0.05, and reported seeds as [42, 43, 44] instead of [42, 100, 2026]. This was an accidental transcription conflation error: the author conflated the true Config A plaintext baseline (75.26%) with the lockstep Paillier numerical equivalence audit on Config D (where plaintext and encrypted aggregation under identical DP noise draws both scored 68.74% +- 0.32%). Inspection of raw records confirms no training rerun took place, and historical records are preserved.",
+    "raw_benchmarks": {
+      "config_A_plaintext": {
+        "accuracy": 0.7526,
+        "macro_f1": 0.752,
+        "seed": 42,
+        "fedprox_mu": 0.05,
+        "dp": false,
+        "paillier": false,
+        "record_source": "storage/experiments/controlled_privacy_utility_results.json -> phase2_four_configurations_test.Config_A_FedProx_Plaintext"
+      },
+      "config_B_paillier_only": {
+        "accuracy": 0.7382,
+        "macro_f1": 0.7368,
+        "seed": 42,
+        "fedprox_mu": 0.05,
+        "dp": false,
+        "paillier": true,
+        "record_source": "storage/experiments/controlled_privacy_utility_results.json -> phase2_four_configurations_test.Config_B_FedProx_Paillier"
+      },
+      "config_C_dp_only": {
+        "accuracy": 0.6911,
+        "macro_f1": 0.6866,
+        "seed": 42,
+        "fedprox_mu": 0.05,
+        "dp": true,
+        "paillier": false,
+        "clipping_C": 8.0,
+        "sigma": 0.01,
+        "record_source": "storage/experiments/controlled_privacy_utility_results.json -> phase2_four_configurations_test.Config_C_FedProx_DP"
+      },
+      "config_D_single_run": {
+        "accuracy": 0.6943,
+        "macro_f1": 0.689,
+        "seed": 42,
+        "noise_seed_base": 9999,
+        "fedprox_mu": 0.05,
+        "dp": true,
+        "paillier": true,
+        "clipping_C": 8.0,
+        "sigma": 0.01,
+        "record_source": "storage/experiments/controlled_privacy_utility_results.json -> phase2_four_configurations_test.Config_D_FedProx_DP_Paillier"
+      },
+      "config_D_three_seed_benchmark": {
+        "seeds": [
+          42,
+          100,
+          2026
+        ],
+        "raw_runs": [
+          {
+            "seed": 42,
+            "accuracy": 0.6856,
+            "macro_f1": 0.6847,
+            "noise_seed_base": 4200
+          },
+          {
+            "seed": 100,
+            "accuracy": 0.6911,
+            "macro_f1": 0.6893,
+            "noise_seed_base": 10000
+          },
+          {
+            "seed": 2026,
+            "accuracy": 0.6856,
+            "macro_f1": 0.681,
+            "noise_seed_base": 202600
+          }
+        ],
+        "recomputed_statistics": {
+          "accuracy": {
+            "mean": 0.6874333333333333,
+            "sample_std_ddof1": 0.0031754264805429764,
+            "pop_std_ddof0": 0.002592724864350703
+          },
+          "macro_f1": {
+            "mean": 0.685,
+            "sample_std_ddof1": 0.004158124577258347,
+            "pop_std_ddof0": 0.003395094500402987
+          },
+          "weighted_f1": {
+            "mean": 0.6837333333333332,
+            "sample_std_ddof1": 0.007921068951431584,
+            "pop_std_ddof0": 0.006467525716136657
+          },
+          "mcc": {
+            "mean": 0.6265000000000001,
+            "sample_std_ddof1": 0.00420356991139674,
+            "pop_std_ddof0": 0.0034322004603461022
+          }
+        },
+        "record_source": "storage/experiments/controlled_privacy_utility_results.json -> phase3_multi_seed_shortlisted"
+      }
+    }
+  },
+  "dp_mathematics_verification": {
+    "mechanism_trace": {
+      "clipped_quantity": "Parameter delta vector: Delta_i = w_i - w_global",
+      "clipping_locus": "Client-level parameter update. Entire weight vector of d=11,206 weights scaled to L2 norm <= C=8.0.",
+      "record_level_clipping": "NONE. Local Adam training runs over unclipped minibatches of patient records.",
+      "local_noise_std_per_param": 0.08,
+      "noise_injection_locus": "Locally on client node before encryption or transmission.",
+      "aggregation_type": "Equal-weighted arithmetic average: (1/K) sum_{i=1}^K hat{Delta}_i (K=3)",
+      "client_participation": "Full participation q=1.0 of all 3 clients across all 8 rounds.",
+      "released_observation": "The sequence of 8 decrypted global model weight vectors (delta_global^(1), ..., delta_global^(8)).",
+      "server_observation_under_current_code": "Coordinator possesses private key; can technically decrypt individual ciphertexts."
+    },
+    "investigation_of_accountant_gap": {
+      "finding": "The previous claim that Mironov continuous RDP and Balle-Wang exact Gaussian give identical epsilon (0.000000 gap) is DISPROVED.",
+      "root_cause_of_error": "In scripts/audit_final_dp_mechanism.py lines 42-48, brentq(delta_func, 1e-5, 1e7) raised an unhandled OverflowError: math range error because math.exp(eps_val) overflows for eps_val > 709. The silent 'except Exception:' block caught this overflow and fell back to returning eps_fb = rdp_gaussian_mironov, thereby manufacturing an artificial zero difference.",
+      "numerically_stable_correction": {
+        "released_aggregate_add_remove": {
+          "sensitivity_Delta_2": 2.6666666666666665,
+          "effective_sigma": 0.017320508075688773,
+          "single_round_rdp": 1943.7097,
+          "single_round_balle_wang": 1911.9355,
+          "eight_round_rdp": 14116.9293,
+          "eight_round_balle_wang": 14028.7999,
+          "true_eight_round_gap": 88.1294,
+          "gap_percentage": 0.628
+        },
+        "released_aggregate_replacement": {
+          "sensitivity_Delta_2": 5.333333333333333,
+          "effective_sigma": 0.008660254037844387,
+          "single_round_rdp": 7220.7527,
+          "single_round_balle_wang": 7158.1519,
+          "eight_round_rdp": 54900.5253,
+          "eight_round_balle_wang": 54725.2473,
+          "true_eight_round_gap": 175.278,
+          "gap_percentage": 0.32
+        },
+        "single_client_server_view_bounded": {
+          "sensitivity_Delta_2": 8.0,
+          "effective_sigma": 0.01,
+          "single_round_rdp": 5479.8526,
+          "single_round_balle_wang": 5425.5098,
+          "eight_round_rdp": 41357.2281,
+          "eight_round_balle_wang": 41205.3007,
+          "true_eight_round_gap": 151.9273,
+          "gap_percentage": 0.369
+        },
+        "single_client_server_view_replacement": {
+          "sensitivity_Delta_2": 16.0,
+          "effective_sigma": 0.005,
+          "single_round_rdp": 20959.7052,
+          "single_round_balle_wang": 20851.9887,
+          "eight_round_rdp": 162714.4562,
+          "eight_round_balle_wang": 162411.5903,
+          "true_eight_round_gap": 302.8659,
+          "gap_percentage": 0.186
+        }
+      }
+    },
+    "subsampling_reevaluation": {
+      "finding": "Subsampling does NOT universally require sigma >= 0.50.",
+      "empirical_evidence": [
+        {
+          "subsampling_rate_q": 0.01,
+          "sigma": 0.2,
+          "epsilon": 2.16,
+          "optimal_alpha": 99,
+          "regime": "Formal DP"
+        },
+        {
+          "subsampling_rate_q": 0.01,
+          "sigma": 0.3,
+          "epsilon": 1.02,
+          "optimal_alpha": 99,
+          "regime": "Formal DP"
+        },
+        {
+          "subsampling_rate_q": 0.01,
+          "sigma": 0.5,
+          "epsilon": 0.44,
+          "optimal_alpha": 99,
+          "regime": "Formal DP"
+        },
+        {
+          "subsampling_rate_q": 0.01,
+          "sigma": 1.0,
+          "epsilon": 0.22,
+          "optimal_alpha": 99,
+          "regime": "Formal DP"
+        },
+        {
+          "subsampling_rate_q": 0.05,
+          "sigma": 0.2,
+          "epsilon": 2.42,
+          "optimal_alpha": 99,
+          "regime": "Formal DP"
+        },
+        {
+          "subsampling_rate_q": 0.05,
+          "sigma": 0.3,
+          "epsilon": 1.28,
+          "optimal_alpha": 99,
+          "regime": "Formal DP"
+        },
+        {
+          "subsampling_rate_q": 0.05,
+          "sigma": 0.5,
+          "epsilon": 0.7,
+          "optimal_alpha": 99,
+          "regime": "Formal DP"
+        },
+        {
+          "subsampling_rate_q": 0.05,
+          "sigma": 1.0,
+          "epsilon": 0.46,
+          "optimal_alpha": 99,
+          "regime": "Formal DP"
+        },
+        {
+          "subsampling_rate_q": 0.1,
+          "sigma": 0.2,
+          "epsilon": 2.53,
+          "optimal_alpha": 99,
+          "regime": "Formal DP"
+        },
+        {
+          "subsampling_rate_q": 0.1,
+          "sigma": 0.3,
+          "epsilon": 1.4,
+          "optimal_alpha": 99,
+          "regime": "Formal DP"
+        },
+        {
+          "subsampling_rate_q": 0.1,
+          "sigma": 0.5,
+          "epsilon": 0.82,
+          "optimal_alpha": 99,
+          "regime": "Formal DP"
+        },
+        {
+          "subsampling_rate_q": 0.1,
+          "sigma": 1.0,
+          "epsilon": 0.57,
+          "optimal_alpha": 99,
+          "regime": "Formal DP"
+        }
+      ],
+      "scientific_conclusion": "For subsampling rate q <= 0.05, a moderate noise multiplier sigma in [0.20, 0.30] achieves formal differential privacy epsilon in [1.28, 2.42] (delta=1e-5)."
+    }
+  },
+  "paillier_threat_model_verification": {
+    "key_holder": "Coordinator process holds private_key in memory (backend/app/privacy/secure_aggregation.py, line 43)",
+    "coordinator_decryption_capability": "UNRESTRICTED in simulation runner. It is trusted by code convention, not cryptographic constraint.",
+    "maximum_numerical_error_reproduced": 4.93e-07,
+    "maximum_relative_error_reproduced": 3.54e-06,
+    "accuracy_penalty": 0.0,
+    "threat_model_matrix": {
+      "external_network_eavesdropper": "PROTECTED via TLS 1.3 + Paillier application-layer ciphertexts.",
+      "honest_but_curious_coordinator": "CONDITIONAL. Requires segregating the private key into an independent Key Authority or using (t, n) Threshold Paillier.",
+      "colluding_clients": "PROTECTED against up to t-1 colluding clients in a threshold scheme.",
+      "production_key_recommendation": "512-bit key is strictly a performance prototype. Production systems must configure >= 2048-bit keys (NIST SP 800-57)."
+    }
+  },
+  "unsupported_claims_audit": [
+    {
+      "claim": "Gaussian noise prevents deep leakage from gradients (DLG) and reconstruction attacks.",
+      "evidence_examined": "Codebase contains no DLG, iDLG, or GradInversion attack scripts.",
+      "verdict": "UNSUPPORTED HEURISTIC CONJECTURE",
+      "corrected_wording": "Perturbing parameters introduces high-frequency noise that degrades gradient-matching loss in inversion attacks, but formal reconstruction bounds remain unverified."
+    },
+    {
+      "claim": "The system achieves formal differential privacy at sigma=0.01.",
+      "evidence_examined": "Exact composed epsilon is between 14,028.80 and 54,725.25.",
+      "verdict": "FALSE",
+      "corrected_wording": "At sigma=0.01, the system operates in an empirical gradient perturbation regime, not formal differential privacy."
+    },
+    {
+      "claim": "Continuous RDP and Balle-Wang exact Gaussian give exactly identical epsilon values.",
+      "evidence_examined": "brentq failed with OverflowError; stable log-space inversion proves an 88.13 gap.",
+      "verdict": "DISPROVED / ARTIFACT OF OVERFLOW ERROR",
+      "corrected_wording": "Continuous RDP yields epsilon = 14,116.93, which upper bounds the exact Balle-Wang Gaussian CDF root of epsilon = 14,028.80 by +88.13 (+0.63%)."
+    },
+    {
+      "claim": "Reducing parameter dimension d improves epsilon.",
+      "evidence_examined": "Gaussian privacy loss formula contains only sensitivity Delta_2, noise std, T, and delta. Dimension d does not appear.",
+      "verdict": "MATHEMATICALLY FALSE",
+      "corrected_wording": "Reducing dimension has zero mathematical impact on epsilon; it improves model utility by decreasing total noise norm E[||eta||_2] by 4.73x."
+    },
+    {
+      "claim": "The server cannot decrypt individual client updates.",
+      "evidence_examined": "Coordinator instance holds private_key in memory in scripts/run_controlled_privacy_utility_study.py line 259.",
+      "verdict": "FALSE FOR CURRENT CODEBASE",
+      "corrected_wording": "Individual update confidentiality requires an independent Key Authority or threshold Paillier; in the current simulation runner, the coordinator holds the private key."
+    }
+  ]
+}

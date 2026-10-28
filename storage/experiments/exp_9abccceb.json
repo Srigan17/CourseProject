@@ -1,0 +1,28 @@
+{
+  "experiment_mode": "Paper Baseline: Federated Extra Trees Ensemble (FedEnsemble)",
+  "model_architecture": "tree_ensemble",
+  "task": "classification",
+  "dataset_id": "apple_watch",
+  "num_clients": 3,
+  "rounds_completed": 1,
+  "local_epochs": 1,
+  "metrics": {
+    "accuracy": 0.8452,
+    "f1_score": 0.8448,
+    "precision": 0.8465,
+    "recall": 0.8452,
+    "mcc": 0.8012,
+    "cohen_kappa": 0.7985
+  },
+  "differential_privacy_enabled": false,
+  "dp_budget": {
+    "is_private": false,
+    "guarantee": "Tree ensemble does not use continuous gradient noise"
+  },
+  "secure_aggregation_enabled": false,
+  "secagg_protocol": "FedEnsemble Rule Combination",
+  "communication_cost_kb": 300.0,
+  "elapsed_time_sec": 2.45,
+  "id": "9abccceb",
+  "created_at": "2026-10-20T08:23:53.545131+00:00"
+}

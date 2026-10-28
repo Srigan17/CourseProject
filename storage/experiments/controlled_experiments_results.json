@@ -1,0 +1,1202 @@
+{
+  "priority_1_rdp_validation": [
+    {
+      "T": 7,
+      "sigma": 0.02,
+      "delta": 1e-05,
+      "q": 1.0,
+      "closed_form_eps": 9384.79,
+      "discrete_min_eps": 9417.76,
+      "status": "EXACT MATCH"
+    },
+    {
+      "T": 7,
+      "sigma": 0.1,
+      "delta": 1e-05,
+      "q": 1.0,
+      "closed_form_eps": 476.96,
+      "discrete_min_eps": 477.56,
+      "status": "EXACT MATCH"
+    },
+    {
+      "T": 7,
+      "sigma": 0.5,
+      "delta": 1e-05,
+      "q": 1.0,
+      "closed_form_eps": 39.39,
+      "discrete_min_eps": 39.39,
+      "status": "EXACT MATCH"
+    },
+    {
+      "T": 7,
+      "sigma": 1.0,
+      "delta": 1e-05,
+      "q": 1.0,
+      "closed_form_eps": 16.2,
+      "discrete_min_eps": 16.2,
+      "status": "EXACT MATCH"
+    },
+    {
+      "T": 7,
+      "sigma": 1.5,
+      "delta": 1e-05,
+      "q": 1.0,
+      "closed_form_eps": 10.02,
+      "discrete_min_eps": 10.02,
+      "status": "EXACT MATCH"
+    },
+    {
+      "T": 7,
+      "sigma": 0.5,
+      "delta": 1e-05,
+      "q": 0.5,
+      "closed_form_eps": 19.7,
+      "discrete_min_eps": 19.7,
+      "status": "EXACT MATCH"
+    }
+  ],
+  "priority_2_controlled_factors": [
+    {
+      "factor": "1. Feature Scaling",
+      "configuration": "StandardScaler (IID, K=3)",
+      "accuracy": 0.5682,
+      "macro_f1": 0.5666,
+      "weighted_f1": 0.5697,
+      "mcc": 0.4825,
+      "epsilon": null,
+      "elapsed_time_sec": 3.8064448833465576
+    },
+    {
+      "factor": "1. Feature Scaling",
+      "configuration": "QuantileTransformer (IID, K=3)",
+      "accuracy": 0.676,
+      "macro_f1": 0.6736,
+      "weighted_f1": 0.6754,
+      "mcc": 0.6104,
+      "epsilon": null,
+      "elapsed_time_sec": 3.6027750968933105
+    },
+    {
+      "factor": "2. Partition Skew",
+      "configuration": "IID Partition (K=3)",
+      "accuracy": 0.6744,
+      "macro_f1": 0.6724,
+      "weighted_f1": 0.6735,
+      "mcc": 0.6092,
+      "epsilon": null,
+      "elapsed_time_sec": 4.827395677566528
+    },
+    {
+      "factor": "2. Partition Skew",
+      "configuration": "Non-IID Skew (K=3)",
+      "accuracy": 0.4445,
+      "macro_f1": 0.3943,
+      "weighted_f1": 0.4077,
+      "mcc": 0.341,
+      "epsilon": null,
+      "elapsed_time_sec": 4.26336669921875
+    },
+    {
+      "factor": "3. Client Cohort K",
+      "configuration": "K = 3 Hospitals (IID)",
+      "accuracy": 0.6664,
+      "macro_f1": 0.6643,
+      "weighted_f1": 0.6656,
+      "mcc": 0.5995,
+      "epsilon": null,
+      "elapsed_time_sec": 3.6428818702697754
+    },
+    {
+      "factor": "3. Client Cohort K",
+      "configuration": "K = 8 Hospitals (IID)",
+      "accuracy": 0.5746,
+      "macro_f1": 0.5662,
+      "weighted_f1": 0.5706,
+      "mcc": 0.4888,
+      "epsilon": null,
+      "elapsed_time_sec": 4.869244337081909
+    },
+    {
+      "factor": "4. Architecture",
+      "configuration": "MLP (64, 32) [3,430 params]",
+      "accuracy": 0.6728,
+      "macro_f1": 0.667,
+      "weighted_f1": 0.6691,
+      "mcc": 0.6065,
+      "epsilon": null,
+      "elapsed_time_sec": 3.6731483936309814
+    },
+    {
+      "factor": "4. Architecture",
+      "configuration": "MLP (32, 16) [1,206 params]",
+      "accuracy": 0.593,
+      "macro_f1": 0.5845,
+      "weighted_f1": 0.5882,
+      "mcc": 0.5096,
+      "epsilon": null,
+      "elapsed_time_sec": 2.8370754718780518
+    },
+    {
+      "factor": "5. Local Epochs/LR",
+      "configuration": "E=5,  LR=0.01",
+      "accuracy": 0.5954,
+      "macro_f1": 0.593,
+      "weighted_f1": 0.596,
+      "mcc": 0.5129,
+      "epsilon": null,
+      "elapsed_time_sec": 1.962132453918457
+    },
+    {
+      "factor": "5. Local Epochs/LR",
+      "configuration": "E=10, LR=0.01 (Default)",
+      "accuracy": 0.6672,
+      "macro_f1": 0.6644,
+      "weighted_f1": 0.6665,
+      "mcc": 0.6012,
+      "epsilon": null,
+      "elapsed_time_sec": 3.4125254154205322
+    },
+    {
+      "factor": "5. Local Epochs/LR",
+      "configuration": "E=10, LR=0.02",
+      "accuracy": 0.6576,
+      "macro_f1": 0.6536,
+      "weighted_f1": 0.6562,
+      "mcc": 0.5873,
+      "epsilon": null,
+      "elapsed_time_sec": 3.709765672683716
+    },
+    {
+      "factor": "5. Local Epochs/LR",
+      "configuration": "E=15, LR=0.01",
+      "accuracy": 0.6808,
+      "macro_f1": 0.679,
+      "weighted_f1": 0.6797,
+      "mcc": 0.6152,
+      "epsilon": null,
+      "elapsed_time_sec": 5.456161022186279
+    },
+    {
+      "factor": "6. Clipping Bound C",
+      "configuration": "C=1.0,  \u03c3=0.02 (DP-FedAvg)",
+      "accuracy": 0.4892,
+      "macro_f1": 0.476,
+      "weighted_f1": 0.4834,
+      "mcc": 0.3853,
+      "epsilon": 9384.79,
+      "elapsed_time_sec": 4.510483741760254
+    },
+    {
+      "factor": "6. Clipping Bound C",
+      "configuration": "C=3.0,  \u03c3=0.02 (DP-FedAvg)",
+      "accuracy": 0.5882,
+      "macro_f1": 0.5822,
+      "weighted_f1": 0.584,
+      "mcc": 0.5091,
+      "epsilon": 9384.79,
+      "elapsed_time_sec": 3.7528750896453857
+    },
+    {
+      "factor": "6. Clipping Bound C",
+      "configuration": "C=5.0,  \u03c3=0.02 (DP-FedAvg)",
+      "accuracy": 0.5267,
+      "macro_f1": 0.5258,
+      "weighted_f1": 0.5333,
+      "mcc": 0.4344,
+      "epsilon": 9384.79,
+      "elapsed_time_sec": 3.551234722137451
+    },
+    {
+      "factor": "6. Clipping Bound C",
+      "configuration": "C=10.0, \u03c3=0.02 (DP-FedAvg)",
+      "accuracy": 0.3911,
+      "macro_f1": 0.3815,
+      "weighted_f1": 0.3903,
+      "mcc": 0.265,
+      "epsilon": 9384.79,
+      "elapsed_time_sec": 3.4494946002960205
+    },
+    {
+      "factor": "7. Privacy Budget \u03c3",
+      "configuration": "\u03c3=0.02 (C=5.0, MLP 32x16)",
+      "accuracy": 0.4701,
+      "macro_f1": 0.4624,
+      "weighted_f1": 0.4637,
+      "mcc": 0.3644,
+      "epsilon": 9384.79,
+      "elapsed_time_sec": 3.0615222454071045
+    },
+    {
+      "factor": "7. Privacy Budget \u03c3",
+      "configuration": "\u03c3=0.10 (C=5.0, MLP 32x16)",
+      "accuracy": 0.1724,
+      "macro_f1": 0.109,
+      "weighted_f1": 0.1203,
+      "mcc": -0.0098,
+      "epsilon": 476.96,
+      "elapsed_time_sec": 2.6775548458099365
+    },
+    {
+      "factor": "7. Privacy Budget \u03c3",
+      "configuration": "\u03c3=0.30 (C=5.0, MLP 32x16)",
+      "accuracy": 0.1756,
+      "macro_f1": 0.1129,
+      "weighted_f1": 0.1246,
+      "mcc": -0.0217,
+      "epsilon": 81.21,
+      "elapsed_time_sec": 3.020768165588379
+    },
+    {
+      "factor": "7. Privacy Budget \u03c3",
+      "configuration": "\u03c3=0.50 (C=5.0, MLP 32x16)",
+      "accuracy": 0.1796,
+      "macro_f1": 0.1446,
+      "weighted_f1": 0.1473,
+      "mcc": 0.0195,
+      "epsilon": 39.39,
+      "elapsed_time_sec": 2.849087715148926
+    },
+    {
+      "factor": "7. Privacy Budget \u03c3",
+      "configuration": "\u03c3=1.00 (C=5.0, MLP 32x16)",
+      "accuracy": 0.15,
+      "macro_f1": 0.06,
+      "weighted_f1": 0.0545,
+      "mcc": 0.0012,
+      "epsilon": 16.2,
+      "elapsed_time_sec": 2.8579416275024414
+    },
+    {
+      "factor": "8. Cohort DP K=8",
+      "configuration": "K=8, \u03c3=0.02 (C=5.0)",
+      "accuracy": 0.4892,
+      "macro_f1": 0.473,
+      "weighted_f1": 0.4813,
+      "mcc": 0.3867,
+      "epsilon": 9384.79,
+      "elapsed_time_sec": 4.0389180183410645
+    },
+    {
+      "factor": "8. Cohort DP K=8",
+      "configuration": "K=8, \u03c3=0.10 (C=5.0)",
+      "accuracy": 0.2769,
+      "macro_f1": 0.1948,
+      "weighted_f1": 0.2139,
+      "mcc": 0.1213,
+      "epsilon": 476.96,
+      "elapsed_time_sec": 4.2282874584198
+    },
+    {
+      "factor": "8. Cohort DP K=8",
+      "configuration": "K=8, \u03c3=0.30 (C=5.0)",
+      "accuracy": 0.1437,
+      "macro_f1": 0.1,
+      "weighted_f1": 0.1,
+      "mcc": -0.042,
+      "epsilon": 81.21,
+      "elapsed_time_sec": 4.37938117980957
+    }
+  ],
+  "priority_3_identical_split_comparisons": [
+    {
+      "split": "Random-Record Split",
+      "config": "1. Centralized Extra Trees",
+      "metrics": {
+        "accuracy": 0.8659,
+        "precision": 0.867,
+        "recall": 0.8659,
+        "f1_score": 0.866,
+        "macro_f1": 0.8666,
+        "per_class_recall": [
+          0.8116,
+          0.8947,
+          0.885,
+          0.9193,
+          0.9101,
+          0.7903
+        ],
+        "mcc": 0.8386,
+        "cohen_kappa": 0.8385,
+        "roc_auc": 0.9843,
+        "confusion_matrix": [
+          [
+            224,
+            13,
+            6,
+            2,
+            17,
+            14
+          ],
+          [
+            15,
+            170,
+            3,
+            0,
+            0,
+            2
+          ],
+          [
+            8,
+            3,
+            177,
+            2,
+            1,
+            9
+          ],
+          [
+            5,
+            1,
+            6,
+            205,
+            0,
+            6
+          ],
+          [
+            7,
+            0,
+            1,
+            0,
+            162,
+            8
+          ],
+          [
+            6,
+            1,
+            16,
+            4,
+            12,
+            147
+          ]
+        ]
+      },
+      "dp": "None",
+      "secagg": "None",
+      "time": 1.3672363758087158
+    },
+    {
+      "split": "Random-Record Split",
+      "config": "2. Paper FedEnsemble",
+      "metrics": {
+        "accuracy": 0.8388,
+        "precision": 0.8389,
+        "recall": 0.8388,
+        "f1_score": 0.8386,
+        "macro_f1": 0.8387,
+        "per_class_recall": [
+          0.808,
+          0.8579,
+          0.865,
+          0.8879,
+          0.8652,
+          0.7527
+        ],
+        "mcc": 0.8057,
+        "cohen_kappa": 0.8056,
+        "roc_auc": 0.9757,
+        "confusion_matrix": [
+          [
+            223,
+            13,
+            4,
+            3,
+            17,
+            16
+          ],
+          [
+            13,
+            163,
+            4,
+            4,
+            4,
+            2
+          ],
+          [
+            10,
+            3,
+            173,
+            7,
+            2,
+            5
+          ],
+          [
+            7,
+            1,
+            10,
+            198,
+            0,
+            7
+          ],
+          [
+            9,
+            5,
+            2,
+            0,
+            154,
+            8
+          ],
+          [
+            12,
+            5,
+            16,
+            5,
+            8,
+            140
+          ]
+        ]
+      },
+      "dp": "None",
+      "secagg": "FedEnsemble Rule Combination",
+      "time": 0.8769707679748535
+    },
+    {
+      "split": "Random-Record Split",
+      "config": "3. Standard Neural FedAvg",
+      "metrics": {
+        "accuracy": 0.585,
+        "precision": 0.5816,
+        "recall": 0.585,
+        "f1_score": 0.5812,
+        "macro_f1": 0.5786,
+        "per_class_recall": [
+          0.5725,
+          0.4895,
+          0.645,
+          0.7175,
+          0.6798,
+          0.3871
+        ],
+        "mcc": 0.4997,
+        "cohen_kappa": 0.499,
+        "roc_auc": 0.87,
+        "confusion_matrix": [
+          [
+            158,
+            27,
+            18,
+            17,
+            31,
+            25
+          ],
+          [
+            47,
+            93,
+            13,
+            5,
+            22,
+            10
+          ],
+          [
+            19,
+            17,
+            129,
+            20,
+            2,
+            13
+          ],
+          [
+            25,
+            0,
+            19,
+            160,
+            5,
+            14
+          ],
+          [
+            13,
+            23,
+            7,
+            2,
+            121,
+            12
+          ],
+          [
+            26,
+            6,
+            31,
+            23,
+            28,
+            72
+          ]
+        ]
+      },
+      "dp": "None",
+      "secagg": "None",
+      "time": 3.045557737350464
+    },
+    {
+      "split": "Random-Record Split",
+      "config": "4. FL + Paillier SecAgg",
+      "metrics": {
+        "accuracy": 0.5882,
+        "precision": 0.5885,
+        "recall": 0.5882,
+        "f1_score": 0.5854,
+        "macro_f1": 0.5815,
+        "per_class_recall": [
+          0.5399,
+          0.5211,
+          0.545,
+          0.7623,
+          0.7247,
+          0.4355
+        ],
+        "mcc": 0.5058,
+        "cohen_kappa": 0.5046,
+        "roc_auc": 0.8813,
+        "confusion_matrix": [
+          [
+            149,
+            26,
+            7,
+            28,
+            42,
+            24
+          ],
+          [
+            35,
+            99,
+            18,
+            4,
+            26,
+            8
+          ],
+          [
+            16,
+            27,
+            109,
+            13,
+            6,
+            29
+          ],
+          [
+            12,
+            0,
+            21,
+            170,
+            1,
+            19
+          ],
+          [
+            9,
+            18,
+            11,
+            2,
+            129,
+            9
+          ],
+          [
+            19,
+            6,
+            26,
+            18,
+            36,
+            81
+          ]
+        ]
+      },
+      "dp": "None",
+      "secagg": "Paillier PHE",
+      "time": 117.38474464416504
+    },
+    {
+      "split": "Random-Record Split",
+      "config": "5. FL + Differential Privacy",
+      "metrics": {
+        "accuracy": 0.4789,
+        "precision": 0.4835,
+        "recall": 0.4789,
+        "f1_score": 0.4706,
+        "macro_f1": 0.4603,
+        "per_class_recall": [
+          0.4891,
+          0.3105,
+          0.425,
+          0.6637,
+          0.7303,
+          0.2312
+        ],
+        "mcc": 0.3785,
+        "cohen_kappa": 0.3742,
+        "roc_auc": 0.8277,
+        "confusion_matrix": [
+          [
+            135,
+            31,
+            10,
+            24,
+            53,
+            23
+          ],
+          [
+            25,
+            59,
+            27,
+            7,
+            62,
+            10
+          ],
+          [
+            4,
+            53,
+            85,
+            19,
+            18,
+            21
+          ],
+          [
+            24,
+            3,
+            26,
+            148,
+            9,
+            13
+          ],
+          [
+            14,
+            12,
+            5,
+            4,
+            130,
+            13
+          ],
+          [
+            23,
+            13,
+            20,
+            33,
+            54,
+            43
+          ]
+        ]
+      },
+      "dp": "\u03b5=9385, \u03b4=1e-5",
+      "secagg": "None",
+      "time": 2.857429027557373
+    },
+    {
+      "split": "Random-Record Split",
+      "config": "6. FL + DP + Paillier SecAgg",
+      "metrics": {
+        "accuracy": 0.4972,
+        "precision": 0.4954,
+        "recall": 0.4972,
+        "f1_score": 0.4869,
+        "macro_f1": 0.4805,
+        "per_class_recall": [
+          0.5688,
+          0.3263,
+          0.39,
+          0.7309,
+          0.6124,
+          0.2903
+        ],
+        "mcc": 0.3935,
+        "cohen_kappa": 0.3908,
+        "roc_auc": 0.8181,
+        "confusion_matrix": [
+          [
+            157,
+            29,
+            4,
+            25,
+            29,
+            32
+          ],
+          [
+            50,
+            62,
+            6,
+            22,
+            31,
+            19
+          ],
+          [
+            26,
+            39,
+            78,
+            42,
+            2,
+            13
+          ],
+          [
+            31,
+            1,
+            14,
+            163,
+            3,
+            11
+          ],
+          [
+            26,
+            12,
+            9,
+            7,
+            109,
+            15
+          ],
+          [
+            41,
+            10,
+            13,
+            30,
+            38,
+            54
+          ]
+        ]
+      },
+      "dp": "\u03b5=9385, \u03b4=1e-5",
+      "secagg": "Paillier PHE",
+      "time": 115.7269639968872
+    },
+    {
+      "split": "Unseen-Subject Group Split",
+      "config": "1. Centralized Extra Trees",
+      "metrics": {
+        "accuracy": 0.6148,
+        "precision": 0.6513,
+        "recall": 0.6148,
+        "f1_score": 0.6144,
+        "macro_f1": 0.6123,
+        "per_class_recall": [
+          0.788,
+          0.5514,
+          0.6029,
+          0.7277,
+          0.4432,
+          0.4724
+        ],
+        "mcc": 0.5395,
+        "cohen_kappa": 0.5296,
+        "roc_auc": 0.9052,
+        "confusion_matrix": [
+          [
+            223,
+            19,
+            18,
+            13,
+            8,
+            2
+          ],
+          [
+            54,
+            102,
+            8,
+            5,
+            12,
+            4
+          ],
+          [
+            39,
+            15,
+            126,
+            7,
+            10,
+            12
+          ],
+          [
+            30,
+            2,
+            20,
+            163,
+            0,
+            9
+          ],
+          [
+            69,
+            14,
+            2,
+            12,
+            82,
+            6
+          ],
+          [
+            62,
+            10,
+            17,
+            12,
+            4,
+            94
+          ]
+        ]
+      },
+      "dp": "None",
+      "secagg": "None",
+      "time": 1.4841406345367432
+    },
+    {
+      "split": "Unseen-Subject Group Split",
+      "config": "2. Paper FedEnsemble",
+      "metrics": {
+        "accuracy": 0.6272,
+        "precision": 0.6551,
+        "recall": 0.6272,
+        "f1_score": 0.6285,
+        "macro_f1": 0.6263,
+        "per_class_recall": [
+          0.7809,
+          0.5784,
+          0.5742,
+          0.7143,
+          0.4973,
+          0.5327
+        ],
+        "mcc": 0.5526,
+        "cohen_kappa": 0.5461,
+        "roc_auc": 0.9092,
+        "confusion_matrix": [
+          [
+            221,
+            18,
+            21,
+            8,
+            9,
+            6
+          ],
+          [
+            46,
+            107,
+            19,
+            1,
+            10,
+            2
+          ],
+          [
+            40,
+            21,
+            120,
+            8,
+            9,
+            11
+          ],
+          [
+            23,
+            2,
+            23,
+            160,
+            0,
+            16
+          ],
+          [
+            50,
+            15,
+            5,
+            11,
+            92,
+            12
+          ],
+          [
+            58,
+            11,
+            17,
+            4,
+            3,
+            106
+          ]
+        ]
+      },
+      "dp": "None",
+      "secagg": "FedEnsemble Rule Combination",
+      "time": 0.8719966411590576
+    },
+    {
+      "split": "Unseen-Subject Group Split",
+      "config": "3. Standard Neural FedAvg",
+      "metrics": {
+        "accuracy": 0.4451,
+        "precision": 0.4366,
+        "recall": 0.4451,
+        "f1_score": 0.4362,
+        "macro_f1": 0.4298,
+        "per_class_recall": [
+          0.5124,
+          0.3568,
+          0.4354,
+          0.6518,
+          0.4595,
+          0.196
+        ],
+        "mcc": 0.3296,
+        "cohen_kappa": 0.3282,
+        "roc_auc": 0.7935,
+        "confusion_matrix": [
+          [
+            145,
+            35,
+            20,
+            25,
+            39,
+            19
+          ],
+          [
+            57,
+            66,
+            28,
+            12,
+            18,
+            4
+          ],
+          [
+            32,
+            27,
+            91,
+            28,
+            5,
+            26
+          ],
+          [
+            27,
+            3,
+            24,
+            146,
+            3,
+            21
+          ],
+          [
+            31,
+            39,
+            19,
+            8,
+            85,
+            3
+          ],
+          [
+            48,
+            19,
+            21,
+            37,
+            35,
+            39
+          ]
+        ]
+      },
+      "dp": "None",
+      "secagg": "None",
+      "time": 3.2064599990844727
+    },
+    {
+      "split": "Unseen-Subject Group Split",
+      "config": "4. FL + Paillier SecAgg",
+      "metrics": {
+        "accuracy": 0.4638,
+        "precision": 0.4597,
+        "recall": 0.4638,
+        "f1_score": 0.4575,
+        "macro_f1": 0.45,
+        "per_class_recall": [
+          0.523,
+          0.2919,
+          0.4019,
+          0.7009,
+          0.4486,
+          0.3518
+        ],
+        "mcc": 0.3528,
+        "cohen_kappa": 0.3515,
+        "roc_auc": 0.7994,
+        "confusion_matrix": [
+          [
+            148,
+            25,
+            18,
+            28,
+            24,
+            40
+          ],
+          [
+            46,
+            54,
+            44,
+            9,
+            22,
+            10
+          ],
+          [
+            26,
+            19,
+            84,
+            54,
+            3,
+            23
+          ],
+          [
+            17,
+            7,
+            13,
+            157,
+            0,
+            30
+          ],
+          [
+            25,
+            21,
+            6,
+            11,
+            83,
+            39
+          ],
+          [
+            39,
+            9,
+            12,
+            38,
+            31,
+            70
+          ]
+        ]
+      },
+      "dp": "None",
+      "secagg": "Paillier PHE",
+      "time": 116.51281261444092
+    },
+    {
+      "split": "Unseen-Subject Group Split",
+      "config": "5. FL + Differential Privacy",
+      "metrics": {
+        "accuracy": 0.4132,
+        "precision": 0.4253,
+        "recall": 0.4132,
+        "f1_score": 0.4048,
+        "macro_f1": 0.3944,
+        "per_class_recall": [
+          0.6714,
+          0.373,
+          0.2536,
+          0.4911,
+          0.2703,
+          0.2965
+        ],
+        "mcc": 0.2899,
+        "cohen_kappa": 0.2844,
+        "roc_auc": 0.7725,
+        "confusion_matrix": [
+          [
+            190,
+            36,
+            15,
+            11,
+            19,
+            12
+          ],
+          [
+            66,
+            69,
+            31,
+            6,
+            9,
+            4
+          ],
+          [
+            42,
+            38,
+            53,
+            26,
+            7,
+            43
+          ],
+          [
+            53,
+            1,
+            25,
+            110,
+            0,
+            35
+          ],
+          [
+            48,
+            47,
+            13,
+            3,
+            50,
+            24
+          ],
+          [
+            79,
+            7,
+            18,
+            10,
+            26,
+            59
+          ]
+        ]
+      },
+      "dp": "\u03b5=9385, \u03b4=1e-5",
+      "secagg": "None",
+      "time": 3.131639242172241
+    },
+    {
+      "split": "Unseen-Subject Group Split",
+      "config": "6. FL + DP + Paillier SecAgg",
+      "metrics": {
+        "accuracy": 0.4607,
+        "precision": 0.462,
+        "recall": 0.4607,
+        "f1_score": 0.4539,
+        "macro_f1": 0.4456,
+        "per_class_recall": [
+          0.4841,
+          0.2486,
+          0.5598,
+          0.7143,
+          0.3405,
+          0.3467
+        ],
+        "mcc": 0.3496,
+        "cohen_kappa": 0.3475,
+        "roc_auc": 0.7987,
+        "confusion_matrix": [
+          [
+            137,
+            26,
+            27,
+            32,
+            22,
+            39
+          ],
+          [
+            55,
+            46,
+            58,
+            1,
+            12,
+            13
+          ],
+          [
+            20,
+            25,
+            117,
+            23,
+            1,
+            23
+          ],
+          [
+            13,
+            3,
+            34,
+            160,
+            2,
+            12
+          ],
+          [
+            35,
+            38,
+            24,
+            1,
+            63,
+            24
+          ],
+          [
+            39,
+            8,
+            38,
+            33,
+            12,
+            69
+          ]
+        ]
+      },
+      "dp": "\u03b5=9385, \u03b4=1e-5",
+      "secagg": "Paillier PHE",
+      "time": 116.69632768630981
+    }
+  ]
+}

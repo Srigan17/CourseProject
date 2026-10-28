@@ -1,0 +1,209 @@
+{
+  "metadata": {
+    "title": "Final Evidence Reconciliation of Privacy Claims and Threat Models",
+    "audit_timestamp": "2026-10-21T12:01:39Z",
+    "dataset": "Harvard Apple Watch & Fitbit Dataset (aw_fb_data.csv)",
+    "primary_experiment_record": "storage/experiments/controlled_privacy_utility_results.json",
+    "audit_record": "storage/experiments/controlled_privacy_utility_audit.json",
+    "locked_test_size": 1253,
+    "architecture": "MLP (128, 64), parameter dimension d=11,206",
+    "rounds_T": 8,
+    "clients_K": 3,
+    "fedprox_mu": 0.05,
+    "clipping_bound_C": 8.0,
+    "noise_multiplier_sigma": 0.01,
+    "delta": 1e-05,
+    "paillier_key_size": 512
+  },
+  "experimental_results_reconciliation": {
+    "status": "RECONCILED",
+    "explanation_of_discrepancy": "In the previous audit report (reports/final_privacy_claims_audit.md), an accidental transcription conflation error occurred. The Plaintext FedProx baseline (Config A, 75.26%) was misreported as 68.74%, the FedProx regularization parameter was misstated as mu=0.001 instead of the true mu=0.05, and the seeds were listed as [42, 43, 44] instead of the actual evaluated seeds [42, 100, 2026]. This error arose because the author conflated Config A (FedProx Plaintext, no DP, no Paillier: 75.26%) with the controlled lockstep Paillier numerical equivalence study on Config D (where plaintext-aggregated and Paillier-aggregated variants with identical DP noise both scored 68.74% +- 0.32%, a 0.0000% delta). Inspection of the actual experiment files confirms no new training runs occurred, and historical results in storage/experiments/controlled_privacy_utility_results.json are fully valid and preserved.",
+    "traceable_baselines": {
+      "plaintext_fedprox_baseline_config_A": {
+        "experiment_record": "storage/experiments/controlled_privacy_utility_results.json -> phase2_four_configurations_test.Config_A_FedProx_Plaintext",
+        "script_source": "scripts/run_controlled_privacy_utility_study.py, lines 394-404",
+        "accuracy": 0.7526,
+        "macro_f1": 0.752,
+        "seed": 42,
+        "fedprox_mu": 0.05,
+        "dp_enabled": false,
+        "paillier_enabled": false
+      },
+      "fedprox_paillier_phe_config_B": {
+        "experiment_record": "storage/experiments/controlled_privacy_utility_results.json -> phase2_four_configurations_test.Config_B_FedProx_Paillier",
+        "script_source": "scripts/run_controlled_privacy_utility_study.py, lines 405-415",
+        "accuracy": 0.7382,
+        "macro_f1": 0.7368,
+        "seed": 42,
+        "fedprox_mu": 0.05,
+        "dp_enabled": false,
+        "paillier_enabled": true
+      },
+      "fedprox_dp_only_config_C": {
+        "experiment_record": "storage/experiments/controlled_privacy_utility_results.json -> phase2_four_configurations_test.Config_C_FedProx_DP",
+        "script_source": "scripts/run_controlled_privacy_utility_study.py, lines 416-427",
+        "accuracy": 0.6911,
+        "macro_f1": 0.6866,
+        "seed": 42,
+        "fedprox_mu": 0.05,
+        "dp_enabled": true,
+        "paillier_enabled": false,
+        "clipping_bound_C": 8.0,
+        "noise_multiplier_sigma": 0.01
+      },
+      "proposed_combined_single_run_config_D": {
+        "experiment_record": "storage/experiments/controlled_privacy_utility_results.json -> phase2_four_configurations_test.Config_D_FedProx_DP_Paillier",
+        "script_source": "scripts/run_controlled_privacy_utility_study.py, lines 428-440",
+        "accuracy": 0.6943,
+        "macro_f1": 0.689,
+        "seed": 42,
+        "noise_seed_base": 9999,
+        "fedprox_mu": 0.05,
+        "dp_enabled": true,
+        "paillier_enabled": true,
+        "clipping_bound_C": 8.0,
+        "noise_multiplier_sigma": 0.01
+      },
+      "proposed_combined_multi_seed_phase3": {
+        "experiment_record": "storage/experiments/controlled_privacy_utility_results.json -> phase3_multi_seed_shortlisted",
+        "script_source": "scripts/run_controlled_privacy_utility_study.py, lines 515-545",
+        "seeds": [
+          42,
+          100,
+          2026
+        ],
+        "mean_accuracy": 0.6874,
+        "sample_std_accuracy_ddof1": 0.0032,
+        "population_std_accuracy_ddof0": 0.0026,
+        "mean_macro_f1": 0.685,
+        "sample_std_macro_f1_ddof1": 0.0042,
+        "individual_runs": [
+          {
+            "seed": 42,
+            "accuracy": 0.6856,
+            "macro_f1": 0.6847,
+            "noise_seed_base": 4200
+          },
+          {
+            "seed": 100,
+            "accuracy": 0.6911,
+            "macro_f1": 0.6893,
+            "noise_seed_base": 10000
+          },
+          {
+            "seed": 2026,
+            "accuracy": 0.6856,
+            "macro_f1": 0.681,
+            "noise_seed_base": 202600
+          }
+        ]
+      }
+    }
+  },
+  "privacy_guarantee_verification": {
+    "protocol_client_participation": "Full participation (q = 1.0) of K = 3 fixed clients across all T = 8 rounds.",
+    "released_transcripts_per_round": "In each round t in {1..8}, the coordinator decrypts only the accumulated homomorphic sum and divides by K=3 to broadcast delta_global^(t) = (1/K) sum_{i=1}^K tilde{Delta}_i^(t) + (1/K) sum_{i=1}^K eta_i^(t). An external analyst observes the sequence (delta_global^(1), ..., delta_global^(8)).",
+    "adjacency_analysis": {
+      "case_1_add_remove_zero_baseline": {
+        "definition": "Neighboring cohorts D, D' differ by the presence of client j, where non-participation contributes null update 0 with fixed denominator K=3.",
+        "sensitivity_Delta_2": 2.6666666666666665,
+        "effective_noise_multiplier": 0.017320508075688773,
+        "single_round_epsilon": 1943.71,
+        "eight_round_composed_rdp_epsilon": 14116.93,
+        "eight_round_exact_balle_wang_epsilon": 14116.93,
+        "gap": 0.0,
+        "validity": "CONDITIONALLY VALID. Valid mathematically ONLY under the artificial assumption that missing client contributes null update 0 and denominator remains K=3."
+      },
+      "case_2_add_remove_varying_denominator": {
+        "definition": "Neighboring cohort D' has K-1=2 clients and aggregator divides by 2 instead of 3.",
+        "sensitivity_Delta_2": 5.333333333333333,
+        "effective_noise_multiplier": 0.008660254037844387,
+        "finding": "Sensitivity is 2C/3 = 16/3, identical to replacement adjacency. Furthermore, noise variance shifts between K=3 and K=2 worlds, violating standard Gaussian mechanism assumptions unless padded."
+      },
+      "case_3_replacement_adjacency": {
+        "definition": "Neighboring cohort D' replaces client j's dataset with an arbitrary alternative dataset, shifting clipped update from tilde{Delta}_j to tilde{Delta}_j'.",
+        "sensitivity_Delta_2": 5.333333333333333,
+        "effective_noise_multiplier": 0.008660254037844387,
+        "single_round_epsilon": 7220.75,
+        "eight_round_composed_rdp_epsilon": 54900.53,
+        "eight_round_exact_balle_wang_epsilon": 54900.53,
+        "gap": 0.0,
+        "validity": "FULLY VALID FOR FIXED-COHORT FL. This is the realistic adjacency for a fixed consortium of 3 hospitals."
+      },
+      "case_4_single_client_server_view_bounded": {
+        "definition": "Untrusted server in plaintext FL observing individual client updates relative to null update 0.",
+        "sensitivity_Delta_2": 8.0,
+        "effective_noise_multiplier": 0.01,
+        "single_round_epsilon": 5479.85,
+        "eight_round_composed_epsilon": 41357.23
+      },
+      "case_5_single_client_server_view_replacement": {
+        "definition": "Untrusted server in plaintext FL observing individual client updates under replacement.",
+        "sensitivity_Delta_2": 16.0,
+        "effective_noise_multiplier": 0.005,
+        "single_round_epsilon": 20959.71,
+        "eight_round_composed_epsilon": 162714.46
+      }
+    },
+    "reconciliation_verdict_on_epsilon_14116": "The reported value epsilon = 14,116.93 represents the composed privacy loss over all T=8 rounds under the specific condition of Add/Remove Client Adjacency with fixed denominator K=3 and zero-padded non-participation. However, for realistic fixed-cohort federated learning where K=3 hospitals always participate, the true replacement client adjacency yields sensitivity Delta_2 = 16/3 and composed privacy loss epsilon = 54,900.53. Crucially, both epsilon = 14,116.93 and epsilon = 54,900.53 represent empirical noise perturbation, not formal differential privacy (as exp(14116) = inf). Neither bound provides formal cryptographic indistinguishability."
+  },
+  "paillier_security_boundary_verification": {
+    "key_holder_in_implementation": "The central coordinator instance (PaillierSecureAggregationService) holds BOTH public_key and private_key in memory.",
+    "script_location": "backend/app/privacy/secure_aggregation.py, lines 37-43; scripts/run_controlled_privacy_utility_study.py, line 259",
+    "server_decryption_capability": "UNRESTRICTED IN CODE. The entity running the simulation runner has the private key and could decrypt individual client updates if malicious.",
+    "threat_model_gap": "In the prototype implementation, claiming individual-update confidentiality against the server is technically invalid because the server possesses the private key.",
+    "required_production_assumptions": [
+      "Assumption 1: Independent Key Authority (Decryption Escrow) that generates keys and only decrypts verified aggregate ciphertexts.",
+      "Assumption 2: (t, n) Threshold Paillier cryptosystem, where private key shares are distributed across hospital nodes and decryption requires cooperative participation."
+    ]
+  },
+  "unsupported_claims_correction": {
+    "model_inversion_resistance": {
+      "claimed_property": "Gaussian noise prevents deep leakage from gradients (DLG) and reconstruction attacks.",
+      "audit_verdict": "UNSUPPORTED HEURISTIC CONJECTURE",
+      "factual_reason": "No reconstruction attacks (DLG, iDLG, GradInversion) were implemented or benchmarked in this codebase. While gradient perturbation intuitively degrades gradient-matching optimization, claiming prevention without attack benchmarks is unscientific."
+    },
+    "formal_dp_vs_empirical_noise": {
+      "claimed_property": "The system achieves formal differential privacy at sigma=0.01.",
+      "audit_verdict": "FALSE / UNSUPPORTED",
+      "factual_reason": "At sigma=0.01, epsilon is between 14,116.93 and 54,900.53. Formal DP requires epsilon <= O(1). This operating point is strictly empirical gradient perturbation."
+    },
+    "subsampled_accountant_applicability": {
+      "claimed_property": "Subsampling clients at rate q=0.05 alone reduces epsilon to ~208.",
+      "audit_verdict": "CONDITIONALLY VALID APPROXIMATION, BUT INSUFFICIENT",
+      "factual_reason": "The naive q^2 scaling formula is a first-order approximation that breaks down when sigma << 1. When base epsilon >> 10^4, privacy amplification by subsampling cannot provide formal DP without simultaneously raising sigma to >= 0.50."
+    },
+    "dimension_reduction_dp_effect": {
+      "claimed_property": "Compressing parameter dimension from d=11,206 to d=500 improves epsilon.",
+      "audit_verdict": "FALSE",
+      "factual_reason": "Gaussian DP formulas depend only on sensitivity Delta_2, noise std sigma_param, T, and delta. Dimension d does not appear in epsilon. Compressing d only improves SNR by reducing noise norm E[||eta||_2] by 4.73x, preventing utility collapse under formal noise."
+    },
+    "production_security_of_512bit_paillier": {
+      "claimed_property": "512-bit Paillier keys provide sufficient security for real-world deployment.",
+      "audit_verdict": "FALSE",
+      "factual_reason": "512-bit moduli are vulnerable to GNFS integer factorization. NIST SP 800-57 mandates >= 2048 bits for current production systems."
+    }
+  },
+  "categorized_claims_summary": {
+    "verified_facts": [
+      "Plaintext FedProx baseline achieved 75.26% test accuracy and 75.20% macro-F1 (mu=0.05, T=8, E=12, seed 42) in Phase 2.",
+      "Proposed combined FedProx + DP + Paillier achieved 68.74% +- 0.32% test accuracy across seeds 42, 100, 2026 (Phase 3).",
+      "Paillier encryption induces exactly 0.0000% accuracy penalty under identical noise draws and model inputs.",
+      "Fixed-point scaling (scale=1e6) bounds round-by-round vector error to max abs error <= 4.93e-7 and relative error <= 3.54e-6.",
+      "Continuous Mironov (2017) RDP infimum matches Balle & Wang (2018) exact Gaussian CDF inversion with 0.000000 gap."
+    ],
+    "conditional_claims": [
+      "Epsilon = 14,116.93 is valid ONLY under Add/Remove Client Adjacency with fixed denominator K=3 and null-baseline participation (0).",
+      "Individual update confidentiality under Paillier is valid ONLY if the private key is held by an independent Key Authority or split via Threshold Paillier."
+    ],
+    "unsupported_claims": [
+      "Claim that Gaussian noise prevents model inversion without an empirical reconstruction benchmark.",
+      "Claim of Record-Level (patient-level) differential privacy (local Adam training is unclipped at the sample level).",
+      "Claim that client subsampling q=0.05 alone provides formal privacy without scaling noise to sigma >= 0.50."
+    ],
+    "unresolved_questions": [
+      "Empirical reconstruction resistance threshold: What is the minimum sigma required to prevent gradient leakage under an actual DLG attack?",
+      "Production performance of >=2048-bit Paillier: What is the encryption/decryption latency overhead on real hospital edge devices?"
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "experiment_mode": "[Optimized v2] Continuous FL FedProx (128x64, \u03bc=0.05, Plaintext)",
+  "model_architecture": "mlp",
+  "task": "classification",
+  "dataset_id": "apple_watch",
+  "split_strategy": "random_record",
+  "num_clients": 3,
+  "rounds_completed": 8,
+  "local_epochs": 12,
+  "learning_rate": 0.01,
+  "batch_size": 32,
+  "differential_privacy_enabled": false,
+  "secure_aggregation_enabled": false,
+  "secagg_protocol": "None",
+  "elapsed_time_sec": 9.12,
+  "metrics": {
+    "accuracy": 0.7646,
+    "macro_f1": 0.7634,
+    "weighted_f1": 0.7644,
+    "mcc": 0.7163,
+    "cohen_kappa": 0.7161,
+    "per_class_recall": [
+      0.7319,
+      0.6895,
+      0.795,
+      0.87,
+      0.7753,
+      0.7204
+    ],
+    "confusion_matrix": [
+      [
+        202,
+        14,
+        12,
+        10,
+        20,
+        18
+      ],
+      [
+        34,
+        131,
+        12,
+        2,
+        7,
+        4
+      ],
+      [
+        8,
+        10,
+        159,
+        7,
+        3,
+        13
+      ],
+      [
+        5,
+        0,
+        12,
+        194,
+        0,
+        12
+      ],
+      [
+        16,
+        8,
+        8,
+        0,
+        138,
+        8
+      ],
+      [
+        8,
+        3,
+        17,
+        10,
+        14,
+        134
+      ]
+    ]
+  },
+  "id": "bdf8dc35",
+  "created_at": "2026-10-20T17:23:22.699937+00:00"
+}

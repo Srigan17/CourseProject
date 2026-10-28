@@ -1,0 +1,138 @@
+{
+  "data_leakage_and_splits": {
+    "total_samples": 6264,
+    "num_features": 19,
+    "features": [
+      "age",
+      "gender",
+      "height",
+      "weight",
+      "steps",
+      "hear_rate",
+      "calories",
+      "distance",
+      "entropy_heart",
+      "entropy_setps",
+      "resting_heart",
+      "corr_heart_steps",
+      "norm_heart",
+      "intensity_karvonen",
+      "sd_norm_heart",
+      "steps_times_distance",
+      "heart_elevation",
+      "metabolic_intensity",
+      "step_cadence"
+    ],
+    "subtrain_samples": 4008,
+    "validation_samples": 1003,
+    "full_train_samples": 5011,
+    "held_out_test_samples": 1253,
+    "test_class_distribution": {
+      "Lying": 276,
+      "Running 3 METs": 190,
+      "Running 5 METs": 200,
+      "Running 7 METs": 223,
+      "Self Pace walk": 178,
+      "Sitting": 186
+    },
+    "val_class_distribution": {
+      "Lying": 221,
+      "Running 3 METs": 152,
+      "Running 5 METs": 161,
+      "Running 7 METs": 178,
+      "Self Pace walk": 142,
+      "Sitting": 149
+    }
+  },
+  "paillier_round_equivalence": [
+    {
+      "round": 1,
+      "max_abs_diff": 4.7034225342940106e-07,
+      "mean_abs_diff": 1.350141336904974e-07,
+      "l2_diff": 1.7561766688468344e-05,
+      "accuracy_plaintext": 0.4014365522745411,
+      "accuracy_encrypted": 0.4014365522745411,
+      "secagg_duration_sec": 44.023
+    },
+    {
+      "round": 2,
+      "max_abs_diff": 4.829912567203692e-07,
+      "mean_abs_diff": 1.347250557505708e-07,
+      "l2_diff": 1.7532394938032535e-05,
+      "accuracy_plaintext": 0.4509177972865124,
+      "accuracy_encrypted": 0.4509177972865124,
+      "secagg_duration_sec": 42.459
+    },
+    {
+      "round": 3,
+      "max_abs_diff": 4.7496330803434295e-07,
+      "mean_abs_diff": 1.358991444097443e-07,
+      "l2_diff": 1.7696274040215916e-05,
+      "accuracy_plaintext": 0.4876296887470072,
+      "accuracy_encrypted": 0.4876296887470072,
+      "secagg_duration_sec": 42.804
+    },
+    {
+      "round": 4,
+      "max_abs_diff": 4.851470067233563e-07,
+      "mean_abs_diff": 1.3636939905647996e-07,
+      "l2_diff": 1.7808245615626138e-05,
+      "accuracy_plaintext": 0.515562649640862,
+      "accuracy_encrypted": 0.515562649640862,
+      "secagg_duration_sec": 45.898
+    },
+    {
+      "round": 5,
+      "max_abs_diff": 4.804715001607146e-07,
+      "mean_abs_diff": 1.3556504070900498e-07,
+      "l2_diff": 1.7654902827505167e-05,
+      "accuracy_plaintext": 0.5307262569832403,
+      "accuracy_encrypted": 0.5307262569832403,
+      "secagg_duration_sec": 47.908
+    },
+    {
+      "round": 6,
+      "max_abs_diff": 4.6299907589027883e-07,
+      "mean_abs_diff": 1.363878704743733e-07,
+      "l2_diff": 1.7722896690121773e-05,
+      "accuracy_plaintext": 0.5578611332801277,
+      "accuracy_encrypted": 0.5578611332801277,
+      "secagg_duration_sec": 47.881
+    },
+    {
+      "round": 7,
+      "max_abs_diff": 4.821188434090719e-07,
+      "mean_abs_diff": 1.372141239588615e-07,
+      "l2_diff": 1.7834740483083432e-05,
+      "accuracy_plaintext": 0.5722266560255387,
+      "accuracy_encrypted": 0.5722266560255387,
+      "secagg_duration_sec": 48.263
+    },
+    {
+      "round": 8,
+      "max_abs_diff": 4.797959096292798e-07,
+      "mean_abs_diff": 1.3537947897622792e-07,
+      "l2_diff": 1.762387480402637e-05,
+      "accuracy_plaintext": 0.6009577015163607,
+      "accuracy_encrypted": 0.6009577015163607,
+      "secagg_duration_sec": 48.077
+    }
+  ],
+  "seed_reconciliation": {
+    "condition_a_fresh_seed42_plaintext": 0.5985634477254589,
+    "condition_b_fresh_seed42_secagg": 0.5953711093375897,
+    "condition_c_sequential_step7": 0.6129289704708699
+  },
+  "privacy_accounting": {
+    "T": 8,
+    "C": 5.0,
+    "sigma_multiplier": 0.02,
+    "sigma_param": 0.1,
+    "delta": 1e-05,
+    "q": 1.0,
+    "optimal_alpha": 1.033931,
+    "verified_epsilon": 10678.61,
+    "privacy_unit": "Client-Level DP (delta perturbations across 3 client updates)",
+    "interpretation": "Empirical gradient perturbation / defense-in-depth, NOT formal cryptographic or record-level privacy."
+  }
+}

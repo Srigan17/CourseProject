@@ -1,0 +1,100 @@
+{
+  "experiment_mode": "[Optimized Study] Proposed FL + DP + Paillier SecAgg (Random Split)",
+  "model_architecture": "mlp",
+  "task": "classification",
+  "dataset_id": "apple_watch",
+  "split_strategy": "random_record",
+  "num_clients": 3,
+  "rounds_completed": 8,
+  "local_epochs": 12,
+  "learning_rate": 0.01,
+  "batch_size": 32,
+  "differential_privacy_enabled": true,
+  "dp_budget": {
+    "epsilon": 10678.61,
+    "delta": 1e-05,
+    "raw_epsilon": 10678.614,
+    "clipping_norm": 3.0,
+    "noise_multiplier": 0.02,
+    "num_rounds": 8,
+    "sample_rate": 1.0,
+    "is_private": true,
+    "privacy_level": "Client-Level DP (Sensitivity bounded per hospital update)",
+    "guarantee": "(\u03b5=10678.61, \u03b4=1e-05)-DP satisfied after 8 rounds",
+    "mechanism": "Gaussian Mechanism (RDP Analytical Composition)",
+    "audit_note": "Calculated via closed-form R\u00e9nyi Differential Privacy for Gaussian Mechanism"
+  },
+  "secure_aggregation_enabled": true,
+  "secagg_protocol": "Paillier 512-bit PHE",
+  "elapsed_time_sec": 372.04,
+  "metrics": {
+    "accuracy": 0.6026,
+    "precision": 0.6146,
+    "recall": 0.6026,
+    "f1_score": 0.6033,
+    "macro_f1": 0.5999,
+    "per_class_recall": [
+      0.5688,
+      0.7158,
+      0.575,
+      0.7444,
+      0.5112,
+      0.4839
+    ],
+    "mcc": 0.5232,
+    "cohen_kappa": 0.5209,
+    "roc_auc": 0.8971,
+    "confusion_matrix": [
+      [
+        157,
+        54,
+        11,
+        14,
+        19,
+        21
+      ],
+      [
+        30,
+        136,
+        13,
+        1,
+        7,
+        3
+      ],
+      [
+        16,
+        41,
+        115,
+        12,
+        6,
+        10
+      ],
+      [
+        13,
+        2,
+        19,
+        166,
+        3,
+        20
+      ],
+      [
+        24,
+        44,
+        3,
+        2,
+        91,
+        14
+      ],
+      [
+        31,
+        9,
+        22,
+        13,
+        21,
+        90
+      ]
+    ]
+  },
+  "id": "4528aeb2",
+  "created_at": "2026-10-20T12:12:39.257861+00:00"
+}

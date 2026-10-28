@@ -1,0 +1,166 @@
+{
+  "metadata": {
+    "title": "Differential Privacy Accountant Verification and Operating Point Decision Study",
+    "timestamp": "2026-10-21T11:28:34Z",
+    "dataset": "Harvard Apple Watch & Fitbit Dataset (aw_fb_data.csv)",
+    "validation_samples": 1003,
+    "subtrain_samples": 4008,
+    "num_clients": 3,
+    "rounds_T": 8,
+    "delta": 1e-05,
+    "client_participation_q": 1.0
+  },
+  "baseline_nodp_fedprox": {
+    "val_accuracy": 0.6999,
+    "val_macro_f1": 0.7006,
+    "val_weighted_f1": 0.6998,
+    "val_mcc": 0.6391,
+    "runtime_sec": 7.92
+  },
+  "operating_points": [
+    {
+      "clipping_bound_C": 8.0,
+      "noise_multiplier_sigma": 0.01,
+      "sigma_param": 0.08,
+      "description": "High-Utility Empirical Noise (Optimized)",
+      "val_accuracy": 0.6421,
+      "val_macro_f1": 0.6376,
+      "val_weighted_f1": 0.64,
+      "val_mcc": 0.5687,
+      "runtime_sec": 8.1,
+      "privacy_accounting": {
+        "bounded_norm_sensitivity_C": {
+          "mironov_rdp_prop3_epsilon": 41357.23,
+          "optimal_alpha": 1.017,
+          "balle_wang_exact_epsilon": 41357.23,
+          "rdp_conversion_gap": 0.0
+        },
+        "replacement_sensitivity_2C": {
+          "mironov_rdp_prop3_epsilon": 162714.46,
+          "balle_wang_exact_epsilon": 162714.46
+        }
+      },
+      "formal_classification": "Empirical Gradient Noise"
+    },
+    {
+      "clipping_bound_C": 8.0,
+      "noise_multiplier_sigma": 0.02,
+      "sigma_param": 0.16,
+      "description": "Moderate Empirical Perturbation",
+      "val_accuracy": 0.4616,
+      "val_macro_f1": 0.445,
+      "val_weighted_f1": 0.4529,
+      "val_mcc": 0.35,
+      "runtime_sec": 8.01,
+      "privacy_accounting": {
+        "bounded_norm_sensitivity_C": {
+          "mironov_rdp_prop3_epsilon": 10678.61,
+          "optimal_alpha": 1.0339,
+          "balle_wang_exact_epsilon": 10678.61,
+          "rdp_conversion_gap": 0.0
+        },
+        "replacement_sensitivity_2C": {
+          "mironov_rdp_prop3_epsilon": 41357.23,
+          "balle_wang_exact_epsilon": 41357.23
+        }
+      },
+      "formal_classification": "Empirical Gradient Noise"
+    },
+    {
+      "clipping_bound_C": 8.0,
+      "noise_multiplier_sigma": 0.1,
+      "sigma_param": 0.8,
+      "description": "Weak DP Candidate",
+      "val_accuracy": 0.2223,
+      "val_macro_f1": 0.1836,
+      "val_weighted_f1": 0.1936,
+      "val_mcc": 0.0673,
+      "runtime_sec": 7.7,
+      "privacy_accounting": {
+        "bounded_norm_sensitivity_C": {
+          "mironov_rdp_prop3_epsilon": 535.72,
+          "optimal_alpha": 1.1697,
+          "balle_wang_exact_epsilon": 535.72,
+          "rdp_conversion_gap": 0.0
+        },
+        "replacement_sensitivity_2C": {
+          "mironov_rdp_prop3_epsilon": 1871.45,
+          "balle_wang_exact_epsilon": 1871.45
+        }
+      },
+      "formal_classification": "Empirical Gradient Noise"
+    },
+    {
+      "clipping_bound_C": 8.0,
+      "noise_multiplier_sigma": 0.5,
+      "sigma_param": 4.0,
+      "description": "Moderate Formal DP Candidate",
+      "val_accuracy": 0.1854,
+      "val_macro_f1": 0.1107,
+      "val_weighted_f1": 0.1259,
+      "val_mcc": -0.0116,
+      "runtime_sec": 8.04,
+      "privacy_accounting": {
+        "bounded_norm_sensitivity_C": {
+          "mironov_rdp_prop3_epsilon": 43.14,
+          "optimal_alpha": 1.8483,
+          "balle_wang_exact_epsilon": 43.14,
+          "rdp_conversion_gap": 0.0
+        },
+        "replacement_sensitivity_2C": {
+          "mironov_rdp_prop3_epsilon": 118.29,
+          "balle_wang_exact_epsilon": 118.29
+        }
+      },
+      "formal_classification": "Weak DP"
+    },
+    {
+      "clipping_bound_C": 8.0,
+      "noise_multiplier_sigma": 1.0,
+      "sigma_param": 8.0,
+      "description": "Strong Formal DP Candidate",
+      "val_accuracy": 0.1635,
+      "val_macro_f1": 0.1024,
+      "val_weighted_f1": 0.1134,
+      "val_mcc": -0.0321,
+      "runtime_sec": 8.07,
+      "privacy_accounting": {
+        "bounded_norm_sensitivity_C": {
+          "mironov_rdp_prop3_epsilon": 17.57,
+          "optimal_alpha": 2.6965,
+          "balle_wang_exact_epsilon": 17.57,
+          "rdp_conversion_gap": 0.0
+        },
+        "replacement_sensitivity_2C": {
+          "mironov_rdp_prop3_epsilon": 43.14,
+          "balle_wang_exact_epsilon": 43.14
+        }
+      },
+      "formal_classification": "Weak DP"
+    },
+    {
+      "clipping_bound_C": 5.0,
+      "noise_multiplier_sigma": 0.02,
+      "sigma_param": 0.1,
+      "description": "Previous Benchmark Configuration (C=5, sigma=0.02)",
+      "val_accuracy": 0.5763,
+      "val_macro_f1": 0.5678,
+      "val_weighted_f1": 0.5693,
+      "val_mcc": 0.4919,
+      "runtime_sec": 7.89,
+      "privacy_accounting": {
+        "bounded_norm_sensitivity_C": {
+          "mironov_rdp_prop3_epsilon": 10678.61,
+          "optimal_alpha": 1.0339,
+          "balle_wang_exact_epsilon": 10678.61,
+          "rdp_conversion_gap": 0.0
+        },
+        "replacement_sensitivity_2C": {
+          "mironov_rdp_prop3_epsilon": 41357.23,
+          "balle_wang_exact_epsilon": 41357.23
+        }
+      },
+      "formal_classification": "Empirical Gradient Noise"
+    }
+  ]
+}

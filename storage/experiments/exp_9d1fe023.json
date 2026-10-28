@@ -1,0 +1,202 @@
+{
+  "experiment_mode": "FL (MLP) + Differential Privacy + Secure Aggregation",
+  "model_architecture": "mlp",
+  "task": "regression",
+  "dataset_id": "mi_band",
+  "num_clients": 3,
+  "rounds_completed": 5,
+  "local_epochs": 5,
+  "learning_rate": 0.01,
+  "batch_size": 32,
+  "differential_privacy_enabled": true,
+  "dp_budget": {
+    "epsilon": 6786.49,
+    "delta": 1e-05,
+    "raw_epsilon": 6786.4915,
+    "clipping_norm": 5.0,
+    "noise_multiplier": 0.02,
+    "num_rounds": 5,
+    "sample_rate": 1.0,
+    "is_private": true,
+    "privacy_level": "Client-Level DP (Model delta bounded per hospital node; Record-Level DP unverified)",
+    "privacy_regime": "Empirical Noise Perturbation (Weak Privacy)",
+    "guarantee": "(\u03b5=6786.49, \u03b4=1e-05)-DP satisfied after 5 rounds",
+    "mechanism": "Gaussian Mechanism (RDP Analytical Composition)",
+    "audit_note": "Calculated via closed-form R\u00e9nyi Differential Privacy. Assumes Client-Level adjacency and full client participation."
+  },
+  "secure_aggregation_enabled": true,
+  "secagg_protocol": "Paillier Homomorphic Cryptosystem",
+  "communication_cost_kb": 5161.88,
+  "elapsed_time_sec": 59.6177,
+  "metrics": {
+    "mae": 44.5677,
+    "mse": 7743.574,
+    "rmse": 87.9976,
+    "r2_score": 0.818,
+    "mape": 0.3496
+  },
+  "round_history": [
+    {
+      "round": 1,
+      "elapsed_sec": 13.0002,
+      "secagg_time_sec": 12.7489,
+      "client_metrics": [
+        {
+          "client_id": "hospital_a",
+          "client_name": "Hospital A",
+          "num_samples": 655,
+          "local_loss": 4481.0243
+        },
+        {
+          "client_id": "hospital_b",
+          "client_name": "Hospital B",
+          "num_samples": 654,
+          "local_loss": 21119.4873
+        },
+        {
+          "client_id": "hospital_c",
+          "client_name": "Hospital C",
+          "num_samples": 654,
+          "local_loss": 102987.7432
+        }
+      ],
+      "eval_metrics": {
+        "mae": 219.902,
+        "mse": 88854.1757,
+        "rmse": 298.0842,
+        "r2_score": -1.0885,
+        "mape": 0.9567
+      }
+    },
+    {
+      "round": 2,
+      "elapsed_sec": 11.6006,
+      "secagg_time_sec": 11.484,
+      "client_metrics": [
+        {
+          "client_id": "hospital_a",
+          "client_name": "Hospital A",
+          "num_samples": 655,
+          "local_loss": 1605.0897
+        },
+        {
+          "client_id": "hospital_b",
+          "client_name": "Hospital B",
+          "num_samples": 654,
+          "local_loss": 4458.1331
+        },
+        {
+          "client_id": "hospital_c",
+          "client_name": "Hospital C",
+          "num_samples": 654,
+          "local_loss": 39796.3094
+        }
+      ],
+      "eval_metrics": {
+        "mae": 157.8369,
+        "mse": 53033.52,
+        "rmse": 230.2901,
+        "r2_score": -0.2465,
+        "mape": 0.8344
+      }
+    },
+    {
+      "round": 3,
+      "elapsed_sec": 11.5075,
+      "secagg_time_sec": 11.4015,
+      "client_metrics": [
+        {
+          "client_id": "hospital_a",
+          "client_name": "Hospital A",
+          "num_samples": 655,
+          "local_loss": 541.0577
+        },
+        {
+          "client_id": "hospital_b",
+          "client_name": "Hospital B",
+          "num_samples": 654,
+          "local_loss": 2819.0652
+        },
+        {
+          "client_id": "hospital_c",
+          "client_name": "Hospital C",
+          "num_samples": 654,
+          "local_loss": 17387.748
+        }
+      ],
+      "eval_metrics": {
+        "mae": 60.8041,
+        "mse": 12239.4629,
+        "rmse": 110.6321,
+        "r2_score": 0.7123,
+        "mape": 0.6166
+      }
+    },
+    {
+      "round": 4,
+      "elapsed_sec": 11.6347,
+      "secagg_time_sec": 11.5483,
+      "client_metrics": [
+        {
+          "client_id": "hospital_a",
+          "client_name": "Hospital A",
+          "num_samples": 655,
+          "local_loss": 274.1193
+        },
+        {
+          "client_id": "hospital_b",
+          "client_name": "Hospital B",
+          "num_samples": 654,
+          "local_loss": 722.0008
+        },
+        {
+          "client_id": "hospital_c",
+          "client_name": "Hospital C",
+          "num_samples": 654,
+          "local_loss": 12527.1962
+        }
+      ],
+      "eval_metrics": {
+        "mae": 49.7015,
+        "mse": 8221.8149,
+        "rmse": 90.6742,
+        "r2_score": 0.8068,
+        "mape": 0.428
+      }
+    },
+    {
+      "round": 5,
+      "elapsed_sec": 11.8451,
+      "secagg_time_sec": 11.7586,
+      "client_metrics": [
+        {
+          "client_id": "hospital_a",
+          "client_name": "Hospital A",
+          "num_samples": 655,
+          "local_loss": 215.6632
+        },
+        {
+          "client_id": "hospital_b",
+          "client_name": "Hospital B",
+          "num_samples": 654,
+          "local_loss": 602.1753
+        },
+        {
+          "client_id": "hospital_c",
+          "client_name": "Hospital C",
+          "num_samples": 654,
+          "local_loss": 11239.492
+        }
+      ],
+      "eval_metrics": {
+        "mae": 44.5677,
+        "mse": 7743.574,
+        "rmse": 87.9976,
+        "r2_score": 0.818,
+        "mape": 0.3496
+      }
+    }
+  ],
+  "id": "9d1fe023",
+  "created_at": "2026-10-21T16:40:09.383998+00:00"
+}

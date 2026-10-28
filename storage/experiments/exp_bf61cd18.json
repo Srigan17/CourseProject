@@ -1,0 +1,100 @@
+{
+  "experiment_mode": "[Optimized Study] Proposed FL + DP + Paillier SecAgg (Unseen Subject Group Split)",
+  "model_architecture": "mlp",
+  "task": "classification",
+  "dataset_id": "apple_watch",
+  "split_strategy": "group_subject_leakage_free",
+  "num_clients": 3,
+  "rounds_completed": 8,
+  "local_epochs": 12,
+  "learning_rate": 0.01,
+  "batch_size": 32,
+  "differential_privacy_enabled": true,
+  "dp_budget": {
+    "epsilon": 10678.61,
+    "delta": 1e-05,
+    "raw_epsilon": 10678.614,
+    "clipping_norm": 3.0,
+    "noise_multiplier": 0.02,
+    "num_rounds": 8,
+    "sample_rate": 1.0,
+    "is_private": true,
+    "privacy_level": "Client-Level DP (Sensitivity bounded per hospital update)",
+    "guarantee": "(\u03b5=10678.61, \u03b4=1e-05)-DP satisfied after 8 rounds",
+    "mechanism": "Gaussian Mechanism (RDP Analytical Composition)",
+    "audit_note": "Calculated via closed-form R\u00e9nyi Differential Privacy for Gaussian Mechanism"
+  },
+  "secure_aggregation_enabled": true,
+  "secagg_protocol": "Paillier 512-bit PHE",
+  "elapsed_time_sec": 369.0,
+  "metrics": {
+    "accuracy": 0.5128,
+    "precision": 0.5296,
+    "recall": 0.5128,
+    "f1_score": 0.516,
+    "macro_f1": 0.5151,
+    "per_class_recall": [
+      0.5265,
+      0.5946,
+      0.4593,
+      0.5,
+      0.5892,
+      0.4171
+    ],
+    "mcc": 0.4147,
+    "cohen_kappa": 0.4135,
+    "roc_auc": 0.8213,
+    "confusion_matrix": [
+      [
+        149,
+        41,
+        12,
+        11,
+        30,
+        40
+      ],
+      [
+        26,
+        110,
+        14,
+        3,
+        12,
+        20
+      ],
+      [
+        17,
+        35,
+        96,
+        18,
+        14,
+        29
+      ],
+      [
+        25,
+        2,
+        34,
+        112,
+        7,
+        44
+      ],
+      [
+        31,
+        23,
+        13,
+        1,
+        109,
+        8
+      ],
+      [
+        36,
+        14,
+        42,
+        5,
+        19,
+        83
+      ]
+    ]
+  },
+  "id": "bf61cd18",
+  "created_at": "2026-10-20T12:12:39.270934+00:00"
+}

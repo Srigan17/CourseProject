@@ -1,0 +1,601 @@
+{
+  "experiment_mode": "FL (MLP) + Differential Privacy + Secure Aggregation",
+  "model_architecture": "mlp",
+  "task": "classification",
+  "dataset_id": "apple_watch",
+  "num_clients": 3,
+  "rounds_completed": 5,
+  "local_epochs": 2,
+  "learning_rate": 0.05,
+  "batch_size": 32,
+  "differential_privacy_enabled": true,
+  "dp_budget": {
+    "epsilon": 26072.98,
+    "delta": 1e-05,
+    "raw_epsilon": 26072.983,
+    "clipping_norm": 8.0,
+    "noise_multiplier": 0.01,
+    "num_rounds": 5,
+    "sample_rate": 1.0,
+    "is_private": true,
+    "privacy_level": "Client-Level DP (Model delta bounded per hospital node; Record-Level DP unverified)",
+    "privacy_regime": "Empirical Noise Perturbation (Weak Privacy)",
+    "guarantee": "(\u03b5=26072.98, \u03b4=1e-05)-DP satisfied after 5 rounds",
+    "mechanism": "Gaussian Mechanism (RDP Analytical Composition)",
+    "audit_note": "Calculated via closed-form R\u00e9nyi Differential Privacy. Assumes Client-Level adjacency and full client participation."
+  },
+  "secure_aggregation_enabled": true,
+  "secagg_protocol": "Paillier Homomorphic Cryptosystem",
+  "communication_cost_kb": 6311.25,
+  "elapsed_time_sec": 71.3272,
+  "metrics": {
+    "accuracy": 0.3448,
+    "accuracy_percent": 34.48,
+    "correct_predictions": 432,
+    "total_predictions": 1253,
+    "precision": 0.3445,
+    "recall": 0.3448,
+    "f1_score": 0.3125,
+    "macro_f1": 0.2928,
+    "per_class_recall": [
+      0.4855,
+      0.2789,
+      0.69,
+      0.3946,
+      0.1067,
+      0.0
+    ],
+    "mcc": 0.2206,
+    "cohen_kappa": 0.2065,
+    "roc_auc": 0.7295,
+    "confusion_matrix": [
+      [
+        134,
+        59,
+        61,
+        12,
+        10,
+        0
+      ],
+      [
+        35,
+        53,
+        93,
+        0,
+        8,
+        1
+      ],
+      [
+        17,
+        29,
+        138,
+        11,
+        5,
+        0
+      ],
+      [
+        50,
+        11,
+        73,
+        88,
+        1,
+        0
+      ],
+      [
+        24,
+        51,
+        79,
+        5,
+        19,
+        0
+      ],
+      [
+        56,
+        41,
+        68,
+        5,
+        16,
+        0
+      ]
+    ]
+  },
+  "round_history": [
+    {
+      "round": 1,
+      "elapsed_sec": 15.4047,
+      "secagg_time_sec": 15.2463,
+      "client_metrics": [
+        {
+          "client_id": "hospital_a",
+          "client_name": "Hospital A",
+          "num_samples": 1671,
+          "local_loss": 0.8096,
+          "local_accuracy": 68.76
+        },
+        {
+          "client_id": "hospital_b",
+          "client_name": "Hospital B",
+          "num_samples": 1670,
+          "local_loss": 1.1951,
+          "local_accuracy": 51.74
+        },
+        {
+          "client_id": "hospital_c",
+          "client_name": "Hospital C",
+          "num_samples": 1670,
+          "local_loss": 1.0017,
+          "local_accuracy": 66.05
+        }
+      ],
+      "eval_metrics": {
+        "accuracy": 0.2833,
+        "accuracy_percent": 28.33,
+        "correct_predictions": 355,
+        "total_predictions": 1253,
+        "precision": 0.2456,
+        "recall": 0.2833,
+        "f1_score": 0.2112,
+        "macro_f1": 0.1893,
+        "per_class_recall": [
+          0.779,
+          0.3947,
+          0.065,
+          0.2332,
+          0.0,
+          0.0
+        ],
+        "mcc": 0.131,
+        "cohen_kappa": 0.1106,
+        "roc_auc": 0.6606,
+        "confusion_matrix": [
+          [
+            215,
+            50,
+            6,
+            5,
+            0,
+            0
+          ],
+          [
+            98,
+            75,
+            14,
+            3,
+            0,
+            0
+          ],
+          [
+            91,
+            86,
+            13,
+            10,
+            0,
+            0
+          ],
+          [
+            135,
+            21,
+            15,
+            52,
+            0,
+            0
+          ],
+          [
+            72,
+            88,
+            12,
+            6,
+            0,
+            0
+          ],
+          [
+            129,
+            48,
+            8,
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "elapsed_sec": 14.167,
+      "secagg_time_sec": 14.0293,
+      "client_metrics": [
+        {
+          "client_id": "hospital_a",
+          "client_name": "Hospital A",
+          "num_samples": 1671,
+          "local_loss": 0.7422,
+          "local_accuracy": 71.1
+        },
+        {
+          "client_id": "hospital_b",
+          "client_name": "Hospital B",
+          "num_samples": 1670,
+          "local_loss": 1.1296,
+          "local_accuracy": 52.22
+        },
+        {
+          "client_id": "hospital_c",
+          "client_name": "Hospital C",
+          "num_samples": 1670,
+          "local_loss": 0.9407,
+          "local_accuracy": 66.59
+        }
+      ],
+      "eval_metrics": {
+        "accuracy": 0.3496,
+        "accuracy_percent": 34.96,
+        "correct_predictions": 438,
+        "total_predictions": 1253,
+        "precision": 0.3134,
+        "recall": 0.3496,
+        "f1_score": 0.3027,
+        "macro_f1": 0.2843,
+        "per_class_recall": [
+          0.6159,
+          0.2105,
+          0.155,
+          0.6726,
+          0.2472,
+          0.0161
+        ],
+        "mcc": 0.2109,
+        "cohen_kappa": 0.2028,
+        "roc_auc": 0.7029,
+        "confusion_matrix": [
+          [
+            170,
+            16,
+            10,
+            60,
+            18,
+            2
+          ],
+          [
+            59,
+            40,
+            25,
+            27,
+            35,
+            4
+          ],
+          [
+            38,
+            41,
+            31,
+            61,
+            24,
+            5
+          ],
+          [
+            53,
+            12,
+            4,
+            150,
+            4,
+            0
+          ],
+          [
+            50,
+            43,
+            14,
+            26,
+            44,
+            1
+          ],
+          [
+            95,
+            17,
+            14,
+            34,
+            23,
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "round": 3,
+      "elapsed_sec": 13.9832,
+      "secagg_time_sec": 13.8346,
+      "client_metrics": [
+        {
+          "client_id": "hospital_a",
+          "client_name": "Hospital A",
+          "num_samples": 1671,
+          "local_loss": 0.7137,
+          "local_accuracy": 72.89
+        },
+        {
+          "client_id": "hospital_b",
+          "client_name": "Hospital B",
+          "num_samples": 1670,
+          "local_loss": 1.0459,
+          "local_accuracy": 55.57
+        },
+        {
+          "client_id": "hospital_c",
+          "client_name": "Hospital C",
+          "num_samples": 1670,
+          "local_loss": 0.8829,
+          "local_accuracy": 69.76
+        }
+      ],
+      "eval_metrics": {
+        "accuracy": 0.3073,
+        "accuracy_percent": 30.73,
+        "correct_predictions": 385,
+        "total_predictions": 1253,
+        "precision": 0.447,
+        "recall": 0.3073,
+        "f1_score": 0.2558,
+        "macro_f1": 0.2338,
+        "per_class_recall": [
+          0.3478,
+          0.1,
+          0.895,
+          0.3991,
+          0.0056,
+          0.0054
+        ],
+        "mcc": 0.206,
+        "cohen_kappa": 0.1647,
+        "roc_auc": 0.7212,
+        "confusion_matrix": [
+          [
+            96,
+            19,
+            122,
+            36,
+            3,
+            0
+          ],
+          [
+            19,
+            19,
+            142,
+            7,
+            3,
+            0
+          ],
+          [
+            9,
+            7,
+            179,
+            5,
+            0,
+            0
+          ],
+          [
+            27,
+            0,
+            107,
+            89,
+            0,
+            0
+          ],
+          [
+            10,
+            16,
+            147,
+            4,
+            1,
+            0
+          ],
+          [
+            37,
+            13,
+            122,
+            6,
+            7,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "round": 4,
+      "elapsed_sec": 13.4197,
+      "secagg_time_sec": 13.2776,
+      "client_metrics": [
+        {
+          "client_id": "hospital_a",
+          "client_name": "Hospital A",
+          "num_samples": 1671,
+          "local_loss": 0.7338,
+          "local_accuracy": 73.13
+        },
+        {
+          "client_id": "hospital_b",
+          "client_name": "Hospital B",
+          "num_samples": 1670,
+          "local_loss": 1.0046,
+          "local_accuracy": 61.02
+        },
+        {
+          "client_id": "hospital_c",
+          "client_name": "Hospital C",
+          "num_samples": 1670,
+          "local_loss": 0.8687,
+          "local_accuracy": 68.14
+        }
+      ],
+      "eval_metrics": {
+        "accuracy": 0.3344,
+        "accuracy_percent": 33.44,
+        "correct_predictions": 419,
+        "total_predictions": 1253,
+        "precision": 0.3131,
+        "recall": 0.3344,
+        "f1_score": 0.2437,
+        "macro_f1": 0.2202,
+        "per_class_recall": [
+          0.8406,
+          0.0316,
+          0.11,
+          0.6502,
+          0.0787,
+          0.0
+        ],
+        "mcc": 0.2028,
+        "cohen_kappa": 0.1643,
+        "roc_auc": 0.7107,
+        "confusion_matrix": [
+          [
+            232,
+            0,
+            7,
+            34,
+            3,
+            0
+          ],
+          [
+            141,
+            6,
+            12,
+            21,
+            10,
+            0
+          ],
+          [
+            113,
+            5,
+            22,
+            59,
+            1,
+            0
+          ],
+          [
+            75,
+            0,
+            3,
+            145,
+            0,
+            0
+          ],
+          [
+            127,
+            4,
+            17,
+            16,
+            14,
+            0
+          ],
+          [
+            137,
+            1,
+            12,
+            32,
+            4,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "round": 5,
+      "elapsed_sec": 14.3247,
+      "secagg_time_sec": 14.1813,
+      "client_metrics": [
+        {
+          "client_id": "hospital_a",
+          "client_name": "Hospital A",
+          "num_samples": 1671,
+          "local_loss": 0.7124,
+          "local_accuracy": 74.21
+        },
+        {
+          "client_id": "hospital_b",
+          "client_name": "Hospital B",
+          "num_samples": 1670,
+          "local_loss": 0.9723,
+          "local_accuracy": 60.06
+        },
+        {
+          "client_id": "hospital_c",
+          "client_name": "Hospital C",
+          "num_samples": 1670,
+          "local_loss": 0.8537,
+          "local_accuracy": 67.19
+        }
+      ],
+      "eval_metrics": {
+        "accuracy": 0.3448,
+        "accuracy_percent": 34.48,
+        "correct_predictions": 432,
+        "total_predictions": 1253,
+        "precision": 0.3445,
+        "recall": 0.3448,
+        "f1_score": 0.3125,
+        "macro_f1": 0.2928,
+        "per_class_recall": [
+          0.4855,
+          0.2789,
+          0.69,
+          0.3946,
+          0.1067,
+          0.0
+        ],
+        "mcc": 0.2206,
+        "cohen_kappa": 0.2065,
+        "roc_auc": 0.7295,
+        "confusion_matrix": [
+          [
+            134,
+            59,
+            61,
+            12,
+            10,
+            0
+          ],
+          [
+            35,
+            53,
+            93,
+            0,
+            8,
+            1
+          ],
+          [
+            17,
+            29,
+            138,
+            11,
+            5,
+            0
+          ],
+          [
+            50,
+            11,
+            73,
+            88,
+            1,
+            0
+          ],
+          [
+            24,
+            51,
+            79,
+            5,
+            19,
+            0
+          ],
+          [
+            56,
+            41,
+            68,
+            5,
+            16,
+            0
+          ]
+        ]
+      }
+    }
+  ],
+  "id": "111f6a1c",
+  "created_at": "2026-10-21T17:40:25.287376+00:00"
+}

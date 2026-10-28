@@ -1,0 +1,100 @@
+{
+  "experiment_mode": "[Optimized Study] Neural FL + Differential Privacy (Random Split)",
+  "model_architecture": "mlp",
+  "task": "classification",
+  "dataset_id": "apple_watch",
+  "split_strategy": "random_record",
+  "num_clients": 3,
+  "rounds_completed": 8,
+  "local_epochs": 12,
+  "learning_rate": 0.01,
+  "batch_size": 32,
+  "differential_privacy_enabled": true,
+  "dp_budget": {
+    "epsilon": 10678.61,
+    "delta": 1e-05,
+    "raw_epsilon": 10678.614,
+    "clipping_norm": 3.0,
+    "noise_multiplier": 0.02,
+    "num_rounds": 8,
+    "sample_rate": 1.0,
+    "is_private": true,
+    "privacy_level": "Client-Level DP (Sensitivity bounded per hospital update)",
+    "guarantee": "(\u03b5=10678.61, \u03b4=1e-05)-DP satisfied after 8 rounds",
+    "mechanism": "Gaussian Mechanism (RDP Analytical Composition)",
+    "audit_note": "Calculated via closed-form R\u00e9nyi Differential Privacy for Gaussian Mechanism"
+  },
+  "secure_aggregation_enabled": false,
+  "secagg_protocol": "None",
+  "elapsed_time_sec": 5.4,
+  "metrics": {
+    "accuracy": 0.6417,
+    "precision": 0.6474,
+    "recall": 0.6417,
+    "f1_score": 0.6411,
+    "macro_f1": 0.6379,
+    "per_class_recall": [
+      0.5797,
+      0.6,
+      0.56,
+      0.8027,
+      0.7528,
+      0.5645
+    ],
+    "mcc": 0.5705,
+    "cohen_kappa": 0.5692,
+    "roc_auc": 0.8956,
+    "confusion_matrix": [
+      [
+        160,
+        30,
+        8,
+        12,
+        39,
+        27
+      ],
+      [
+        26,
+        114,
+        13,
+        2,
+        26,
+        9
+      ],
+      [
+        15,
+        15,
+        112,
+        16,
+        11,
+        31
+      ],
+      [
+        9,
+        2,
+        15,
+        179,
+        0,
+        18
+      ],
+      [
+        7,
+        17,
+        3,
+        3,
+        134,
+        14
+      ],
+      [
+        19,
+        5,
+        18,
+        16,
+        23,
+        105
+      ]
+    ]
+  },
+  "id": "dc216376",
+  "created_at": "2026-10-20T12:12:39.245535+00:00"
+}

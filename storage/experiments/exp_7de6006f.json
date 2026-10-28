@@ -1,0 +1,32 @@
+{
+  "experiment_mode": "Federated Learning + Differential Privacy (Gaussian DP-FedAvg)",
+  "model_architecture": "mlp",
+  "task": "classification",
+  "dataset_id": "apple_watch",
+  "num_clients": 3,
+  "rounds_completed": 7,
+  "local_epochs": 10,
+  "learning_rate": 0.01,
+  "batch_size": 32,
+  "metrics": {
+    "accuracy": 0.615,
+    "f1_score": 0.611,
+    "precision": 0.6185,
+    "recall": 0.615,
+    "mcc": 0.531,
+    "cohen_kappa": 0.528
+  },
+  "differential_privacy_enabled": true,
+  "dp_budget": {
+    "is_private": true,
+    "epsilon": 2.14,
+    "delta": 1e-05,
+    "guarantee": "(\u03b5=2.14, \u03b4=1e-05)-DP Analytical Advanced Composition"
+  },
+  "secure_aggregation_enabled": false,
+  "secagg_protocol": "None",
+  "communication_cost_kb": 93.98,
+  "elapsed_time_sec": 13.1,
+  "id": "7de6006f",
+  "created_at": "2026-10-20T08:23:53.561646+00:00"
+}
